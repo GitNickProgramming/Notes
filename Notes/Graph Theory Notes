@@ -1,0 +1,12 @@
+6/9/2019
+
+1. Graph Theory
+    a) The study of graphs, which are mathematical structures used to model pairwise relations between objects.
+        - A graph in this context is made up of vertices (also called nodes or points) which are connected by edges (also called links or lines).
+    b) Undirected graphs
+        - A set of objects (called vertices or nodes) that are connected together, where all the edges are bidirectional.
+        - Edges link two vertices symmetrically
+    c) Directed graphs
+        - A set of objects (called vertices or nodes) that are connected together, where all the edges are directed from one vertex to another.
+        - Where edges link two vertices asymmetrically
+        

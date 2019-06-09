@@ -9,4 +9,48 @@
     c) Directed graphs
         - A set of objects (called vertices or nodes) that are connected together, where all the edges are directed from one vertex to another.
         - Where edges link two vertices asymmetrically
-        
+
+Applications of Graph Theory in Computer Science An Overview
+    https://pdfs.semanticscholar.org/3f2e/5b88c4b631c931f6db805f4ae3c0b531a8e8.pdf
+
+1. Abstract
+    - This paper gives an overview of the applications that uses graph theoretical concepts.
+    - Various papers based on graph theory have been studied related to scheduling concepts, computer science applications and an overview has been presented here.
+    - Keywords:
+        * Bipartite Graph
+        * Ad-hoc networks
+        * Geometric Spanner
+        * Median Graph
+        * Voronoi Graph
+2. Applications of Graph Theory
+    - Widely used to study and model various applications, in different areas:
+    a) Study of Molecules
+        - Construction of bonds in chemistry and the study of atoms
+    b) Sociology
+        - Measure an Actors prestige or to explore diffusion mechanisms
+    c) Biology
+        - conservation efforts where a vertex represents regions where certain specis exist and the edges represent migration path or movement between the regions
+        - Information can be used to look at breeding patterns or tracking the spread of a disease, parasites and to study the impact of migrations that affect other species.
+    d) Operations Research (OR)
+        - The Traveling salesman problem
+            + the shortest spanning tree in a weighted graph
+            + optimal match of jobs and men and locating the shortest path between two vertices in a graph
+3. Algorithms and Graph Theory
+    - These aglorithms are used to solve the graph theoretical concepts which intern used to solve the corresponding computer science application problems.
+    a) Some Algorithms are:
+        * Shortest path algorithm in a networks
+        * Finding a minimum spanning tree
+        * Finding graph planarity
+        * Algorithms to find adjacency matrices
+        * Algorithms to find the connectedness
+        * Algorithms to find the cycles in a graph
+        * Algorithms for searching an element in a data structure (Depth First Search - DFS, Breadth First Search - BFS) and so on.
+    b) Graph Theory in OR
+        - Graph theory is a very natural and powerful tool in combinatorial operations research. 
+        - A network called transport network where a graph is used to model the transportation of commodity from one place to another. 
+        - The objective is to maximize the flow or minimize the cost within the prescribed flow.
+        - The graph theoretic approach is found more efficient for these types of problems though they have more constraints
+4. Bipartite Graph
+    - A graph whose vertices can be divided into two disjoint sets U and V such that every edge connects a vertex in U to one in V
+    - That is, U and V are independent sets
+    

@@ -1,0 +1,33 @@
+6/11/2019
+
+Source:
+        https://tomassetti.me/parsing-in-python/
+        https://www.vipinajayakumar.com/parsing-text-with-python/
+
+
+I. Useful Things to know about Parsers
+    - Structure of a Parser
+        + A parser is usually composed of two parts:
+            a) A lexer
+                1. Also known as scanner
+            b) Tokenizer
+        + Not all parsers adopt this two-steps schema:
+            a) Some parsers do not depend on a lexer.
+            b) they are called scannerless parsers.
+    - Example: 
+        + 437 + 734
+        + The lexer scans the text and finds '4', '3', '7' and then the space ' '.
+        + The job of the lexer is to recognize that the first characters constitute one token of type NUM.
+        + Then the lexer finds a '+' symbol, which corresponds to a second token of type PLUS, and lastly it finds another token of type NUM.
+    - The parser will typically combine the tokens produced by the lexer and group them.
+    - The definitions used by lexers or parser are called rules or productions. 
+    - A lexer rule will specify that a sequence of digits correspond to a token of type NUM, while a parser rule will specify
+        that a sequence of tokens of type NUM, PLUS, NUM corresponds to an expression.
+II. Why parse files?
+    - Parse
+        + Analyse (a string or text) into logical syntactic components.
+        + convert data in a certain format into a more useable format.
+    - An individual program can only be expected to cater for a selection of data formats.
+    - So, inevitably there is a need to convert data from one format to another for consumption by different programs.
+III. Pandas (TBC...)
+            

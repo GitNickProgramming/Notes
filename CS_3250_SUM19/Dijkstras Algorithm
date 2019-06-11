@@ -1,0 +1,55 @@
+6/11/2019
+
+Source:
+        https://www.codingame.com/playgrounds/1608/shortest-paths-with-dijkstras-algorithm/dijkstras-algorithm
+        https://medium.com/basecs/finding-the-shortest-path-with-a-little-help-from-dijkstra-613149fbdc8e
+        http://www-math.mit.edu/~rothvoss/18.304.3PM/Presentations/1-Melissa.pdf
+
+
+I. Dijkstra's Algorithm 
+    - Allows you to calculate the shortest path between one node (you pick which one) and every other node in the graph.
+    - Can be used to determine the shortest path from one node in a graph to ever other node within the same graph data structure,
+        provided that the nodes are reachable from the starting node.
+    - This algorithm will continue to run untill all of the reachable vertices in a graph have been visted, which means that we could
+        run Dijkstra's algorithm, find the shortest path between two reachable nodes, and then save the results somewhere.
+II. Abstracted rules
+    - Every Time that we set out to visit a new node, we will choose the node with the smallest known distance/cost to visit first.
+    - Once we moved to the node we're going  to visit, we will check each of its neighboring nodes.
+    - For each neighboring node, we'll calculate the distance/cost for the neighboring nodes by summing the cost of the edges that
+        lead to the node we're checking from the start vertex.
+    - Finally, if the distance/cost to a node is less than a known distance, we'll update the shortest distance that we have on files for that vertex.
+III. Algorithm
+    - Solution to the single source shortest path problem in graph theory
+        + Both directed and undirected graphs
+        + All edges must have nonnegative weights
+        + Graph must be connected
+    - Pseudocode:
+        + distance to source vertex is zero
+        + set all other distances to infinity
+        + S, the set of visted vertices is initially empty
+        + Q, the queue initially contains all vertices
+        + while the queue is not empty
+        + select the element of the Q with the min. distance
+        + add u to list of visted vertices
+            * if new shortest path found
+            * set new value of shortest path
+            * if disired, add traceback code
+    - Implementation:
+        function Dijkstra(Graph, source):
+                dist[source]  := 0                     // Distance from source to source is set to 0
+                for each vertex v in Graph:            // Initializations
+                    if v ≠ source
+                        dist[v]  := infinity           // Unknown distance function from source to each node set to infinity
+                    add v to Q                         // All nodes initially in Q
+
+                while Q is not empty:                  // The main loop
+                    v := vertex in Q with min dist[v]  // In the first run-through, this vertex is the source node
+                    remove v from Q 
+
+                    for each neighbor u of v:           // where neighbor u has not yet been removed from Q.
+                        alt := dist[v] + length(v, u)
+                        if alt < dist[u]:               // A shorter path to u has been found
+                            dist[u]  := alt            // Update distance of u 
+
+                return dist[]
+        end function

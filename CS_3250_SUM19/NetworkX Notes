@@ -1,0 +1,157 @@
+6/11/2019
+Source: 
+        https://networkx.github.io/documentation/stable/reference/introduction.html
+        
+NetworkX > Docs > Reference > Introduction
+
+I. Introduction
+    - The package provides 
+        + classes for graph objects
+        + generators to create standard graphs
+        + IO routines for reading in existing datasets
+        + algorithms to analyze the resulting nets
+        + some basic drawing tools.
+    - Most of the NetworkX API is provided by functions which take a graph object as an argument.
+    - Methods of the graph object are limited to basic manipulation and reporting.
+    - Classes are named using CamelCase
+        + Capital letters at the start of each word.
+    - Functions, Methods, and Variable Names are lower_case_underscore
+        + lowercase with an underscore representing a space between words.
+II. NetworkX Basics
+    - After Starting Python, import the networkx module with
+        + import networkx as nx
+        + To save time, documentation is assumed that NetworkX has been imported in this way!
+    - The following basic graph types are provided as Python classes:
+        + Graph
+            a) This class implements an undirected graph.
+            b) It ignores multiple edges between two nodes.
+            c) it does allow self-loop edges between a node and itself.
+        + DiGraph
+            a) Directed graphs, that is, graphs with directed edges.
+            b) Provides operations common to direct graphs, a subclass of Graph
+        + MultiGraph
+            a) A flexible graph class that allows multiple undirected edges between pairs of nodes.
+            b) The additional flexibility leads to some degradation in performance, though usually not significant.
+        + MultiDiGraph
+            a) A directed version of a MultiGraph
+    - Empty graph-like objects are created with:
+        G = nx.Graph()
+        G = nx.DiGraph()
+        G = nx.MultiGraph()
+        G = nx. MultiDiGraph()
+    - All graph classes allow any hashable object as a node.
+        + Hashable objects include:
+            a) Strings
+            b) Tuples
+            c) Integers
+            d) And more...
+    - Arbitrary edge attributes such as weights and labels can be associated with an edge.
+III. Graphs
+    - The first choice to be made when using NetworkX is what type of graph object to use.
+    - A graph (network) is collection of notes together with a collection of edges that are pairs of nodes.
+    - Attributes are often assoicated with nodes and/or edges.
+    - NetworkX graph objects come in different flavors depending on two main properties of the network
+        + Directed:
+            a) Are the edges directed?
+            b) Does the order of the edge pairs (u, v) matter?
+            c) A directed graph is specified by the "Di" prefix in the class name, e.g. DiGraph().
+            d) We make this distinction because many classical graph properties are defined differently for direct graphs.
+        + Multi-edges: 
+            a) Are multiple edges allowed between each pair of nodes?
+            b) Multiple edges requires a different data structure.
+                * Though clever users could design edges data atrribues to support this functionality.
+            c) Standard data structure and interface for this type of graph using the prefix "Multi," e.g., MultiGraph()
+IV. Nodes and Edges
+    - The next choice you have to make is when specifying a graph is what kind of nodes and edges to use. 
+    - If the topology of the network is all you care about then using integers or strings as the nodes makes sense and you need not worry about edge data.
+        + Topology
+            a) the way in which constituent parts are interrelated or arranged.
+    - If you have a data structure already in place to describe nodes you can simply use that structure as your nodes provided it is hashable. 
+        + An object is hashable if it has a hash value which never changes during its lifetime (it needs a __hash__() method)
+            and can be compared to other objects (it needs an __eq__() or __cmp__() method).
+        + Hashable objects which compare equal must have the same hash value.
+        + Hashability makes an object usable as a dictionary key and a set member, because these data structures use the hash value internally.
+        + All of Python’s immutable built-in objects are hashable, while no mutable containers (such as lists or dictionaries) are.
+        + Objects which are instances of user-defined classes are hashable by default; they all compare unequal, and their hash value is their id().
+    - If it is not hasable you can use a unique identifier to represent the node and assign the data as a node attribute.
+        + Node attribute:
+            a) Nodes can have arbitrary Python objects assigned as attributes by using keyword/value pairs when
+                adding a node or assigning to the G.nodes[n] attribute dictionary for the specified node n.
+    - Edges often have data asociated with them.
+        + Arbitrary data can be associated with edges as an edge attribute.
+            a) Edges can have arbitrary Python objects assigned as attributes by using keyword/value pairs when adding
+                an edge assigning to the G.edges[u][v] attribute dictionary for the specified edge u-v.
+    - If the data is numeric and the intent is to represent a weighted graph then use the 'weight' keyword for the attribute.
+        + Some of the graph algorithms, such as Dijkstra's shortest path algorithm, use this attribute name by defult to get the weight for each edge.
+    - Attributes can be assigned to an edge by using keyword/value pairs when adding edges.
+        + You can use any keyword to name your attribute and can then query the edge data using that attribute keyword.
+    - Once you've decided how to encode the nodes and edges, and where you have an undirected/directed graph with or
+        without multiedges you are ready to build your network.
+V. Graph Creation
+    - NetworkX graph objects can be created in one of three ways:
+        + Graph generators
+            a) Standard algorithms to create network topologies.
+        + Importing data from pre-existing (usually file) sources.
+        + Adding edges and nodes explicitly.
+    - Explicit addition and removal of nodes /edges is the easiest t describe.
+        + Each graph object supplies methods to manipulate the graph.
+        + Example:
+            import networkx as nx
+            >>> G = nx.Graph()
+            >>> G.add_edge(1, 2)                # default edge data = 1
+            >>> G.add_edge(2, 3, weight = 0.9)  # specify edge data
+        + Edge attributes can be anything:
+            >>> import math
+            >>> G.add_edge('y', 'x', function = math.cos)
+            >>> G.add_node(math.cos)            # any hashable can be a node
+        + You can add many edges at one time:
+            >>> elist = [(1, 2), (2, 3), (1, 4), (4, 2)]
+            >>> G.add_edges_from(elist)
+            >>> elist = [('a', 'b', 5.0), ('b', 'c', 3.0), ('a', 'c', 1.0), ('c', 'd', 7.3)]
+            >>> G.add_weighted_edges_from(elist)
+VI. Graph Reporting
+    - Class views provide basic reporting of:
+        + Nodes
+        + Neighbors
+        + Edges
+        + Degree
+    - These views provide iteration over the properties as well as membership queries and ata attribute lookup.
+    - The views refer to the graph data structure so changes to the graph are reflected in the views.
+    - This is analogous to dictonary views in Python 3.
+    - The basic graph relationship of an edge can be obtained in two ways.
+        + One can look for neighbors of a node
+        + One can look for edges
+    - Any properties that are more complicated than edges, neighbors and degree are provided by functions.
+    - For Example:
+        + nx.triangles(G, n) 
+        + Gives the number of triangles which include node n as a vertex.
+        + these functions are grouped in the code and documentation under the term algorithms.
+VII. Algorithms
+    - A number of graph algorithms are provide with NetworkX.
+    - These include:
+        + Shortest path
+        + Breadth first search
+        + Clustering
+        + Isomorphism algorithms and others...
+    - Example of Dijkstra's algorithm to find the shortest weighted path:
+        >>> G = nx.Graph()
+        >>> e = [('a', 'b', 0.3), ('b', 'c', 0.9), ('a', 'c', 0.5), ('c', 'd', 1.2)]
+        >>> G.add_weighted_edges_from(e)
+        >>> print(nx.dijkstra_path(G, 'a', 'd'))
+        ['a', 'c', 'd']
+VIII. Drawing
+    - While NetworkX is not designed as a network drawing tool, a interface is provided to 
+        drawing packages and some simple layout algorithms.
+    - Interactive GUI interfaces are possible, though not provided.
+IX. Data Structure
+    - NetworkX uses a "dictionary of dictionaries of dictionaries" as the basic network data structure.
+    - This allows fast lookup with reasonable storage for large sparse networks.
+    - The keys are nodes so G[u] returns an adjacency dictionary keyed by neighbor to the edge attribute dictionary.
+    - Advantages of dict-of-dicts-of-dicts data structure:
+        + Find edges and remove edges with two dictionary look-ups.
+        + Prefer to “lists” because of fast lookup with sparse storage.
+        + Prefer to “sets” since data can be attached to edge.
+        + G[u][v] returns the edge attribute dictionary.
+        + n in G tests if node n is in graph G.
+        + for n in G: iterates through the graph.
+        + for nbr in G[n]: iterates through neighbors.

@@ -1,0 +1,125 @@
+6/10/2019
+
+kellyji@msudenver.edu
+MolsenCoors
+
+Homework:
+    - Thursday 20, 2019 > Submit a 1 to 3 sentence summary of Term Project Topic
+    - 
+
+The Building Blocks
+    A) Binary Numbers
+    B) Gate Logic
+    C) Boolean Expressions
+    D) Circuits
+
+1. Binary Numbering System
+    - How can an electronic (or magnetic) machine represents information?
+    - Key requirements:
+        + Clear, Unambiguous, and reliable
+    - External representation is human-oriented
+        + Base-10 Numbers
+        + Keyboard Characters
+    - Internal Represenation is computer-oriented
+        + Base-2 Numbers
+        + Base-2 codes for Characters
+    - Binary is the simple idea of On/Off, Yes/No, True/False, and Positive/Negative
+    - Binary is important to computing systems because of it's stability and reliability
+        + Even when an electrical system degrades, there is still a clear "On/Off."
+    - All data stored inside a computer inside a computer is stored in binary (also called machine language) and interpreted
+        to display on the screen in human language.
+    - Converting from Binary to Decimal
+        + Add up powers of two where a 1 appears in the binary Numbering
+    - Converting from decimal to binary
+        + Repeatedly divide by two and recond the remainder
+        + Example, Converting 11:
+            1. 11/2 = 5, remainder 1, Binary number = 1
+            2. 5/2 = 2, remainder 1, Binary number = 11
+            3. 2/2 = 1, remainder 0, Binary number = 011
+            4. 1/2 = 0, remainder 1, Binary number = 1011
+    - Computers used fixed-length binary numbers for integers, e.g. 4 bits could represent 0 to 15
+    - Arithmetic Overflow
+        + When the computer tries to make a number that is too large, e.g. 14+2 with 4 bits
+    - Binary addition:
+        + 0 + 0 = 0
+        + 0 + 1 = 1
+        + 1 + 0 = 1
+    - Signed integwers include negative numbers
+    - Sign/Magnitude Notation
+        + to make the negative of a number, flip every bit and add one.
+        + +5 = 0101
+        + -5 = 1101
+        + 0 = 0000
+    - Characters and text
+        + Map characters onto binary numbers in a standard way
+            1. ASCII (8-bit numbers for each character)
+            2. Unicode (Minimum of 16-bit numbers for each character)
+    - Sounds and images require converting naturally analong representations to digial representations
+        + Sound waves characterized by:
+            1. Amplitude - height of the wave at a moment in time
+            2. Period - length of time until wave patterns repeats.
+            3. Frequency - number of cycles per unit time.
+    - Digitize
+        + convert to a digital from
+    - Sampling
+        + record sound wave values to fixed, discrete intervals
+        + to reproduce sound, approximate using samples
+    - Quality is determined by:
+        + Sampling Rate:
+            1. number of samples per second
+                * More Samples > more accurate waveform
+        + Bit depth:
+            1. Number of bits per sample
+                * More bits > more accurate Amplitude
+    - Image Sampling
+        + record color or intensity at fixed, discrete intervals in two dimensions
+        + Pixels
+            1. Individual recorded samples
+        + RGB encoding scheme
+            1. Colors are combinations of red, green, and blue
+            2. One byte each for red, green, and blue
+        + Raster Graphics
+            1. Store pictures as two dimensional grid of pixel values
+    - Data compression
+        + Storing data in a reduced-size form to save space/time
+            1. Lossless: Data can be perfectly restored
+            2. Lossy: Data cannot be perfectly restored
+
+2. Boolean Logic and Gates
+    - Boolean Logic
+        + is the rule for manipulating true/false expressions for binary machine language
+        + Boolean expressions can be converted to Circuits
+    - Hardware Design/Logic Design
+        + pertains to the design and construction of new Circuits
+        + Binary 1/10 maps to true/false of Boolean Logic
+    - True Tables
+        + lay out true/false values for Boolean Expressions, for each possible true/false input
+    - Gate
+        + an electronic device that operates on inputs to produce outputs
+        + Each gate corresponds to a Boolean operator
+
+3. Circuits
+    - Has input wires, contains gates connected by wires, and has output wires.
+    - Output depend only on current inputs: no state
+    - To convert a circuit to a Boolean expressions
+        + Start with output and work backward
+            1. find next gate back, convert to Boolean operator
+            2. Repeat for each input, filling in left and/or right side.
+    - To Convert a Boolean expression to a circuit
+        + Similar approach
+    - To build a circuit from desired outcomes
+        + Use standard circuit construction algorithm
+            1. E.g., sum-of-products algorithm
+    - Compare-for-equality (CE) circuit
+        + input is two unsigned binary numbers.
+        + Output is 1 if inputs are identical and 0 otherwise.
+        + Start with 1-bit version (1-CE) and build general version from that.
+    - Control Circuits 
+        + make decisions, determine order of operations, select data values
+    - Multiplexer
+        + Selects one from among many inputs
+            1. 2^n input lines
+            2. N selector lines
+            3. 1 output lines
+            
+    

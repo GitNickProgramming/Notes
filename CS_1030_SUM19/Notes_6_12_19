@@ -1,0 +1,244 @@
+6/12/2019
+Chapter 4 (Continued): The Building Blocks - Binary Numbers, Boolean logic, and Gates
+Chapter 5: Computer Systems Organization
+
+Homework:
+    - Page: 217
+        + 1, 2 (explain in one sentence), 3ab, 4ac, 9, 19, 20 (explain the problem in one sentence), 24
+    - Project 2 is due 6/19/2019 (Wednesday)
+    - Page: 273
+        + 1 (first question only), 4, 11, 14 (add why you chose that answer), 17, 19   
+
+I. Circuits
+    - Decoder
+        + Sends a signal out to only one output chosen by its input.
+        + N input lines
+        + 2^n output lines
+    - Each output line corresponds to a unique patern on input lines.
+    - Only the chosen output line produes 1, all others output 0.
+II. Summary
+    - Computers use binary representation because they maximize reliability for electronic systems.
+    - Many kinds of data may be represented at least in an approximate digital form using binary values.
+    - Data can be compressed.
+        + Lossy: Some information is lost in the process.
+        + Lossless: No information is lost in the process.
+    - Boolean logic describes how to build and manipulate expressions that are true/false
+    - We can build logic gates that act like Boolean operators using transistors.
+    - Circuits may be build from logic gates; circuits correspond to Boolean expressions.
+    - Sum-of-products is a circuit design algorithm
+        + Takes a specification and ends with a circuit.
+    - We can build circuits for basic algorithmic tasks
+        + Comparisons (compare-for-equality circuit)
+        + Arithmetic (adder circuit)
+        + Control (multiplexer and decoder circuits)
+
+I. Learning Objectives
+    - Enumerated the characteristics of the Von Neumann Architecture.
+    - Describe the components of a random access memory system, including how fetch and store operations work,
+        and the use of cache memory to speed up access time.
+    - Diagram the components of a typical arithmetic?logic unit (ALU) and illustrate how the ALU data path operates.
+    - Describes the operation of the control unit and explain how it implements the stored program characteristic of
+        of the Von Neumann architecture.
+    - List and explain the types of instructions in a typical instruction set, and how instructions are commonly encode.
+    - Diagram the organization of a typic Von Neumann machine.
+    - Show the sequence of steps, using the book's notation, in the fetch, decode, and execute cycle to perform a typical
+        instruction.
+II. Introduction
+    - This chapter changes the level of abstraction and focuses on a higher level of computer system construction.
+    - Focus on functional units and computer organization.
+    - a Hierarchy of abstractions hides unecessary details.
+    - Change focus from transistors to gates and to circuits as the basic unit.
+    - Discusses in detail the Von Neumann architecture.
+III. The Components of a Computer System.
+    - Von Neumann architecture is the foundation for nearly all modern computers.
+        + The four major subsystems of the Von Neumann architecture.
+            * Memory and the Store Program.
+            * Input/output
+            * Arithmetic/Logic unit (ALU)
+            * Control unit
+                a) ALU and Control unit are often bundled inside the central processing unit (CPU).
+IV. The Components of a Computer System Memory and cache
+    - Memory
+        + functional unit where data is stored/retrieved
+    - Random access Memory (RAM)
+        + Organized into cells, each given a unique address.
+        + Equal time to access any cell
+        + Cell values may be rad and changed.
+    - Read-only Memory (ROM)
+        + A type of RAM with prerecorded information cannot be modified or changed.
+    - Cell size/memory width
+        + Typically 8 bits
+    - Maximum memory size/address space is 2^n, where N is length of address.
+    - Fetch
+        + retrieve from memory (nondestructive fetch)
+    - Store
+        + write to memory (destructive store)
+    - Memory access time
+        + Time required to fetch/store
+        + Modern RAM requires 5-10 nanoseconds
+    - Memory address register (MAR)
+        + Holds memory address to access.
+    - Memory data register (MDR)
+        + receives data from fetch and holds data to be stored.
+    - Memory system circuits
+        + Decoder
+        + Fetch/sotre controller
+    - Decoder converts MAR into signal to a specific memory.
+        + One-dimensional versus two-dimensional memory organization.
+    - Fetch/Store controller > traffic cop for MDR
+        + Takes a signal that indicates fetch or store.
+        + Routes data flow to/from memory cells and MDR.
+    - RAM speeds increased more slowly than CPU speeds.
+    - Cache Memory
+        + is fast but expensive.
+        + Built into the CPU for fast access times.
+    - Principles of locality
+        + Values close to recently accessed memory are more likely to be accessed.
+        + Load neighbors into cache and keep recent values there.
+    - Cache hit rate
+        + percentage of times values are found in cache.
+V. The Components of a Computer System Input/output and mass Storage
+    - Input/output (I/O) 
+        + connects the processor to the outside world.
+            * Humans: Keyboard, monitor, etc.
+            * Data Storage: Hard Drive, DVD, flash drive.
+            * Other computers: network
+    - RAM = volatile memory (gone without power)
+    - Mass Storage system = nonvolatile memory
+        + Direct access storage devices (DASDs)
+        + Sequential access storage devices (SASDs)
+    - DASDs
+        + Disks: Hard Drives and Optical Media (CDs/DVDs)
+            * Tracks: Concentric rings around the disk surface.
+            * Sectors: Fixed size segments of Tracks, unit of retrieval.
+            * Time to retrieve data based on:
+                a) Seek time
+                b) Latency
+                c) Transfer time
+        + Other nondisk DASDs
+            * Flash memory and solid-state drives (SSD, Random Access Mass Storage)
+    - DASDs and SASDs are orders of magnitude slower than RAM
+        + Microseconds or Milliseconds
+    - I/O controller
+        + Manages data transfer with slow I/O devices, freeing processor to do other work.
+    - Controller sends an interrupt signal to processor when I/O task is done.
+    - ALU is part of the processor
+    - Contains circuits for Arithmetic
+        + Addition, subtraction, multiplication, and Division
+    - Contains Circuits for comparison and logic
+        + Equality, and, or, not
+    - Contains registers
+        + high-speed, dedicated memory connected to circuits.
+    - Data path:
+        + How information flows in the ALU
+        + From registers to circuits
+        + From circuits back to registers
+VI. The Components of a Computer System The ALU
+    - How is the operation perform chosen?
+        + Option 1:
+            * decoder signals one circuit to run.
+        + Option 2:
+            * Run all circuits, multiplexer selects one output from all circuits.
+    - In Practice, option 2 is usually chosen.
+    - Information flow
+        + Data comes in from outside to registers
+        + Signal comes registers to ALU
+        + Signal moves from ALU to multiplexer
+        + Multiplexer selects the value to keep and discards the rest.
+        + Result from the multiplexer goes back to the register and then to outside.
+IX. The Components of a Computer System The Control Unit
+    - Sorged Program Characteristic
+        + Programs are encoded in binary and stored in computer's meory for great flexibility
+    - Control unit fetches instructions from memory, decodes them, and executes them.
+    - Instructions encoded
+        + Operation code (op code) tells which operation
+        + Addresses tell which memory addresses/ registers to operate on.
+    - Machine Language
+        + Binary Strings encode instructions
+        + Instructions can be carried out by hardware
+        + Sequences of instructions encode algorithms
+    - Instruction set
+        + Instructions implemented by a particular chip
+        + Each kind of Processor has a different instruction set (Speaks a different language)
+    - Reduced instruction set (RISC)
+        + Small instruction sets
+        + Each instruction highly optimized
+        + Easy to design hardware
+    - Complex instruction set (CISC)
+        + Large instruction set
+        + Single instruction can do a lot of work
+        + Complex to design hardware
+    - Modern Hardware is a compromise between RISC and CISC
+    - Instruction set Examples:
+        + Data Transfer, e.g., Move data from memory to register.
+        + Arithmetic, e.g., add, but also AND 
+        + Comparison:
+            * Compare two values
+        + Branch
+            * Change to a non-sequential instruction
+            * Branching allows for conditional loop forms
+            * E.g., JUMPLT a = if previous comparison of A and B found A < B, then jump to instruction at address a
+    - Control Unit contains:
+        + Program Counter (PC)
+            * Holds address of next instruction
+        + Instruction register (IR)
+            * Holds encoding of current instruction
+        + Instruction decoder circuit
+            * Decodes OP code of instruction and signals helper circuits, one per instruction.
+                a) Helpers send addresses to proper circuits.
+                b) Helpers signal ALU, I/O controller, and memory.
+X. Putting the Pieces together - The Von Neumann Architecture
+    - Combine previous Pieces: Von Neumann Machine
+    - Fetch/decode/execute phase
+        + Machine repeats until HALT instruction or error
+        + Also called Von Neumann cycle
+    - Fetch Phase: get next instruction into Memory
+    - Decode phase: Instruction decoder gets OP code
+    - Execute phase: different for each instruction
+XI. Von Neumann Architectures
+    - Problems to solve are always larger
+    - Computer Chip speeds no longer increase exponentially
+    - Reducing size puts gates closer together, faster
+        + Speed of ligh pertains to signal through wire 
+        + Cannot put gates much closer together
+        + Heat production increases too fast
+    - Von Neumann Bottleneck:
+        + inability of sequential machines to handle larger Problems
+    - Non-Von Neumann Architectures
+        + Other ways to organize computers
+        + Most are experimental/theoretical, EXCEPT parallel processing.
+    - Parallel processing
+        + Many processing units operating at the same time.
+        + Supercomputers (in the past)
+        + Desktop multicore machines and "the cloud" (in the present)
+        + Quantum computing (in the future)
+    - MIMD parallel processing
+        + Multiple instruction steam/Multiple data streams
+            * Cluster computing
+        + Multiple, independent processors
+        + Each ALU operates on its own data
+        + Each Processor can operate independently
+            * On its own data 
+            * On its own program
+            * At its own rate
+        + Example: Changing background color all at once
+XII. Summary
+    - We must abstract in order to manage system complexity
+        + No more writing instructions in machine language.
+    - Von Neumann architecture is standard for modern computing.
+    - Von Neumann machines have memory, I/O, ALU, and Control Unit
+        + Programs are stored in memory
+        + Execution is sequential unless program says otherwise.
+    - Memory is organized into addressable cells
+        + Data is fetched and stored based on MAR and MDR
+        + Uses decoder and fetch/store controller
+    - Mass data storage is nonvolatile
+        + Disks store and fetch sectors of data stored in tracks.
+    - I/O is slow, needs dedicated controller to free CPU
+    - ALU Performs computations, Moving data to/from dedicated registers.
+    - Control Unit fetches, decodes, and executes instructions
+        + Instructions are written in machine language.
+    - Parallel Processing architectures can perform multiple instructions at one time.
+
+    
+

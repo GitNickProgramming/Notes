@@ -1,0 +1,204 @@
+6/13/2019
+
+Homework:
+    - Data Center Tour
+        + Wednesday 6/26: Meet Here at 8:09am 
+        + Project 3
+        + Page: 331
+            - 1, 2, 4, 9ab, 11 (Figure 6.8 is on p.298) 18, 21, 26 (label the 'dots' a, b, c, and d, respectively) 
+
+Chapter 6: An Introduction to System Software and Virtual Machines
+I. Learning Objectives
+    - Compare the virtual machine created for the user by system software with the naked machine.
+    - Describe the different types of system software.
+    - Explain the benefits of writing programs in assembly language rather than machine language.
+    - Describe how an assembler translates assembly language programs into machine instructions.
+    - List five key tasks of an operating system, and explain what each is and why it is critical 
+        to modern systems.
+    - Describe the different generations of operating systems, their features, and how each 
+        generation solved a drawback.
+    
+II. Introduction
+    - Naked Machine
+        + Has no tools or programs to help the user:
+            * Write instructions in binary 
+            * Write Data in binary 
+            * Load Instructions into memory one cell at a time 
+            * Initiate program run
+        + Quickly Became to difficult for humans to do 
+        + An interface had to be developed to hide the details and make the computer easier to build.
+III. System Software 
+    - A collection of programs to:
+        * Manage resources of the computer 
+        * Serve as intermediary between user and hardware
+    - System Software creates a virtual machine (or a virtual environment) that the user sees 
+    - Operating System 
+        + Single most important piece of software on the computer made up of:
+            * The user interface 
+            * Memory Managers
+            * I/O systems 
+            * Utilities
+            * Language services
+            * Information Managers
+            * Scheduler
+    - Communicates with users, determines what they want, and activates other system programs, applications,
+        packages, or user programs 
+    -Language services support high level languages
+    - Memory managers allocate memory to programs
+    - Information managers organize mass storage
+    - Scheduler manages programs waiting to run 
+    - Utilities:
+        + Tools 
+        + Program Libraries
+    - Graphical User Interface (GUI)
+        + Pronounced "gooey"
+        + Visual interface to the virtual machine including:
+            * Operating systems and system programs 
+            * user programs
+        + I/O systems communicate with various devices such as:
+            * Printers
+            * Scanners
+            * Keyboards
+            * Mice
+    - Naked Machine 
+        + Write Program in Binary 
+        + Load instructions one by one into memory 
+        + Insert start into memory address 0 and push "go" button 
+        + Read results from memory one by one, in binary 
+    - Virtual Machine 
+        + Write program using text editor in high-level language
+        + Save program to Folder 
+        + use Translator to convert to binary 
+        + Use Scheduler to laod and run 
+        + Use I/O system to print results 
+    
+IV. Assemblers and Assembly language 
+    - Low-level programming language is also called assembly language:
+        + Instructions map one-to-one to machine language 
+        + Symbolic OP codes (not binary) 
+        + Symbolic addresses for instructions and data 
+        + Pseudo-OPs for data generation and more (data in human-friendly terms)
+        + Advantages over machine code 
+            * Clarity, readability, and maintainability 
+            * Can be placed at different locations in memory 
+    - High-level Programming Languages:
+        + Java, C++, and Python
+        + Advantages over assembly language:
+            * More powerful
+                a) One high-level instruction may provide multiple machine instructions 
+            * User oriented 
+            * Not machine specific
+            * Use both natural language and mathematical notation
+    - Assembly Language process:
+        + Source Program (assembly language)
+        + Translated by the assembler to 
+        + Object program (machine language)
+        + Loader places in memory 
+        + Hardware runs 
+        + Results 
+    - Example Assembly Language:
+        
+        NEXTSTEP: LOAD X    -- Put X into Reg. R 
+        label: opcode mnomonic address field  -- comment 
+
+        + Label is optional name for this instruction's location 
+        + OP code mnemonic and address field translate t omachine language 
+        + Comments are ignored by assembler - just for human use 
+    - Pseudo-OP:
+        + Commands in the program directed to the assembler, not converted to machine instructions:
+            * .BEGIN and .END to mark where instructions are 
+            * .DATA to mark memory location as holding data:
+
+                COUNTER:    .DATA 0
+                X:          .DATA 12
+
+    - Translation and Loading
+        + Assembler
+            * Translates to machine language:
+                a) Converts symbolic OP codes to binary equivalents 
+                b) Converts symbolic labels to memory addresses 
+                c) performs pseudo-OP actions 
+                d) Writes object file containing machine instructions 
+        + Loader 
+            * Gets program ready to run: 
+                a) Places instructions in memory 
+                b) Triggers the hardware to run the program
+    - Converting symbolic OP codes to binary ones
+        + Assembler maintains a table 
+        + Assembler looks up symbolic OP codes in the table substitues the binary analogue 
+        + Use binary search to optimize table lookups
+    - Converting symbolic labels to memory addresses 
+        + Assembler needs two passes
+            * Looks over assembly code two times 
+        + First pass:
+            * Keeps a count of how many instructions from the start 
+            * Collects symbolic labels and add to symbol table along with location counter
+        + Second Pass: 
+            * Looks up and replace OP codes 
+            * Substitues label references with location froom symbol table 
+            * Sets up .DATA pseudo-ops with location and binary value
+            * Writes instructions to object file
+V. Operating Systems 
+    - System Commands: 
+        + User instructions about what the computer should do 
+        + Some typical operating system commands 
+            * Load a program 
+            * Run a Program 
+            * Save information in a file or a directory 
+            * Retrieve a file previously stored
+            * List all the files for the user 
+            * Delete or rename a file 
+            * Print a file or a specified I/O device 
+            * Copy a file from one I/O device to another 
+            * Establish a network connection 
+            * Let the user set or change password 
+            * Tell how much memory or data storage is being used 
+    - Functions of an Operating System 
+        + User Interface
+            * User communicates with operating system 
+        + Operating system as receptionist and dispatcher 
+        + User Command > System software scheduled and run > repeat!
+        + Text-based:
+            * System commands typed at a prompt in a terminal 
+            * Command Language must be learned
+        + GUI-Based:
+            * System commands by a visual/mouse interface 
+    - System Security and Protection
+        + Permit only authorized access to resources 
+        + Operating system as a security guard 
+        + Access protect by usernames and passwords:
+            * Superusers have more privileges
+            * Encrypt data to increase security
+    - Folders and file have authorization lists:
+        + Read a file, add new information to a file, change existing information, and delete a file 
+    - User Interface Management (Receptionist)
+    - Control of access to system and data files (security guard)
+    - Program scheduling activation (Dispatcher)
+    - Efficient resource allocation (efficiency Expert)
+    - Deadlock and error detection (Traffic officer)
+    - Deadlock:
+        + Occurs when multiple programs are requesting the resources that each one is currently useing.
+        + Also called "Deadly Embrace"
+    - Safe use of resources:
+        + Ensure that the computer doesn't get stuck in deadlock 
+        + Deadlock prevention:
+            * if you can't get all resources, release all you have and try again later
+            * Deadlock recovery:
+                a) If no acknowledgement
+                b) Send message again
+    - Historical development of Operating System:
+        + First Generation:
+            * Nearly "Naked Computer":
+                a) Programmer hand-loaded programs 
+        + Second generation: 
+            * Batch operating systems:
+                a) Programmers gave programs to operators
+                b) Operators collected a "batch" of programs
+                    - Used I/O computer to translate programs to tape
+
+
+        
+        
+
+
+    

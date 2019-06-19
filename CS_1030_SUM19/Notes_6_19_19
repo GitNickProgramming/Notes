@@ -1,0 +1,216 @@
+6/19/2019
+
+Schedule:
+    - Chapter 7
+    - Review for Test 1
+
+Homework:
+    - Study for Chapter 7
+
+Chapter 7
+    - Computer Networks and Cloud Computing
+
+I. Learning Objectives
+    - Describe and compare different network technologies, including dial-up, broadband, and wireless
+    - Explain how different kinds of networks (LAN, WLAN, WAN) are connected, and how communication
+        works in each.
+    - Explain the importance of Standards and protocols for comunication among computing devices.
+    - Name the layers of the network protocol hierarchy, and describe the purpose of each later.
+    - Explain cloud computing and discuss its potential benefits.
+    - Describe the highlights of the history of the internet and web
+II. Introduction
+    - Computer networks have had revolutionary impact
+    - Education, research, medicine, and more benefits
+    - Worldwide communications
+    - Spread of information and data
+    - Possibly a vehicle for spreading misinformation
+        + Fake news
+        + Rumors
+        + Falsehoods
+    - Helps to equalize access to information
+III. Basic Networking Concepts
+    - Computer Network 
+        + Made up of computing devices, nodes, and interconnections
+    - Networks may be wired or wireless; Communication links use various technology
+    - Wired Networks:
+        + Dial-up 
+        + Broadband (Cable modems and DSL)
+    - Wireless networks:
+        + WLAN, WWAN, MAN, LAN 
+    - Switched, Dial-up Telephone Lines 
+        + Analog Lines 
+        + Transmit digital data 
+        + Modem 
+            * Modulates Carrier Wave 
+        + Speeds up to 56 Kbps
+            * Started at 300 baud/30 cps 
+            * Quadrupled to 1200 baud!!!
+        + Bandwidth 
+            * Capacity
+    - Broadband provides transmission rate >= 25Mps 
+    - Home Internet Connections 
+        + Asymmetic download/upload speeds 
+        + Digital subscriber line (DSL)
+            * Uses phone lines but sends digital signal on different frequencies from voice.
+            * Download rate:
+                1. 5 - 50 Mbps
+            * Upload Rate:
+                2. 1 - 5 Mbps 
+        + Cable Modem 
+            * Uses cable TV lines 
+            * Data rates up to ~100 Mbps download, with upload speeds average between 3 and 5 Mbps Why?
+    - Commercial/Institutional Internet connections 
+        + Ethernet (1970s)
+            * Dedicated coaxial cable 
+            * Operates at 10 Mbps 
+        + Faster Ethernet (early 1990s)
+            * Dedicated lines (coaxial, fiber-optic, or twisted-pair copper wire) 
+            * Operates at 100 Mbps 
+        + Gigabit Ethernet Standard (Late 1990s)
+            * From gigabit networking research project
+            * IEEE Standard
+            * Operates at 1000 Mbps
+    - Wireless Data Communication 
+        + Allows network commnication without the neeed for cables holding you to one place.
+        + Radio, microwave, or infrared signals to mobile computers
+        + Mobile computing delivers data regardless of location
+        + Bluetooth:
+            * Low power, close range (30-50 feet), connects devices like wireless mice, cameras, video games.
+    - Wireless local area network (WLAN)
+        + Computers transmit wirelessly to a base station which has a wired connection 
+        + Range of 150 - 300 feet 
+        + Terminology:
+            * Wi-Fi 
+                1. Standard term for wireless network communication, is really the IEEE 802.11 standard 
+            * IEEE 802.11 wireless network standard 
+            * Wi-Fi hot spot:
+                2. library, campus, coffee shop, etc.
+            * Metropolitan Area Network (MAN): 
+                3. A built-out wireless network that covers blocks or cities
+    - Wireless Wide are network (WWAN)
+        + Computers transmit wirelessly to a remote base station which has a wired connection 
+        + Cellular technology involves antennas on towers miles apart 
+        + Example:
+            * 4G, Voice and data, transmits at 50 - 500 Mbps 
+        + Signal may be blocked when indoors
+        + Errors with data transmission can slow performance 
+        + Securit Concern:
+            * Wireless signals are east to intercept
+            * Never use password at store WiFis
+    - Local area networks (LAN)
+        + Wired connection 
+        + Computers, printers, and servers are in close proximity
+        + Examples:
+            * Same Room,
+            * printers
+            * Servers are in close proximity 
+        + Privately owned and operated 
+        + Topology:
+            * How computers are connected, Affects how they communicate 
+        + Can be made up of different types of systems and OS installs (Mac, Linux, Windows, or Android)
+    - Bus Topology
+        + Shared lines 
+        + Devices take turns using the line 
+    - Ring Topology 
+        + Messages circulate until they reach the source 
+    - Star Topology 
+        + All messages are sent to a central node, which routes messages to their destinations 
+    - Wide Area Networks (WANs)
+        + Wired connection 
+        + Connected computers, located at great distances 
+        + Dedicated Point-to-point lines 
+            1. Computers connect to other computers on individual lines 
+        + Store-and-forward, packet-switched 
+            2. Packets - go from node to node until reaching their destination 
+    - Overall Structure of the Internet 
+        + Combination of LANs and WANs 
+        + Connected by routers that direct message traffic 
+        + Internet service provider (ISP) 
+            1. Provides access to the Internet for private individuals and organizations 
+        + Domain Name Services (DNS) 
+            2. Provide addressing information, Convert URLS to IP addresses 
+        + ISPs exist at multiple levels:
+            1. Local
+            2. Regional 
+            3. National 
+            4 Internation (Tier-1 network)
+IV. Communication Protocols
+    - Protocol
+        + A standard set of rules for communicating 
+    - Protocol Hierarchy/Protocol stack, TCP/IP 
+        + Laters of Protocols (Transmission Control Protocol)
+        + Phsyical transmission to end application rules and standards 
+    - Internet Society
+        + Makes Standards and promotes research 
+            * Standards evolve over time 
+    - International agreements make Internet Possible 
+V. Network layers
+    - Network Layer Protocols 
+        + Transmit messages across multiple nodes in a network 
+        + Requirements:
+            * Standard for addressing all network nodes 
+            * Routing method for finding a route from any node to any other node 
+        + Internet Network Layer: IP (Internet Protocol)
+    - Addressing: 
+        + Host name: human-friendly name for node 
+        + IPv4 Address: unique numerical address used by the computer, 141.140.1.5 Running out of IPv4 addresses,
+            using IPv6 addresses now, too.
+        + Domain Name Service (DNS): maps host names to IP adresses 
+            * Symbolic Host name goes to a local DNS server 
+            * If it has no record, goes to remote serves until one has the host name and retrieves the IP address 
+        + Routing:
+            * Picking a path through the network from source to destination 
+            * Seeks the shortest/best path: fastest travel 
+            * Massive network requires efficient path-seeking 
+            * Networks are dynamic: nodes come online and go offline all the time - routing must adapt quickly 
+VI. Transport Layer 
+    - Transport layer protocols 
+        + application-to-application, reliable packet delivery 
+        + Port Number: unique identifer for a program 
+    - Application types have standard port numbers
+        + Web server > port 80 
+        + Domain Name Service > port 42 
+        + SMTP, sending email > port 25 
+    - TCP (Transport Control Protocol)
+        + Ensures no errors 
+        + Establishes ordered deliver of packets 
+        + Another version of ARQ algorithm 
+        + Virtual direct, quality connection between programs 
+VII. Application Layer 
+    - Application Layer protocols 
+        * Handle formatted data transmitted between application programs 
+    - Hypertext Transfer Protocol (HTTP) 
+        + Web page/service is identified by a unique URL (Uniform Resource Locator) 
+        + Web Browsers uses TCP to send formatted messages to a web server, and vicee versa 
+    - Process:
+        + Browser reads protocol, extracts host name (and request iP address from the DNS server)
+        + Sends a connection message to port 80 on that machine 
+        + After connection is established, sends "Get" message with page information 
+        + Server responds with message containing page contents and size and indicates the connection closes at the end of the message 
+VIII. Network Services and Benefits Interpersonal Communications 
+    - Electronic Mail 
+        * A message read at the recipient's convenience 
+        * Fast, multimedia, broadcast medium 
+    - Bulletin board system (BBS)
+        * Public forum for shared communications 
+        * Evolved into Internet forums, chat rooms 
+    - Instant messaging and texting 
+    - Evolved out of a Bulletin board system 
+    - Benefits: 
+        + Fast communication with people around the globe
+        + The potential for rich discussion around a topic
+        + A public forum where many people can contribute 
+    - Pitfalls: 
+        + Anything posted online can follow you forever
+        + Cyberbullying 
+        + Potential Invasion of Privacy 
+X. Network Services and Benefits Resource Sharing
+    - Print Servers serve all computers on LAN 
+    - File Servers provide storage to all users 
+    - Client/Server computing 
+        + Some nodes provide service; other nodes use those services 
+    - Distributed databases and Data Warehouses 
+        + Massive data stored in various sites online 
+    - Groupware or wiki 
+        + Support collaborative knowledge/data construction 
+    

@@ -1,0 +1,106 @@
+Homework: 
+    - Exam on Thursday 6/28
+        * Scrum Guide
+        * Head First Design Patterns
+        * 5 Dis. of a Team 
+
+Scrum Notes:
+    - Nicole working on Saving game data, she also created a Discord server for the team
+    - David/Larsen/Nick have been working on map generator class, add MultiDiGraph() instead of Graph()
+    - Devon is working on repl and command input
+    - Study for Test on Thursday 
+    - Pickle in Python for saving
+
+I. The Decorator Pattern
+    - Designs should be open for extension, but closed for modification.
+    - You want people to be able to use our stuff but without being able to edit
+II. Decorators
+    - Have the same super type of the objects they decorate.
+    - Can have one or more Decorators
+    - Can pass wrapped object anywhere original could be passed 
+    - Adds behavior before and/or after delegating object 
+    - Objects can be decorated at runtime
+III. Decorator Pattern
+    - Attaches additional responsibilities to an object dynamically
+    - Provide a flexible alternative to sub-classing for extending functionality
+IV. Inheritance
+    - Using inheritance to get type matching but not behavior 
+        + Java requires this, other languages don't
+
+I. Factory Pattern 
+    - Handles the details of object creation 
+        + Encapsulates the creation in a subclass 
+        + Decouples interface from creation 
+    - Can return a variety of types 
+    - Client doesn't care which typs 
+    - Can add additional types of easily 
+    - If static, can't subtype to extend
+    - The factory method pattern is a creational pattern that uses factory methods to deal with the problem
+        of creating objects without having to specify the exact class of the object that will be created.
+    - Factories don't have to be abstract
+        * Can have default and that can call down if necessary
+II. The Dependency Inversion Principle
+    - Depend on abstractions
+    - Do not depend upon concrete classes 
+    - High level modules should not depend on low-level modules
+        * Both should depend on abstractions 
+    - Abstraction should not depend on details 
+        * Detail should depend on on abstraction 
+III. Therefore:
+    - No variable should hold a reference to a concrete class 
+    - No class should derive from a concrete class 
+    - No method should override an implemented method of any of its base classes 
+IV. Dependency Injection
+    - A Technique whereby one object ( or static method) supplies the dependencies of another object 
+    - A dependency is an object that can be used (a service)
+    - An injection is the passing of a dpendency to a dependent object (a client) that would use it 
+    - The service is made part of the client's state 
+    - Passing the service to the client, rather than allowing a client to build or find the service, 
+        its the fundamental requirement to the partern
+    - The fundamental requirement means that using values (services) produced within the class from new or static methods is prohibited
+    - The client should accept values passed in from outside 
+    - This allows the client to make acquiring dependencies someone else's problem 
+    - The intent behind dependency injection is to decouple objects to the extent that no client code has to be changed
+V. Inversion of Control 
+    - A design principle in which custom-written protions of a computer program receive the flow of control from a generic framework 
+    - A software architecture with this design inverts control as compared to traditional procedural programming
+        + In traditional programming, the custom code that expresses the purpose of the program calls into reusable libraries to take care of generic tasks
+        + With inversion of control, it is the framework that calls into the custom, or task-specific code.
+VI. Abstract Factory Pattern
+    - Provides an interface for creating families of related or dependent objects without specifying the 
+    - Factory:
+        + Creation through inheritance 
+        + Creates objects of a single type 
+    - Abstract Factory 
+        + Creation through composition
+        + Instantiated via new and passed
+        + Creates families of related object via Factories
+
+I. The Singleton
+    - Thread pools, caches, dialog, boxes, preferences, logging, device drivers, I/O 
+    - But:
+        + might not need each time, so lazy initialization 
+II. Threading
+    - Synchronize getInstance
+    - Double check locking
+III. Visibility and Synchronization
+    - Visibility assures that all threads read the same value of a variable
+    - Volatile
+        * Reads and writes happen to main memory
+            > Not from Individual CPU Caches 
+        * Writes to a volatile also write all the thread-visible variables to main memory 
+        * Reads from a volatile re-read
+    - Atomic
+        * Any write to a volatile variable establishes a happens-before relationship with subsequent reads 
+        * Reads and writes are atomic for reference variables and for most pritive variables (execpt long and double)
+        * Reads and writes are atomic for all variables declared volatile (including long and double variables)
+        * And there are AtomicInt, AtomicLong
+    - Volatile Not always Enough
+        * If there is a read/modify/write such as variable++
+        * Must use synchronized keyword to remove
+    - GET if you are interested:
+        + Java Concurrency In Practice
+        + By Brian Goetz
+    
+
+

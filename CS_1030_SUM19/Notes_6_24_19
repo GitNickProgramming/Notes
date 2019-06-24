@@ -1,0 +1,162 @@
+Schedule:
+    - Cengage
+        + Laura Quinn
+        + (724) 554-9516
+        + lauraquinn@cengage.com 
+
+Homework:
+    - MindTap
+        + Unit 8 Test (Level 4)
+
+Chapter 8 - Information Security
+I. Learning Objectives
+    - Explain the difference betweek authentication and authorization
+    - Explain the use of a hash function to encrypt passwords on a computer system
+    - Describe cyber-attacks including viruses, worms, Trojan horses, DoS attacks, and phishing,
+        explain how they differ from each other.
+    - Describe ways increase the security of information on your computer and online
+    - Encrypt and decrypt messages using simple Caesar ciphers and matrix-based block ciphers.
+    - Describe the overall process used by symmetric encryption algorithms such as DES.
+    - Describe the overall process used by RSA public-key encryption
+    - Explain why web transmission protocols such as SSL and TLS use multiple forms of encryption to
+        encryption to secure data transfer over the web.
+    - Explain the importance of computer security for networked embedded systems.
+II. Introduction
+    - Information Security 
+        + Keep information safe
+        + Control access to authorized people only
+    - Physical security 
+        + Lock Doors
+        + maintain control devices
+    - Online Security 
+        + Secure assembly language
+        + Secure operating system 
+        + Secure network 
+III. Threats and Defenses 
+    - THreats online are often more dangerous than threats to physical items
+    - Hackers prefer to attack easily accessible data 
+    - Multiple deterrents to online attacks
+IV. Threats and Defenses Authentication and Authorization 
+    - Authentication 
+        + establishing identity
+    - Require usernames and passwords 
+    - Secure a password file with a hash function;
+    - Example: Password = badboy2
+        + Replace letters by numbers: 214215352
+        + Add digits: 2 + 1 + 4 + 2 + 15 + 25 + 2 + 51
+        + Remainder of sum/7: 51 mod 7 = 2
+        + Add 1 and multiply by 9: (2 + 1) x 9 = 27
+        + Reverse digits and convert to leterrs 72 = gb
+    - Password file security: no plaintext password stored
+    - On login
+        + Read username and password 
+        + look up entry for username in a password file 
+        + Hash input password and compare
+    - More secure method
+        + Keep password creation time
+        + Add creation time to password before hashing 
+        + identical password won't hash to identical values
+    - Password Attacks 
+        + Guess password, brute force or from knowledge 
+            * Try common passwords (e.g. 123456)
+            * Try personal references (e.g. pet name)
+            * Try all possible password (computationally difficult)
+        + Steal password file and use password-cracking software
+            * Tries words and word combinations, millions of password possibilities per 
+                second.
+        + Social Engineering:
+            * Get a person to tell password 
+    - Other Authentication methods
+        + Answer personal information question
+        + Biometric information (fingerprint or retinal scans)
+        + One-time password scheme 
+            * User enters ID and partial password 
+            * System or user device generates last half of the password 
+            * Last half of the password is good for only a few seconds
+        + Dual Authentication:
+            * Temporary code or password is sent to a trusted device 
+    - Authorization
+        + set of permitted actions for each authorized person 
+    - Operating system maintains access control lists
+        + Read access 
+        + Write access
+        + Execute access 
+        + Delete access 
+    - System administrator or superuser has universal access and sets up authorization 
+    - Malware:
+        + Malicious software arriving from network.
+    - Virus:
+        + Program embedded within another program or file, replicates itself and attacks other files
+    - Trojan horse:
+        + Program that seems beneficial but hides malicious code within it
+        + Keystroke logger : records all keys typed
+        + Drive-by exploit/Drive-by download:
+            * Trojan horse downloaded by simply visiting an infected website 
+    - Denial-of-service (DoS) attack:
+        + many computers try to access the same URL at the same time 
+        + Clogs the network, prevents legitimate access, and causes the server to crash
+        + Distributed DoS uses thousands of computers 
+            * Uses a zombie army (botnet): many innocent computers infected with Malware
+    - Phishing:
+        + obtain sensitive information by impersonating legitimate sources
+        + Many emails; just afew "bites" are enough
+    - White hats are security experts and those who work to help protect systems from attackers
+    - Black hats are individuals or groups who work toward getting around security to steal informaton,
+        get money, or do other nefarious, immoral, and illegal acts
+V. Encrpytion Overview 
+    - Cryptography:
+        + Science of "secret writing"
+    - Encryption and decryption (inverse operations)
+        + Convert from plaintext to ciphertext and back again 
+    - Symmetric encryption algorithm 
+        + A Secret key shared by the sender and receiver
+        + Same key is used to encrypt and decrypt 
+    - Asymmetric encryption algorithm (public key)
+        + Uses two keys: Public and Private 
+        + Use public key (generally known) to encrypt 
+        + Use private key (known only to receiver) to decrypt 
+    - Caesar Cipher (shift cipher)
+        + Map characters to others a fixed distance away in the alphabet
+        + Example:
+            * A > E, B > F, C > G 
+    - Substitution cipher:
+        + Similar, but implement other mappings
+        + Pros:
+            * easy and fast, can do character by character 
+        + Cons: 
+            * letter frequency, double leters, still pertain, make it easy to break
+VI. Encryption (DES) Data Encryption Standard
+    - Symmetric encryption algorithm 
+    - Design for digital data; plaintext is a binary string 
+    - Uses 64-bit binary key (56 bits actually uses)
+    - Sixteen rounds of the same series of manipulations
+    - Decryption uses the same algorithm; key in Reverse
+    - Fast and effective but requires shared key 
+        + 56 bits is too small for modern technology 
+    - AES (Advanced Encryption Standard)
+        + uses a similar approach; longer keys
+    - DES manipulations
+        + Split string 
+        + duplicatiing some bits 
+        + Omit some bits 
+        + Permute bit order 
+        + Combine bit strings with XOR (exclusive or) = 1 if the bits are different
+            = 0, if they are the same 
+VII. Encryption Public-Key systems 
+    - RSA key creation 
+        + Pick 2 large prime numbers: p and q 
+        + Compute n = p x q, and m = (p - 1) x (q - 1) 
+        + Choose large number e at random so that e and m are relatively prime (no common factors execept 1)
+        + Find unique value d, between 0 and m, such that (e x d) modulo m = 1
+        + Public key = (n, e); Private key = d 
+VIII. Web Transmission Security 
+    - Ecommerce requires secure transmission of names, passwords, and credit card numbers 
+    - Web protocols: SSL (Secure sockets layer) and TLS (Transport layer Security)
+        + Client-server applications
+        + Server provides certificate of authentication and server's public key 
+        + Client sends DES key, encrypted using RSA 
+        + Data is sent encrypted by the (now shared) DES key 
+IX. Embedded Computing 
+    - Embedded computers: 
+        + special-purpose, limited computers in other systems.
+IIX. Summary

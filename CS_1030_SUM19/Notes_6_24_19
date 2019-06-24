@@ -160,3 +160,15 @@ IX. Embedded Computing
     - Embedded computers: 
         + special-purpose, limited computers in other systems.
 IIX. Summary
+    - Internet and web are meant to proote information exchange, so information security is hard
+    - Online attacks include viruses, worms, Trojan horses, DoS attacks, and phishing
+    - Data security involves encrypting sensitive data before transmitting or storing in unsecured location
+    - Symeetric encryption requires a shard key
+    - Asymmetric encryption uses public and private keys
+    - Caesar cipher is a simple symmetric encryption; substitution ciphers are simlar 
+    - Block ciphers combine blocks of plaintext symbols into blocks of ciphertext 
+    - DES and AES are strong symmetric encryption algorithms 
+    - RSA is the most common asymmetric algorithm.
+    - Secure web transmission requires protocols: SSL/TLS 
+    - Embedded systems are the next problem to solve 
+    

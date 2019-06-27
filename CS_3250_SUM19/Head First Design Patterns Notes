@@ -10,37 +10,276 @@ I. Design Patterns
     - Observer
         + Defines a one-to-many dependency between objects so that when one object changes state, 
         + All of its dependents are updated and notified automatically
+        + An object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes usually by calling one of their methods.
+        + The observer pattern is also a key part in the familiar model-view-controller (MVC) 
     - Decorator
+        + Designs should be open for extension, but closed for modification
+        + You want people to be able to use our stuff but without being able to edit our stuff
+        + Decorators:
+            * Have the same super type of the objects they decorate
+            * Can have one or more Decorators 
+            * Can pass wrapped objects anywhere original could be passed
+            * Adds behavior before and/or after delegating object
+        + Decorator Pattern 
+            * Attaches additional responsibilies to an object dynamically 
+            * Provide a flexible alternative to sub-classing for extending functionality 
         + Wraps another object dynamically and provides additional behaviour for it.
         + Provides a flexible alternative to subclassing for extending functionality.
         + Doesn't alter the interface but adds responsibility
+        + Purpose:
+            * Attaching additional properties to objects.
     - Factory method
         + Defines an interface for creating an object, but lets subclasses decide which class to instantiate
-        + Lets a class defer instantiation to subclasses 
+        + Lets a class defer instantiation to subclasses
+        + Handles the details of object creation 
+            * Encapsulates the creation in a subclass 
+            * Decouples interface from creation 
+        + Can return a variety of types 
+        + Can add additional types of easily 
+        + If static, can't subtype to extend 
+        + The Factory method pattern is creational pattern that uses factory methods to deal with the problem of 
+            creating objects without have to specify the exact class of the object that will be created.
+        + Factories dont have to be abstract 
+            * Can have default and that can call down if necessary 
+        + The factory method pattern uses inheritance and relies on a subclass to handle the desired object instantiation 
     - Abstract Factory 
         + Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+        + Abstract factory design pattern is one of the creatonal patterns, very similar to Factory Pattern.
+        + Considered as another layer of abstraction over factory pattern.
+        + Work around super-factory which creates other factories.
+        + Provides us a framework that allows us to create objects that follow a general pattern.
+            * So at runtime, abstract factory is coupled with any desired concrete factory which can create objects of desired type.
+            * ConcreteFactory:
+                > Implements the operations declared in the abstractFactory to create concrete product objects 
+        + Main Difference between "Factory method" and "Abstract Factory" is that factory method is a single method and abstractory factory is an object.
+        + The Factory method is just a method, it can be overrideen in a subclass, whereas the abstract factory is an object that has multiple factory methods on it         
     - Singleton
         + Ensures a class has only one instance, and provides a global point of access to it. 
     - Command
         + Encapsulates a request as an object, thereby letting you parameterise other objects with different requests,
         queue or log requests, and support undoable operations.
         + Decouples an obect making a request from the one that knows how to perform it.
+        + A behavioral design pattern in which an object is used to encapsulate all information need.
+        + Client is responsible for creating a concrete command and setting its receiver
+        + Invoker holds a command object and at some point calls it execute() method 
+        + Command delcares an interface that has a least an execute() method 
+        + A concrete command impletements execute() and may call multiple methods in its receiver
+        + Do something for me, now or later, I dont care, just do it
     - Adapter
         + Wraps an object and provides a different interface to it.
         + Converts the interface of a class into another interface the clients expect.
         + Lets classes work together that couldn't otherwise because of incompatible interfaces.
+        + Purpose:
+            * Adapting a protocol of one class to the protocol of another class.
     - Facade
         + Wraps a bunch of objects to simply their interface
         + Provides a unified interface to a set of interfaces in a subsystem.
         + Defines a higher-level interface that makes the subsystem easier to use.
+        + Provides a unified interface to a set of interfaces in a subsystme.
+        + Facade defines a higher=level interface that makes the subsystem easier to use 
+    - Adapter/Facade 
+        + The Adapter
+            + Converts the interface of a class into another interface the clients expect 
+            + Adapter let classes work together that couldn't otherwise because of incompatible interfaces 
+            + Adapts to calls from different interfaces 
+            + Two Types:
+                * Object adpaters use compositions
+                * Class adpaters use inheritence 
+            + Differences
+                * Adapter alters and interface to make it usable
+    - Principle of least knowledge
+        + Talk to only immediate friends
+        + Decouples
+        + Law of demeter 
+        + Methods may talk to... 
+            * Their own object 
+            * Objects passed as parameters 
+            * Objects they instantiate 
+            * Instance variables 
     - Template Method 
         + Encapsulates algorithms
         + Defines the skeleton (/steps) of an algorithim in a mehtod, deferring some steps to subclasses
         + Subclasses decide how to implement steps in an algorithm (without changing the algorithm's structure)
+        + Behavioral design pattern that defines the program skeleton of an algorithm in an operation, deferring some steps to subclasses 
+        + it lets one redfine certain steps of an algorithm without changing the algorithm's structure.
+        + Hot Beverage
+            * For both coffe and tea (same, in base class)
+                > Boil water
+                > Use hot wwater to extract (different, abstract in base class)
+                > Pour into cup (same)
+                > add condiments (different)
+            * PrepareRecipe is template method 
+                > Is template method 
+                > All steps present
+                > Some are handled by bse class
+                > Some by subclasses
+        + Hooks
+            * Can define concrete methods that do nothing unless subclass overrides them
+            * Use abstract when subclass must implement, hooks when optional 
+        + Hollywood Principle
+            * Dont call us, we'll call you
+            * Low-level hooks into system, high-level calls at the appropriate time 
+            * Java Array.sort calls compareTo() 
+        + Summary
+            * To prevent subclasses from changing the algorithm, make the template method final 
+            * Both the strategy and template paterns encapsulate algorithms
+                > Strategy via composition 
+                > Template via inheritance 
+            * Factory is a very specialized template 
+                > Returns result from subclass 
     - Iterator
         + Provides a way to traverse/access the elements of an aggregate object sequentially without exposing its internal structure.
         + Takes the job iterating over an aggregate and encapsulates it in another object.
     - Composite
         + Provides a structure to hold both individual objects and composite objects.
         + Lets clients treat individual objects and collections/compositions of objects uniformly.
-    -
+        + Purpose:
+            * Single and multiple, recursively composed objects can be accessed by the same protocol 
+    - Principle of least knowledge
+        + Talk to only immediate friends
+        + Decouples
+        + Law of demeter
+            * or principle of least knowledge is a design guideline for developing software.
+            * Each unit should have only limited knowledge about other units: only units "closely" related to the current unit.
+            * Each unit should only talk to its friends; dont talk to strangers
+        + Methods may talk to... 
+            * Their own object 
+            * Objects passed as parameters 
+            * Objects they instantiate 
+            * Instance variables 
+   - Dependency Injection
+        + A Technique whereby one object ( or static method) supplies the dependencies of another object 
+        + A dependency is an object that can be used (a service)
+        + An injection is the passing of a dpendency to a dependent object (a client) that would use it 
+        + The service is made part of the client's state 
+        + Passing the service to the client, rather than allowing a client to build or find the service, 
+            its the fundamental requirement to the partern
+        + The fundamental requirement means that using values (services) produced within the class from new or static methods is prohibited
+        + The client should accept values passed in from outside 
+        + This allows the client to make acquiring dependencies someone else's problem 
+        + The intent behind dependency injection is to decouple objects to the extent that no client code has to be changed
+    -Inversion of Control 
+        + A design principle in which custom-written protions of a computer program receive the flow of control from a generic framework 
+        + A software architecture with this design inverts control as compared to traditional procedural programming
+            * In traditional programming, the custom code that expresses the purpose of the program calls into reusable libraries to take care of generic tasks
+            * With inversion of control, it is the framework that calls into the custom, or task-specific code.
+    - Abstract Factory Pattern
+        + Provides an interface for creating families of related or dependent objects without specifying the 
+        + Factory:
+            * Creation through inheritance 
+            * Creates objects of a single type 
+        + Abstract Factory 
+        + Creation through composition
+        + Instantiated via new and passed
+        + Creates families of related object via Factories
+    - Visibility and Synchronization
+        + Visibility assures that all threads read the same value of a variable
+        + Volatile
+            * Reads and writes happen to main memory
+                > Not from Individual CPU Caches 
+            * Writes to a volatile also write all the thread-visible variables to main memory 
+            * Reads from a volatile re-read
+    - Atomic
+        + Any write to a volatile variable establishes a happens-before relationship with subsequent reads 
+        + Reads and writes are atomic for reference variables and for most pritive variables (execpt long and double)
+        + Reads and writes are atomic for all variables declared volatile (including long and double variables)
+        + And there are AtomicInt, AtomicLong
+    - Volatile Not always Enough
+        + If there is a read/modify/write such as variable++
+        + Must use synchronized keyword to remove
+
+II. Three Types of Design Patterns 
+    - Creational Design Patterns 
+        + Creational Patterns are about class instantiation.
+        + These Patterns are differentiated into:
+            * Class-Creation Patterns 
+            * Object-creation Patterns 
+        + These patterns use object oriented programming efficiently during the instantiation, object-creation patternsuse delegation successfully which fulfil the work.
+        + These patterns help in improving the performance to great extent 
+        + Factory Patterns
+            * Creates object without showing the logic externally
+        + Abstract Factory 
+            * Offers an interface to create a faimly of related objects
+        + Builder 
+            * Helps in creating objects by defining an instance 
+        + Object Pool
+            * Helps in referring and sharing of objects which are at high cost for creation 
+        + Prototype
+            * Helps in creation of new objects by referring the prototype 
+        + Singleton 
+            * Provides global access point to objects and make sure that class is created with only one instance 
+        + Method of Creational Pattern:
+            * Point 
+                > Give an interface to making groups of related ward objects without determining their order of classes.
+                > The chain of command which typifies:
+                    - Numerous conceivable "interfaces," and development of a suite of "items"
+    - Structural Design Patterns
+        + These are the outline designs which facilitate the structure by recognizing a straightforward approach to acknowledge relations between elements
+        + These Patterns simply the design by finding a best method to realize relationships between entities.
+        + They use inheritance to compose interfaces.
+        + Adapter
+            * Change over interface into an alternate interface
+        + Composite Method 
+            * Compose objects into tree structures to represent part-whole hierarchies.
+        + Decorator 
+            * Add additional responsibilities dynamically to object 
+        + Flyweight Pattern 
+            * The aim of this pattern is to utilize imparting to bolster countless that have a piece of their inward state in like manner, where the other piece of state 
+                can differ.
+        + Facade Pattern 
+    - Behavioural Design Patterns
+        + This design pattern deals with Class's objects communication or their interaction 
+        + These Patterns main target of using object oriented programming is achieved by giving importance to the interaction between the objects.
+        + These Designing Patterns are concerned with interaction between the object. 
+        + Interpreter
+            * A method to define elements of language.
+        + Chain of Responsibility 
+            * Uses to send a request between objects chain 
+        + Command
+            * Encapsulate a request in an object 
+        + Iterator 
+            * Uses the elements in an order from the library 
+        + Mediator 
+            * Defines ease way of communicating 
+            * Managing collaboration between objects 
+        + Memento 
+            * It does not violate encapsulation and helps in restoring the object to its original state at any point of time
+            * Encapsulating a snapshot of the interal state of an object
+        + Observer 
+            * A way of notifying change to a number of classes 
+        + Strategy 
+            * Encapsulates an algorithm inside a class 
+        + Template Method 
+            * Defer the exact steps of an algorithm to a subclass
+
+III. Similarities between Adapter, Facade, and Decorator Patterns 
+    - One of the major similarities is there structure, all of these patterns wrap an object and delegate request processing or method call to them.
+    - Common Between Them:
+        + All of them are defined as structural patterns
+        + All of them use Composition and delegation to fulfill there intent.
+            * Adapter uses composition to forward calls from target interface to adaptee interface
+            * Decorator also uses same technique before adding new behavior
+            * Facade is composed of all sub components
+        + Both Adapter and Facade patterns forward requests to a different interface, which can be either adaptee or any component interface from sub-system.
+        + Anoter Similarity between Adapter and Facade pattern is that they can wrap multiple interfaces 
+        + Decorator's tend to operate on one object 
+IV. Difference between Adapter, Decorator, and Facade design patterns
+    - They Differ in there intent, what problem they solve and where to use them 
+    - Adapter Pattern convers interface, Decorator pattern doesn't convert interface, it just implements original object's interface.
+        + So that it can be passed to a method, which accepts originial object.
+    - Facade doesnt convert interface 
+    - Decorator never creats an object, it always adds new functionality on already existing object.
+    - Decorator design pattern also allows to add multiple features and can do it in a ordered fashion 
+    - If we compare decorator with facade pattern, then you can see the unlike Decorator, facade doesn't add any new behavior, it just calls existing methods from interface, it provides a facade 
+    - Facade is not required to implement any particular interface. Facade can even be a class, just holding individual sub system components and providing simpler operations required by the client 
+        then invoking corresponding methods on subsystem.
+V. Composite vs. Decorator 
+    - Commonalities:
+        + Structures of composite and decorator are very similar 
+            * Both use recursion to structure hierarchies of objects 
+        + Decorator structure might be mistaken for degenerated composite structure 
+            * Composite builds tree, Decorator builds chain of objects 
+    - Differences (are in their purpose)
+        + Decorator intends to add functionality to a type without changing it 
+            * avoids exponential explosion of number of classes 
+        + Composite intents to treate leaves and inner nodes (container objects) of an object hierarchy homogeneously 

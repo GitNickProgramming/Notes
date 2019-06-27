@@ -1,0 +1,185 @@
+Schedule:
+    - Chapter 9 Lecture
+    - 
+Homework:
+    -
+
+I. Introduction to High-level Language Programming
+    - Learning Objectives
+        * Explain the advantages of high-level programming languages over assembly language 
+        * Describe the general process of translation from high-level source code to object code 
+        * Name the five procedural programming languages used in the example of this chapter 
+        * Explain the favorite number and data cleanup examples for each programming language 
+        * Explain why the software development life cycle is necessary for creating large software programs
+        * List the steps in the software development life cycle, explain the purpose of each, and describe the
+            products of each 
+        * Explain how agile software development differs from the traditional waterfall model 
+II. The Language Progression 
+    - Assembly language improves on machine language 
+    - Assembly language disadvantages 
+        * Programmer must manage movement of data among memory locations and registers 
+        * Microscopic view of the task 
+        * Machine Specific language 
+        * Very different from natural language 
+    - High-level programming languages improve on assembly language 
+    - Expectations:
+        * Programmer need not manage data within memory 
+        * Macroscopic view of task (e.g. "add B and C")            
+        * Programs are portable from one machine to another 
+        * Programming statements are closer to nautural language and use mathematical notation 
+    - Third-Generation Languages 
+    - Need a translator for high-level languages 
+        * Compiler converts source code to assembly language or similar language 
+        * Assembler or other converter makes object code 
+    - Code libraries contain object code for tasks 
+    - Linker integrates multiple files of object code to create an executable module 
+III. A Family of Languages 
+    - Procedural (imperative) languages 
+        * Popular kind of programming language 
+        * Programs are sequences of statements 
+    - Examples:
+        * Ada, C++, C#, Java, and Python 
+    - Same underlying philosophy or model
+    - Variations in:
+        * Syntax:
+            + How statements are written 
+        * Semantics:
+            + Meaning of statements 
+IV. Two Examples in Five-Part Harmony 
+    - Examine similarities and differences of the languages (Ada, C++, C#, Java, and Python) through examples 
+    -Favorite Number:
+        * Ask user for her favorite number and then tell her that your favorite number is one greater than hers.
+    - Data Cleanup 
+        * Converging-pointers algorithm from Chapter 3
+V. Feature Analysis:
+    - Compare Psedudocode and language features 
+    - Syntax:
+        * Differences in describing data or variables 
+        * Differences in grouping things, making loops or conditionals
+    - Semantics:
+        * Meaning of function call 
+        * Meaning of operations 
+    - Deeper structure
+        * Modules, classes, and scope
+    - Programmer need not manage data in memory 
+        * In each language, programmers must declare or create names (and sometimes types) for variables 
+        * Program manages movement of data associated with a given variable name 
+    - Macroscopic view of tasks (e.g. "Find the circumference of a circle if the radius is X")
+        * Languages provide statements for high-level math 
+        * Details of conditionals and loops are hidden 
+    - Programs are portable from one machine to another 
+        * Programming languages are standardized 
+        * Compiled languages (Ada, C++, Java, and C#)
+            + Compilers written or a particular platform support
+            + Programmers distribute executeable or low-level "bytecode", not source 
+        * Interpreted languages (like Python) require an interpreter on each machine and distribute source code 
+    - Programming statements are closer to natural language and use mathematical notation 
+        * Mathematical notation is fairly standard across languages.
+        * Conditionals and loops are closer to natural language than assembly language 
+VI. The Big Picture: Software Engineering 
+    - Software Development Life Cycle:
+        * Process required to create large-scale software projects
+        * 25 to 40 percent of time spent on problem specification and program design 
+        * 10 to 20 percent of time spent on initial implementation 
+        * 40 to 65 percent of time spent reviewing, modifying, fixing, and improving software 
+    - Before Implementation:
+        * Feasibility study 
+        * Problem specification 
+        * Program design 
+        * Algorithm selection or development, and analysis 
+    - Implementation: 
+        * Coding
+        * Debugging 
+    - After Implementation:
+        * Testing, Verification, and benchmarking
+        * Documentation
+        * Maintenance
+    - Steps in the software development Life Cycle
+    - Large software scale issues 
+        * Orders of magnitude larger than beginner programs 
+        * Compare one sentence to a 300-page novel 
+    - Software engineering 
+        * Development of large software projects 
+        * Requires collaboration, management, and organization 
+        * Formal processes for development 
+    - Life Cycle:
+        * Feasibility study:
+            + Asses costs and benefits 
+            + Consider alternatives 
+        * Problem specification 
+            + Clear statement of problem to be solved 
+            + Problem specification document 
+    - Program Design Phase:
+        * Divide-and-conquer, top-down decomposition 
+        * Break problem into tasks and subtasks
+        * Program design document 
+    - Algorithm selection or development and analysis 
+        * Choose or design an algorithm for each subtask 
+        * Analyze efficiency
+        * Document:
+            + Describe algorithm in pseudocode; Provide efficiency analysis and rationale
+    - Coding 
+        * Translate pseudocode and design into working code 
+        * Better design = easier coding 
+    - Debugging:
+        * Connecting Programs Errors 
+        * Syntax Errors:
+            + Ungrammatical code statements 
+        * Runtime errors:
+            + Invalid operations like dividing by zero 
+        * Logic Errors:
+            + Errors in the algorithm itself 
+    - Testing, Verification, and Benchmarking 
+        * Empirical Testing:
+            + Develop a test suite to check correctness 
+        * Unit Testing:
+            + test each module or subtask 
+        * Integration testing 
+            + Test how modules work together 
+        * Regression testing:
+            + When a change occurs, test to be sure the change did not introduce errors 
+    - Program Verfication:
+        * To prove code is correct 
+    - Benchmarking:
+        * Check performance on inputs 
+    - Documentation:
+        * Internal Documentation
+            + Comments in code 
+        * External documentation
+            + All earlier documents (problem specification, program design, etc.)
+        * Technical documentation
+            + Information for programmers to understand the code 
+        * User documentation 
+            + Helps user run programs 
+    - Program maintenance 
+        * Add features, fix bugs, and improve performance 
+    - Integrated Development Environment (IDE)
+        * Program editor
+        * File manager
+        * Compiler or interpreter 
+        * Debugger 
+        * Prototypes 
+        * Rapid Prototyping 
+        * Version and document management 
+    - Agile Software Development 
+        * Alternative to the waterfall model 
+        * Philosophy 
+            + Problem specification is never done 
+            + Change is expected, respond in agile way 
+            + Customer or user involved throughout process 
+        * Pair Programming
+            + Two programmers at one computer
+                > Code Writer and observer roles are switched frequently
+VII. Summary
+    - High-level languages:
+        * Hide deatils of memory and hardware operations 
+        * Enable code portabiity
+        * Shift code statements toward natural language and mathematical notation
+    - Programming languages may share an underlying philosophy but vary in syntax and semantics Details
+    - Ada, C++, C#, Java, and Python are all procedural languages 
+    - Development of large software is a different kind of problem than writing a single algorithm 
+    - Software development life cycles are designed to manage large software development 
+    - Waterfall model starts with feasibility and problem specification and flows through debugging and testing.
+    - Agile development moves quickly through the design-implement-test cycle, repeating it many times for a single project.
+    
+        

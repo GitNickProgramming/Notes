@@ -1,0 +1,92 @@
+Scrum Notes
+
+Schedule
+    - Finish Design Patterns
+
+I. Iterator
+    - Provides a way to access the elements of an aggregate object sequentially without exposing
+    the underlying representation.
+    - This places the task of traversal on the iterator object, ot on the aggregate, which simplifies the aggregate interface and 
+    implementation, and places the responsibility where it should be.
+    - Decoupling the Aggregate from the iterator
+    - Enumeration is the older that has been replaced by iterator
+        + Iterator allows removal 
+    - Design Principle
+        + A Class should have only one reason to change 
+            * Single-responsibility principle 
+        + High Cohesion 
+            * All method related to purpose 
+II. Composite Pattern
+    - Allows you to compose objects into tree structures to represent part/whole hierarchies 
+    - Composite allows clients to treat individual objects and compositions of objects unifromly 
+    - We can apply the same operations over both composites and individual objects 
+    - Can ignore differences between the two 
+    - Think recursion 
+III. The State Pattern 
+    - State:
+        + What values are being held
+    - The combination of the value of all the variables in an object 
+    - We use state machines all the time
+        + NFAs, DFAs
+    - Automata 
+        + Combinatorial logic
+        + FSMs
+        + Pushdowns
+        + Turing machines 
+    - Examples
+        + Vending Machines, elevator, locks 
+        + FSMs limited to the amount of memory 
+    - Allows an object to alter its behavior when its internal state changes
+    - The object will appear to change its Class
+    - Very similar to strategy pattern 
+        + Strategy an alternative to sub-classing as it uses composition 
+        + State is an alternative to having lots of conditionals
+
+I. Getting a Job
+    - The Great American Know Who 
+        + I've known people at many jobs I've landed 
+        + Networking helps 
+    - Step 1:
+        + Maintaining your GPA is the #1 thing you can do 
+        + Impressing people in your classes is the other #1 thing you can do 
+    - Step 2:
+        + LinkedIn
+    - Step 3: 
+        + Meetup
+        + Find a meetup that matches your interests in a job 
+        + Pizza and recruiters are free at most meetings
+        + DJUG
+            + www.meetup.com/DenverJavaUsersGroup
+    - Step 4:
+        + Twitter
+            * Even if just following
+    - Stop:
+        + Gaming
+        + Get off the couch
+        + Wasting your time
+    - Start:
+        + Learning about your field:
+            * ACM, IEEE 
+        + Being relatable 
+            * Be able to interact wit the non-geek 
+        + Being nice
+        + Branching out
+            * New languages etc. 
+    - Why is Anyone Hired?
+        + Because someone is willing to pay to have a solution to their problem 
+        + Be the solution
+    - Do the job before you get the job 
+        + Do research on the company and the position
+        + What tech do they use?
+        + Whom have they bought and been bought by?
+        + Their strengths and weakness and those their competitors 
+    - Market Yourself
+        + Print up some cards 
+            * Include 
+                > A non-school email address 
+                > Your twitter, linked-in, Github URLs 
+        + Github 
+            * Your school work 
+            * Gists 
+        + Blog 
+    - 

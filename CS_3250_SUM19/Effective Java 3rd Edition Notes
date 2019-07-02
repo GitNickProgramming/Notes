@@ -191,4 +191,72 @@ III. Classes and Interfaces
         * Don't use them. Create a class hierarchy that will fit your needs better.
     - Nested classes 
         * If a member class does not need access to its enclosing instance then declare it static.
+        * If the classs is non-static, each instance will have a reference to its enclosing instance.
+            ~ That can result in the enclosing instance not being garbage collected and memory leaks.
+    - One single top level class by file
+        * Even though it's possible to write multiple top level classes in a single file, don't!
+        * Doing so can result in multiple definition for a single class at compile time.
+IV. Generics 
+    - Raw Types
+        * A raw type is a generic type without its type parameter.
+        * Example:
+            ~ List is the raw type of List<E>
+        * Raw types shouldn't be used.
+        * They exist for compatibility with older versions of Java.
+        * We want to discover mistakes as soon as possible (compile time)
+        * Using Raw types will probably result in error during runtime.
+        * We still need to use raw types in two cases:
+            ~ Usage of class litrals (List.class)
+            ~ Usage of instanceof 
+    - Unchecked Warnings
+        * Working with generics can often create warnings about them.
+        * Not having those warnings assure you that your code is typesafe.
+            ~ Try as hard as possible to eliminate them.
+        * Those warnings represents a potential ClassCastException at runtime.
+        * When you prove your code is safe but you can't remove this warning use the annotation @SuppresWarnings("unchecked")
+        as close as possible to the declaration.
+        * Also, comment on why it is safe.
+    - List and Arrays 
+        * Arrays are covariant and generics are invariant meaning that object[] is a superclass of String[] when List<Object>
+        is not for List<String>.
+        * Arrays are reified when generics are erased.
+            ~ Meaning that array still have their typing right at runtime when generics don't.
+        * In order to assure retrocompatibility with previous version List<String> will be a List at runtime.
+        * Typesafety is assured at compile time with generics.
+        * Since it's always better to have our coding errors the sooner (meaning at compile time), prefer the usage of generics over arrays.
+    - Generic types 
+        * Generic types are safer and easier to use because they won't require any cast from the user of this type.
+        * When creating new types, always think about generics in order to limit casts. 
+    - Generic Methods
+        * Like types, methods are safer and easier to use if they are generics.
+        * If you don't use generics, your code will require users of your method to cast parameters
+            ~ return values which will result in non-typesafe code.
+    - Bounded Wildcards 
+        * Bounded wildcards are important in order to make our code as generic as possible.
+        * They allow more than a simple type but also all their sons (? extends E) or parents (? super E)
+    - Generics and varargs 
+        * Even though it's not legal to declar generic arrays explicitly, it's still possible to use varargs with generics.
+        * This inconsistency has been a choice because of its usefulness (Example: Arrays.asList(T...a))
+        * This can, obviously, create problems regarding type safety.
+        * To make a generic varargs method safe, be sure:
+            ~ It doesn't store anything in the varargs array
+            ~ it doesn't make the aray visible to untrusted code when those two coniditions are met.
+            ~ Use the annotation @SafeVarargs to remove warnings that you took care of and show users of your methods that it is typesafe.
+V. Enums and Annotations 
+    - Enums instead of int constants 
+        * Prior to enums it was common to use int to represent enum tpes.
+        * Doing so is now obsolete and enum tpyes must be used.
+        * The usage of int made them difficult to debug (all you saw was int values).
+        * Enums are classes that export one instance for each enumeration constant.
+        * They are instance controlled.
+        * They provide type safety and a way to iterate over each values.
+        * If you need a specific behavior for each value of your enum, you can declare an abstract method that you will implement for each value.
+        * Enums have an automatically enerated valueOf(String) method that translates a constant's name into the constant.
+        * If the toString method is overriden, you should write a fromString method.
+    - Instance fields instead of ordinals
+        * Never use the ordinal method to calculate a value associated with an enum.
+    - EnumSet instead of bit fields 
+        * Before enums existed, it was common to use a bit fields for enumerated types that would be used in sets.
+        * This would allow you to combine them but have the same issues than int constants were saw in item 34.
+
     

@@ -1,0 +1,105 @@
+7.1.2019
+
+
+Effective Java 3rd Edition
+
+I. Creating and Destroying Objects 
+    - Use Static Factory Methods instead of Constructors
+        + Advantages:
+            1. Unlike Constructors, they have names
+            2. Unlike constructors, they are not required to create a new object each time they are invoked
+            3. Unlike constructors, they can return an object of any subtype of their return type
+        + Disadvantages:
+            1. If providing only static factory methods, classes without public or protect constructors cannot be subclassed
+            (encourage to use composition instead inheritance)
+            2. They are not readily distinguishable from other static methods (Some common names (each with a different purpose)
+            are: valueOf, of, getInstance, newInstance, getType and newType)
+
+                public static Boolean valueOf(boolean b) {
+                    return b ? Boolean.True : Boolean.False;
+                }
+    
+    - Use Builders when faced with many constructors
+        + Is a good choice when designing classes whose constructors or static factories would have more than a handful of parameters.
+        + Builders pattern simulates named optional parameters as in ADA and Python
+
+                public class Elvis{
+		            public static final Elvis INSTANCE = new Elvis();
+		            private Elvis(){...}
+		            ...
+		            public void singASong(){...}
+	            }
+
+    - Enforce the singleton property with a private constructor or an enum type 
+        + Public final field 
+        + One problem is that a privileged client can invoke the private constructor reflectively.
+        + Against this attack the constructor needs to be modified to send an exception if it is asked to create a second instance. 
+        + Singleton with static factory:
+            
+                public class Elvis{
+		            private static final Elvis INSTANCE = new Elvis();
+		            private Elvis(){...}
+		            public static Elvis getInstance(){ return INSTANCE; }
+		            ...
+		            public void singASong(){...}
+	            }
+
+        + In this approach it can be changed to a non-singleton class without changing the class API
+        + Serialize a singleton 
+            * It is needed to add a readResolve method and declare all the fields transient in addition to the implements Serializable to
+            maintain the singleton guarantee. 
+
+                private Object readResolve(){
+		            //Return the one true Elvis and let the garbage collector take care of the Elvis impersonator
+		            return INSTANCE;
+	            }
+
+        + Enum Singleton, the preferred approach 
+
+                public enum Elvis(){
+		            INSTANCE;
+		            ...
+		            public void singASong(){...}
+	            }
+        
+        + Equivalent to the public field, more concise, provides serialization machinery for free, and guarantee against multiple
+        instantiation, even for reflection attacks and sophisticated serialization. It is the best way to implement a singleton 
+
+    - Enforce Noninstantiability with a private constructor 
+        + For Classes that group static methods and static fields 
+        + Used for example to:
+            * Group related methods on primitive values or arrays.
+            * Group static methods, including factory methods, for objects that implement a particular interface.
+            * Group methods on a final class instead of extending the class.
+        + Include a private constructor
+
+                >>>
+
+    - Dependency Injection
+        + A common mistake is the use of a singleton or a static utility class for a class that depends on underlying ressources.
+        + The use of dependency injection gives us more flexibility, testability and reusability 
+        + Example:
+
+                public class spellChecker{
+                    private final Lexicon dictionary;
+                    public SpellChecker (Lexicon dictionary){
+                        this.dictionary = Objects.requireNonNull(dictionary);
+                    }
+                }
+
+    - Avoid Creating unnecessary Objects
+        + When possible se the static factory method instead of constructor (Example : Boolean) be vigilant on autoboxing.
+        + The use of primitive and his boxed primitive type can be harmful.
+        + Most of the time use primitives.
+
+    - Eliminate obsolete object references
+        + Memory leaks can happen in: 
+            * A class that managed its own Memory
+            * Caching objects 
+            * The use of listeners and callback 
+        + In those three cases the programmer needs to think about nulling object references that are known to be obsolete.
+    - Avoid Finalizers and cleaners
+    - Try with resources 
+    
+II. Methods of the Object class 
+    

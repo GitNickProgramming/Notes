@@ -125,4 +125,244 @@ II. Methods of the Object class
         * It needs to be a full representation of the object
         * Every informations contained in the toString representation should be accessible in some other way in order to avoid
         programmers to parse the String representation.
-    
+    - clone
+        * When you implement Cloneable, you should ask override clone with a public method whose return type is the class itself.
+        * It needs to be a full representation of the object 
+        * Every informations contained in the toString representation should be accessible in some other way in order to avoid 
+        programmers to parse the String representation.
+        * Also, when you need to provide a way to copy classes, you can think first of copy constructor or copy factory except for arrays.
+    - Implementing cmparable
+        * if you have a value class with an obvious natural ordering, you should implement Comparable.
+        * Here is the contract of the compareTo method:
+            ~ signum(x.compareTo(y)) == -signum(y.compareTo(x))
+            ~ x.compareTo(y) > 0 && y.compareTo(z) > 0 => x.compareTo(z) > 0
+            ~ x.compareTo(y) == 0 => signum (x.compareTo(z)) == signum(y.compareTo(z))
+        * It's also recommended that (x.compareTo(y) == 0) == x.equals(y) 
+        * If it's not, it has to be documented that the natural ordering of this class is inconsistent with equals 
+        * When confronted to different types of Object, compareTo can throw ClassCastExeception
+III. Classes and Interfaces 
+    - Accessibility
+        * Make accessibility as low as possible.
+        * Work on a public API that you want to expose and try not to give access to implementation details
+    - Accessor Methods 
+        * Public classes should never expose its fields.
+        * Doing this will prevent you to change its representation in the future.
+        * Package private or private nested classes, can, on the contrary, expose their fields since it won't be part of the API 
+    - Immutability 
+        * To Create an mmutable class:
+            ~ Don't provide methods that modify the visible object's state 
+            ~ Ensure that the class can be extended 
+            ~ Make all fields final 
+            ~ Make all fields private 
+            ~ Don't give access to a reference of a mutable object that is a field of your class 
+        * As a rule of thumb, try to limit mutability 
+    - Favor composition over inheritance 
+        * With inheritance, you don't know how your class will react with a new version of its superclass.
+        * For example:
+            ~ You may have added a new method whose signature will happen to be the same as a method of its superclass in the next release.
+            ~ You will then override a method without even knowing it 
+        * Also, if there is a flaw in the API of the superclass you will suffer from it too.
+        * With composition, you can define your own API for your class 
+        * As a rule of thumb:
+            ~ To know if you need to choose inheritance over composition, you need to ask yourself if B is reall a subtype of A.
+    - Create classes for inheritance or forbit it 
+        * First of all, you need to document all the uses of overridable methods.
+        * Remember that you'll have to stick to what you documented.
+        * The best way to test the design of your class is to try to write subclasses.
+        * Never call overridable methods in you constructor 
+        * If a class is not designed and documented for inheritance it should be made forbidden to inherit.
+            ~ either by making it final, or making its constructors private (or package private) and use static factories. 
+    - Interfaces are better than abstract classes 
+        * Since Java 8, it's possible to implement default mechanism in an interface.
+        * Java only permits single inheritance so you probably won't be able to extends your new abstract class to existing classes
+        * When you always will be permitted to implement a new interface.
+        * When designing interfaces, you can also provide a Skeletal implementation.
+        * This type of implementation is an abstract class that implements the interface.
+        * It can help developers to implement your interfaces and since default methods are not permitted to override Object Methods,
+        you can do it in your skeletal implementation.
+        * Doing both allows developers to use the one that will fit their needs. 
+    - Design interfaces for posterity 
+        * With Java 8+, it's now pssible to add new methods in interfaces without breaking old implemetations thanks to default methods.
+        * Nonetheless, it needs to be done carefully since it can still break old implementations that will fail at runtime.
+    - Interfaces are mean't to define types 
+        * Interfaces must be used to define types, not to export constants. 
+    - Tagged Classes 
+        * those kinds of classes are clutted with boilerplate code (Enum, switch, useless field depending on the enum).
+        * Don't use them. Create a class hierarchy that will fit your needs better.
+    - Nested classes 
+        * If a member class does not need access to its enclosing instance then declare it static.
+        * If the classs is non-static, each instance will have a reference to its enclosing instance.
+            ~ That can result in the enclosing instance not being garbage collected and memory leaks.
+    - One single top level class by file
+        * Even though it's possible to write multiple top level classes in a single file, don't!
+        * Doing so can result in multiple definition for a single class at compile time.
+IV. Generics 
+    - Raw Types
+        * A raw type is a generic type without its type parameter.
+        * Example:
+            ~ List is the raw type of List<E>
+        * Raw types shouldn't be used.
+        * They exist for compatibility with older versions of Java.
+        * We want to discover mistakes as soon as possible (compile time)
+        * Using Raw types will probably result in error during runtime.
+        * We still need to use raw types in two cases:
+            ~ Usage of class litrals (List.class)
+            ~ Usage of instanceof 
+    - Unchecked Warnings
+        * Working with generics can often create warnings about them.
+        * Not having those warnings assure you that your code is typesafe.
+            ~ Try as hard as possible to eliminate them.
+        * Those warnings represents a potential ClassCastException at runtime.
+        * When you prove your code is safe but you can't remove this warning use the annotation @SuppresWarnings("unchecked")
+        as close as possible to the declaration.
+        * Also, comment on why it is safe.
+    - List and Arrays 
+        * Arrays are covariant and generics are invariant meaning that object[] is a superclass of String[] when List<Object>
+        is not for List<String>.
+        * Arrays are reified when generics are erased.
+            ~ Meaning that array still have their typing right at runtime when generics don't.
+        * In order to assure retrocompatibility with previous version List<String> will be a List at runtime.
+        * Typesafety is assured at compile time with generics.
+        * Since it's always better to have our coding errors the sooner (meaning at compile time), prefer the usage of generics over arrays.
+    - Generic types 
+        * Generic types are safer and easier to use because they won't require any cast from the user of this type.
+        * When creating new types, always think about generics in order to limit casts. 
+    - Generic Methods
+        * Like types, methods are safer and easier to use if they are generics.
+        * If you don't use generics, your code will require users of your method to cast parameters
+            ~ return values which will result in non-typesafe code.
+    - Bounded Wildcards 
+        * Bounded wildcards are important in order to make our code as generic as possible.
+        * They allow more than a simple type but also all their sons (? extends E) or parents (? super E)
+    - Generics and varargs 
+        * Even though it's not legal to declar generic arrays explicitly, it's still possible to use varargs with generics.
+        * This inconsistency has been a choice because of its usefulness (Example: Arrays.asList(T...a))
+        * This can, obviously, create problems regarding type safety.
+        * To make a generic varargs method safe, be sure:
+            ~ It doesn't store anything in the varargs array
+            ~ it doesn't make the aray visible to untrusted code when those two coniditions are met.
+            ~ Use the annotation @SafeVarargs to remove warnings that you took care of and show users of your methods that it is typesafe.
+V. Enums and Annotations 
+    - Enums instead of int constants 
+        * Prior to enums it was common to use int to represent enum tpes.
+        * Doing so is now obsolete and enum tpyes must be used.
+        * The usage of int made them difficult to debug (all you saw was int values).
+        * Enums are classes that export one instance for each enumeration constant.
+        * They are instance controlled.
+        * They provide type safety and a way to iterate over each values.
+        * If you need a specific behavior for each value of your enum, you can declare an abstract method that you will implement for each value.
+        * Enums have an automatically enerated valueOf(String) method that translates a constant's name into the constant.
+        * If the toString method is overriden, you should write a fromString method.
+    - Instance fields instead of ordinals
+        * Never use the ordinal method to calculate a value associated with an enum.
+    - EnumSet instead of bit fields 
+        * Before enums existed, it was common to use a bit fields for enumerated types that would be used in sets.
+        * This would allow you to combine them but have the same issues than int constants were saw in item 34.
+            ~ Instead, use EnumSet to combine multiple enums.
+    - EnumMap instead of ordinal 
+        * You may want to store data by a certain enum.
+            ~ For that you could have the idea to use the ordinal method.
+            ~ This is a bad practice.
+            ~ Instead, prefer the use of EnumMaps.
+    - Emulate extensible enums with interfaces
+        * The language doesn't allow use to write extensible enums.
+        * In the few cases that we would want an enum type to be extensible:
+            ~ We can emulate it with an interface written for the basic enum.
+        * Users of the api will be able to implement this interface in order to "extend" your enum.
+    - Annotations instead of Naming Patterns 
+        * Prior to JUnit 4, you needed to name your tests by starting with the word "test". 
+        * This is bad practice since the compiler will never complain if:
+            ~ by mistake, you've named a few of them "tset". 
+        * Annotations are a good way to avoid this kind of naming pattern and gives use more security.
+    - Use @Override 
+        * You should use the @Override for every method declaration that you believe to override a superclass declaration.
+    - Marker interfaces
+        * A marker interface is an interface that contains no method declaration
+        * It only "marks" a class that implements this interface.
+        * One common example is the JDK is Serializable.
+        * Using marker interface results in compile type checking.
+VI. Lambdas and Streams
+    - Lambdas are clearer than anonymous classes
+        * Lambdas are the best wat to represent function objects.
+        * As a rule of thumb,
+            ~ lambdas needs to be short to be readable.
+            ~ Three Lines seems to be a reasonable limit.
+        * Also, the Almbdas needs to be self-explanatory since it lacks name or documentation.
+        * Always think in terms of readability.
+    - Method references 
+        * Most of the time, method references are shorter and then clearer.
+        * The more arguments the lambdas has, the more the method reference will be clearer.
+        * When a lmbda is too long, you can refactor it to a method
+            ~ Which will give a name and documentation)
+        * Use it as a method reference.
+        * There are five kinds of method references:
+            ~ Method Ref Type 
+                1. Static
+                    Example: Integer::parseInt
+                    Lambda Equivalent -->  str -> Integer.parseInt(Str) 
+                2. Bound 
+                    Example: Instant.now()::isAfter
+                    Lambda Equivalent -->  Instant then = Instant.now(); t -> then.isAfter(t) 
+                3. Unbound
+                    Example: String::toLowerCase
+                    Lambda Equivalent -->  str -> str.toLowerCase() 
+                4. Class Constructor 
+                    Example: TreeMap<k,v>::new 
+                    Lambda Equivalent -->  () -> new TreeMap<k,v>
+                5. Array Constructor
+                    Example: int[]::new 
+                    Lambda Equivalent -->  len -> new int[len] 
+    - Standard Functional interfaces 
+        * java.util.Function provides a lot of functional interfaces.
+        * If one of those does the job, you should use it.
+        * Here are more common interfaces:
+            ~ Interface
+                1. UnaryOperator
+                    Function Signature: T apply (T t) 
+                    Example: String::toLowerCase 
+                2. BinaryOperator 
+                    Function Signature: T apply(T t1, T t2)
+                    Example: BigInterger::add 
+                3. Predicate
+                    Function Signature: boolean test(T t) 
+                    Example: Collection::isEmpty 
+                4. Function<T, R>
+                    Functional Signature: R apply(T t)
+                    Example: Arrays::asList 
+                5. Supplier
+                    Functional Signature: T get() 
+                    Example: Instant::now 
+                6. Consumer
+                    Functional Signature: void accept(T t)
+                    Example: System.out::println 
+        * When creating your functional interfaces, always annotate with @FunctionalInterfaces so that it won't compile unless it 
+        has exactly one abstract method.
+    - Streams
+        * Carefully name parameters of lambda in order to make your stream pipelines readable.
+        * Also, use helper methods for the same purpose.
+        * Streams should mostly be used for tasks like:
+            ~ Transform a sequence of elements
+            ~ Filter a sequence of elements 
+            ~ Combine sequence of elements 
+            ~ Accumulate a sequence of elements inside a collection (perhaps grouping them)
+            ~ Search for an element inside of a sequence 
+    - Prefer side-effect-free functions in streams 
+        * Programming with streams pipelines should be side effect free.
+        * The terminal forEach method should only be used to report the result of a compuation not to perform the computation itself.
+        * In order to use streams properly, you need to know about collectors.
+            ~ The most important ones are:
+                1. toSet
+                2. toMap 
+                3. groupingBy
+                4. joining
+    - Return collections instead of streams 
+        * The collection interface is a subtype of Iterable and has a stream method.
+        * It provides bother iteration and stream access.
+        * If the collection in too big memory wise, return what seems more natural (stream or iterable)
+    - Parallelization 
+        * Parallelizing a pipeline is unliekly to increase its performance if it comes from a Stream.iterate or limit method is used.
+        * As a rule of thumb,
+            ~ Parallelization should be used on ArrayList, HashMap, HashSet, ConcurrentHashMap, arrays, int ranges and double ranges.
+            ~ Those structures can be divided in any desired subranged and so on, easy to work among parrallel threads.
+    - Methods
+        

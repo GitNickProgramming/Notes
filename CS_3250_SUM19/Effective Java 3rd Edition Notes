@@ -501,5 +501,34 @@ IX. Exceptions
         * When you decide with very good reasons to ignore an exception the catch block sould contain a comment explaining those reasons
         and the variable should be named ignored.
 X. Concurrency 
+    - Synchronize access to shared mutable data 
+        * Synchronization is not guaranteed to work unless both read and write operations are synchronized.
+        * When multiple threads share mutable data, each of them that reads or writes this data must perform synchronization.
+    - Avoid excessive synchronization 
+        * As a rule, you should do as litle work as possible inside synchronized regions.
+        * When designing a mutable class think about whether or not it should be synchronized.
+    - Executors, tasks and streams 
+        * The java.util.concurrent package added the executor framework.
+        * It contains class such as ExecutorService that can help you run Tasks in other threads.
+        * You should refrain from using Threads and now using this framework in order to parallelize computation when needed.
+    - Prefer concurrency utilities to wait and notify
+        * Using wait and notify is quite difficult.
+        * You should then use the higher level concurrency utilities such as the Executor Framework, concurrent collections and synchronizers.
+            ~ Common concurrent collections : ConcurrenthashMap, BlockingQueue
+            ~ Common synchronizers : Countdownlatch, Semaphore
+    - Document thread safety 
+        * Every class should document its thread safety.
+        * When writing an unconditionnally tread safe class, consider using a private lock object instead of synchronized methods.
+        * This will give you more flexibility.
+    - Lazy initialization
+        * In the context of concurrency, lazy initialization is tricky.
+        * Therefore, normal initialization is preferable to lazy initialization.
+        * On a static field you can use the lazy initialization holder class idiom
+        * On an instance field you can use the double-check idiom 
+    - Don't depend on the thread scheduler
+        * The best way to write a robust and responsive program is to ensure that the average number of runnable threads is not significantly
+        greater than the number of procesors.
+        * Thread prioriteis are among the least portable features of java
+XI. Serialization 
     - 
 

@@ -258,5 +258,28 @@ V. Enums and Annotations
     - EnumSet instead of bit fields 
         * Before enums existed, it was common to use a bit fields for enumerated types that would be used in sets.
         * This would allow you to combine them but have the same issues than int constants were saw in item 34.
-
-    
+            ~ Instead, use EnumSet to combine multiple enums.
+    - EnumMap instead of ordinal 
+        * You may want to store data by a certain enum.
+            ~ For that you could have the idea to use the ordinal method.
+            ~ This is a bad practice.
+            ~ Instead, prefer the use of EnumMaps.
+    - Emulate extensible enums with interfaces
+        * The language doesn't allow use to write extensible enums.
+        * In the few cases that we would want an enum type to be extensible:
+            ~ We can emulate it with an interface written for the basic enum.
+        * Users of the api will be able to implement this interface in order to "extend" your enum.
+    - Annotations instead of Naming Patterns 
+        * Prior to JUnit 4, you needed to name your tests by starting with the word "test". 
+        * This is bad practice since the compiler will never complain if:
+            ~ by mistake, you've named a few of them "tset". 
+        * Annotations are a good way to avoid this kind of naming pattern and gives use more security.
+    - Use @Override 
+        * You should use the @Override for every method declaration that you believe to override a superclass declaration.
+    - Marker interfaces
+        * A marker interface is an interface that contains no method declaration
+        * It only "marks" a class that implements this interface.
+        * One common example is the JDK is Serializable.
+        * Using marker interface results in compile type checking.
+VI. Lambdas and Streams
+    - 

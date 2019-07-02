@@ -530,5 +530,21 @@ X. Concurrency
         greater than the number of procesors.
         * Thread prioriteis are among the least portable features of java
 XI. Serialization 
-    - 
+    - Prefer alternatives to Java serialization 
+        * Serialization is dangerous and should be avoided.
+        * Alernatives such as JSON should be used.
+        * If working with Serialization, try not to deserialize untrusted data.
+        * If you have no other choice, use object deserialization filtering.
+    - Implement Serializable with great caution
+        * Unless a class will only be used in a protected environment where versions will never have to interoperate and servers will never be exposed to untrusted data
+        * Implementing Serializable should be decided with great care.
+    - Custom Serialized Form 
+        * Use the default serialized form only if it's a reasonable description of the logical state of the object.
+        * Otherwise, write your own implementation in order to only have its logical state.
+    - Write readObject methods defensively
+        * When writing a readObject method, keep in mind that you are writing a public constructor and it must produce a valid instance regardless of the stream it is given.
+    - For instance control, prefer enum types to readResolve 
+        * When you need instance control (such a Singleton) use enum types whenever possible 
+    - Serialization proxies
+        * The serialization proxy pattern is probably the easiest way to robustly serialize objects if those objects can't be extendable or does not contain circlarities.
 

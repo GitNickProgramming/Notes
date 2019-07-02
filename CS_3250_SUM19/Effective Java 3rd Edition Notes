@@ -282,4 +282,87 @@ V. Enums and Annotations
         * One common example is the JDK is Serializable.
         * Using marker interface results in compile type checking.
 VI. Lambdas and Streams
-    - 
+    - Lambdas are clearer than anonymous classes
+        * Lambdas are the best wat to represent function objects.
+        * As a rule of thumb,
+            ~ lambdas needs to be short to be readable.
+            ~ Three Lines seems to be a reasonable limit.
+        * Also, the Almbdas needs to be self-explanatory since it lacks name or documentation.
+        * Always think in terms of readability.
+    - Method references 
+        * Most of the time, method references are shorter and then clearer.
+        * The more arguments the lambdas has, the more the method reference will be clearer.
+        * When a lmbda is too long, you can refactor it to a method
+            ~ Which will give a name and documentation)
+        * Use it as a method reference.
+        * There are five kinds of method references:
+            ~ Method Ref Type 
+                1. Static
+                    Example: Integer::parseInt
+                    Lambda Equivalent -->  str -> Integer.parseInt(Str) 
+                2. Bound 
+                    Example: Instant.now()::isAfter
+                    Lambda Equivalent -->  Instant then = Instant.now(); t -> then.isAfter(t) 
+                3. Unbound
+                    Example: String::toLowerCase
+                    Lambda Equivalent -->  str -> str.toLowerCase() 
+                4. Class Constructor 
+                    Example: TreeMap<k,v>::new 
+                    Lambda Equivalent -->  () -> new TreeMap<k,v>
+                5. Array Constructor
+                    Example: int[]::new 
+                    Lambda Equivalent -->  len -> new int[len] 
+    - Standard Functional interfaces 
+        * java.util.Function provides a lot of functional interfaces.
+        * If one of those does the job, you should use it.
+        * Here are more common interfaces:
+            ~ Interface
+                1. UnaryOperator
+                    Function Signature: T apply (T t) 
+                    Example: String::toLowerCase 
+                2. BinaryOperator 
+                    Function Signature: T apply(T t1, T t2)
+                    Example: BigInterger::add 
+                3. Predicate
+                    Function Signature: boolean test(T t) 
+                    Example: Collection::isEmpty 
+                4. Function<T, R>
+                    Functional Signature: R apply(T t)
+                    Example: Arrays::asList 
+                5. Supplier
+                    Functional Signature: T get() 
+                    Example: Instant::now 
+                6. Consumer
+                    Functional Signature: void accept(T t)
+                    Example: System.out::println 
+        * When creating your functional interfaces, always annotate with @FunctionalInterfaces so that it won't compile unless it 
+        has exactly one abstract method.
+    - Streams
+        * Carefully name parameters of lambda in order to make your stream pipelines readable.
+        * Also, use helper methods for the same purpose.
+        * Streams should mostly be used for tasks like:
+            ~ Transform a sequence of elements
+            ~ Filter a sequence of elements 
+            ~ Combine sequence of elements 
+            ~ Accumulate a sequence of elements inside a collection (perhaps grouping them)
+            ~ Search for an element inside of a sequence 
+    - Prefer side-effect-free functions in streams 
+        * Programming with streams pipelines should be side effect free.
+        * The terminal forEach method should only be used to report the result of a compuation not to perform the computation itself.
+        * In order to use streams properly, you need to know about collectors.
+            ~ The most important ones are:
+                1. toSet
+                2. toMap 
+                3. groupingBy
+                4. joining
+    - Return collections instead of streams 
+        * The collection interface is a subtype of Iterable and has a stream method.
+        * It provides bother iteration and stream access.
+        * If the collection in too big memory wise, return what seems more natural (stream or iterable)
+    - Parallelization 
+        * Parallelizing a pipeline is unliekly to increase its performance if it comes from a Stream.iterate or limit method is used.
+        * As a rule of thumb,
+            ~ Parallelization should be used on ArrayList, HashMap, HashSet, ConcurrentHashMap, arrays, int ranges and double ranges.
+            ~ Those structures can be divided in any desired subranged and so on, easy to work among parrallel threads.
+    - Methods
+        

@@ -125,4 +125,70 @@ II. Methods of the Object class
         * It needs to be a full representation of the object
         * Every informations contained in the toString representation should be accessible in some other way in order to avoid
         programmers to parse the String representation.
+    - clone
+        * When you implement Cloneable, you should ask override clone with a public method whose return type is the class itself.
+        * It needs to be a full representation of the object 
+        * Every informations contained in the toString representation should be accessible in some other way in order to avoid 
+        programmers to parse the String representation.
+        * Also, when you need to provide a way to copy classes, you can think first of copy constructor or copy factory except for arrays.
+    - Implementing cmparable
+        * if you have a value class with an obvious natural ordering, you should implement Comparable.
+        * Here is the contract of the compareTo method:
+            ~ signum(x.compareTo(y)) == -signum(y.compareTo(x))
+            ~ x.compareTo(y) > 0 && y.compareTo(z) > 0 => x.compareTo(z) > 0
+            ~ x.compareTo(y) == 0 => signum (x.compareTo(z)) == signum(y.compareTo(z))
+        * It's also recommended that (x.compareTo(y) == 0) == x.equals(y) 
+        * If it's not, it has to be documented that the natural ordering of this class is inconsistent with equals 
+        * When confronted to different types of Object, compareTo can throw ClassCastExeception
+III. Classes and Interfaces 
+    - Accessibility
+        * Make accessibility as low as possible.
+        * Work on a public API that you want to expose and try not to give access to implementation details
+    - Accessor Methods 
+        * Public classes should never expose its fields.
+        * Doing this will prevent you to change its representation in the future.
+        * Package private or private nested classes, can, on the contrary, expose their fields since it won't be part of the API 
+    - Immutability 
+        * To Create an mmutable class:
+            ~ Don't provide methods that modify the visible object's state 
+            ~ Ensure that the class can be extended 
+            ~ Make all fields final 
+            ~ Make all fields private 
+            ~ Don't give access to a reference of a mutable object that is a field of your class 
+        * As a rule of thumb, try to limit mutability 
+    - Favor composition over inheritance 
+        * With inheritance, you don't know how your class will react with a new version of its superclass.
+        * For example:
+            ~ You may have added a new method whose signature will happen to be the same as a method of its superclass in the next release.
+            ~ You will then override a method without even knowing it 
+        * Also, if there is a flaw in the API of the superclass you will suffer from it too.
+        * With composition, you can define your own API for your class 
+        * As a rule of thumb:
+            ~ To know if you need to choose inheritance over composition, you need to ask yourself if B is reall a subtype of A.
+    - Create classes for inheritance or forbit it 
+        * First of all, you need to document all the uses of overridable methods.
+        * Remember that you'll have to stick to what you documented.
+        * The best way to test the design of your class is to try to write subclasses.
+        * Never call overridable methods in you constructor 
+        * If a class is not designed and documented for inheritance it should be made forbidden to inherit.
+            ~ either by making it final, or making its constructors private (or package private) and use static factories. 
+    - Interfaces are better than abstract classes 
+        * Since Java 8, it's possible to implement default mechanism in an interface.
+        * Java only permits single inheritance so you probably won't be able to extends your new abstract class to existing classes
+        * When you always will be permitted to implement a new interface.
+        * When designing interfaces, you can also provide a Skeletal implementation.
+        * This type of implementation is an abstract class that implements the interface.
+        * It can help developers to implement your interfaces and since default methods are not permitted to override Object Methods,
+        you can do it in your skeletal implementation.
+        * Doing both allows developers to use the one that will fit their needs. 
+    - Design interfaces for posterity 
+        * With Java 8+, it's now pssible to add new methods in interfaces without breaking old implemetations thanks to default methods.
+        * Nonetheless, it needs to be done carefully since it can still break old implementations that will fail at runtime.
+    - Interfaces are mean't to define types 
+        * Interfaces must be used to define types, not to export constants. 
+    - Tagged Classes 
+        * those kinds of classes are clutted with boilerplate code (Enum, switch, useless field depending on the enum).
+        * Don't use them. Create a class hierarchy that will fit your needs better.
+    - Nested classes 
+        * If a member class does not need access to its enclosing instance then declare it static.
     

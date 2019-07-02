@@ -364,5 +364,187 @@ VI. Lambdas and Streams
         * As a rule of thumb,
             ~ Parallelization should be used on ArrayList, HashMap, HashSet, ConcurrentHashMap, arrays, int ranges and double ranges.
             ~ Those structures can be divided in any desired subranged and so on, easy to work among parrallel threads.
-    - Methods
-        
+VII. Methods
+    - Check parameters for validity
+        * When writing a public or protected method, you should begin by checking that the parameters are not enforcing the 
+            restrictions that you set.
+        * You should also document what kind of exception you will throw if a parameter enforcing those restrictions.
+        * The Objects.requireNonNull method should be used for nullability checks 
+    - Defensive copies 
+        * If a class has mutable components that comes from or goes to the client, the class needs to make defensive copies of those
+        components.
+    - Method Signature
+        * Few Rules to follow when designing your API:
+            ~ Choose your method name carefully. Be explicit and consistent.
+            ~ Don't provide too many convenience methods. A small API is easier to learn and use.
+            ~ Avoid Long parameter lists.
+            ~ Use Helper Class if Necessary
+            ~ Favor interfaces over classes for parameter types.
+            ~ Prefer enum types to boolean parameters when it makes the parameter more explicit.
+    - Overloading
+        * It is recommanded to never export two overloadings with the same number of parameters.
+        * If you have to, consider giving different names to your methods. (writeInt, writeLong)
+    - Varargs 
+        * Varargs are great when you need to define a method with a variable number of arguments.
+        * Always precede the varargs parameter with any required parameters.
+    - Return emply collections or arrays instead of null 
+        * Returning null when you don't have elements to return makes the use of your methods more difficult.
+        * Your client will have to check if your object is not null.
+        * Instead always return an empty array of collection.
+    - Return of Optionals 
+        * You should declare a method to return Optional if it might not be able to return a result and clients will have to perform special processing
+        if no result is returned.
+        * You should never use an optional of a boxed primitive.
+        * Instead, use OptionalInt, OptionalLong, etc...
+    - Documentation
+        * Documenations should be mandatory for exported API.
+VIII. General Programming 
+    - Minimize the scope of local variables
+        * To limit the scope of your variables, you should:
+            ~ Declare them when first used 
+            ~ Use for loops instead of while when doable
+            ~ Keep your methods small and focused 
+    - For each loops instead of traditional loops 
+        * the default for loop must be a for each loop.
+        * It's more readable and can avoid you some mistakes.
+        * Unfortunately, There are situations where you can't use this kind of loop:
+            ~ When you need to delete some elements.
+            ~ When you need to replace some elements.
+            ~ When you need to traverse multiple collections in parallel.
+    - Use the standard libraries 
+        * When usig a standard library you take advantage of the knowledge of experts and the experience of everyone who used it before you.
+        * Don't reinvent the wheel!!!
+        * Library code is probably better than code that we would write simply because this code receives more attention than we could afford.
+    - Avoid fload and double for exact answers
+        * Fload and double types are not suited for monetary calculations. 
+        * Use BigDecimal, int or long for this kind of calculation.
+    - Prefer primitives to boxed primitives
+        * Use primitives whenever you can. The use of boxed Primitives is essentially for type parameters in parameterized types
+        * Example:
+            ~ Keys and values in collections 
+    - Avoid Strings when other types are more appropriate
+        * A void natural tendency to represent objects as Strings when there is a better data types available.
+    - String Concatenation
+        * Don't use the String concatenation operator to combine more than a few Strings.
+        * Instead,
+            ~ Use a StringBuilder
+    - Refer to objects by their interfaces 
+        * If an interface exists, parameters, return values, variables and fields should be declared using this interface to insure flexibility.
+        * If there is no appropriate interface, use the least specific class that provides the functionality you need.
+    - Prefer interfaces to reflection 
+        * Reflextion is a powerful tool but has many disadvantages.
+        * When you need to work with classes unknown at compile time, try to only use it to instantiate object and then access them by using an interface of superclass
+        known at compile time.
+    - Native methods
+        * It's really rare that you will need to use native methods to improve performaces.
+        * If it's need to access native libraries use as little native code as possible.
+    - Optimization
+        * Write good programs rather than fast one.
+        * Good Programs localize design decisions within individual components so those individuals decisions can be changed easily if performance becomes an issue.
+        * Good design decisons will give you good performances.
+        * Measure performances before and after each attempted optimization.
+    - Naming conventions
+        * Package 
+            ~ org.junit.jupiter, com.google.common.collect 
+        * Class or interface 
+            ~ Stream, FutureTaskm LinkedHashMap, HttpServlet
+        * Method or Field 
+            ~ remove, groupBy, getCrc 
+        * Constant field 
+            ~ MIN_VALUE, NEGATIVE_INFINITY
+        * Local Variable 
+            ~ i, denom, houseNum
+        * Type Parameter 
+            ~ T, E, K, V, X, R, U, V, T1, T2 
+IX. Exceptions
+    - Exceptions are for exceptional conditions 
+        * Exceptions should never be used for ordinary control flow.
+        * They are designed for exceptional conditions and should be used accordingly
+    - Checked exceptions and runtime exceptions 
+        * Use checked exceptions for conditions from which the caller can reasonably recover.
+        * Use runtime exceptions to indicate programming errors.
+        * By Convention:
+            ~ Errors are only used by the JVM to indicate conditions that make execution impossible.
+            ~ Therefore, all the unchecked throwables you implement must be a subclass of RuntimeException.
+    - Avoid unnecessary use of checked exceptions 
+        * When used sparingly, check exceptions increase the reliability of programs.
+        * When overused, they make APIs painful to use.
+        * Use checked exceptons only when you want the callers to handle the exceptional condition.
+        * Remember that a method that throws a checked exception can't be used directly in streams.
+    - Standard exceptions 
+        * When appropriate, use the exceptions provided by the JDK. Here's a list of the most common exceptions:
+            ~ IllegalArgumentException
+                Non-null parameter value is inappropriate
+            ~ IllegalStateException
+                Object state is inappropriate for method invocation
+            ~ NullPointerException
+                Parameter value is null where prohibited
+            ~ IndexOutOfBoundsException
+                Index parameter value is out of range 
+            ~ ConcurrentModificationException 
+                Concurrent modification of an object has been detected where it is prohibited
+            ~ UnsupportedOperationException 
+                Object does not support method 
+    - Throw exceptions that are appropriate to the abstraction
+        * Higher layers should catch lower level exceptions and throw exceptions that can be explained at their level of abstraction 
+        * While doing so, don't forget to use chaining in order to provide the underlying cause for failure.
+    - Document throw exceptions 
+        * Document every exceptions that can be thrown by your methods, checked or unchecked.
+        * This documentation should be done by using the @Throws tag.
+        * Nonetheless, only checked exceptions must be declared as thrown in your code.
+    - Include failure capture information in detail messages 
+        * The detailed message of an exception should contain the values of all parameters that lead to such failure.
+    - Failure atomicity 
+        * A fialed method invocation should leave the object in the state that it was before the invocation.
+    - Don't ignore exceptions 
+        * An empty catch block defeats the purpose of exception which is to force you to handle ecveptional conditions.
+        * When you decide with very good reasons to ignore an exception the catch block sould contain a comment explaining those reasons
+        and the variable should be named ignored.
+X. Concurrency 
+    - Synchronize access to shared mutable data 
+        * Synchronization is not guaranteed to work unless both read and write operations are synchronized.
+        * When multiple threads share mutable data, each of them that reads or writes this data must perform synchronization.
+    - Avoid excessive synchronization 
+        * As a rule, you should do as litle work as possible inside synchronized regions.
+        * When designing a mutable class think about whether or not it should be synchronized.
+    - Executors, tasks and streams 
+        * The java.util.concurrent package added the executor framework.
+        * It contains class such as ExecutorService that can help you run Tasks in other threads.
+        * You should refrain from using Threads and now using this framework in order to parallelize computation when needed.
+    - Prefer concurrency utilities to wait and notify
+        * Using wait and notify is quite difficult.
+        * You should then use the higher level concurrency utilities such as the Executor Framework, concurrent collections and synchronizers.
+            ~ Common concurrent collections : ConcurrenthashMap, BlockingQueue
+            ~ Common synchronizers : Countdownlatch, Semaphore
+    - Document thread safety 
+        * Every class should document its thread safety.
+        * When writing an unconditionnally tread safe class, consider using a private lock object instead of synchronized methods.
+        * This will give you more flexibility.
+    - Lazy initialization
+        * In the context of concurrency, lazy initialization is tricky.
+        * Therefore, normal initialization is preferable to lazy initialization.
+        * On a static field you can use the lazy initialization holder class idiom
+        * On an instance field you can use the double-check idiom 
+    - Don't depend on the thread scheduler
+        * The best way to write a robust and responsive program is to ensure that the average number of runnable threads is not significantly
+        greater than the number of procesors.
+        * Thread prioriteis are among the least portable features of java
+XI. Serialization 
+    - Prefer alternatives to Java serialization 
+        * Serialization is dangerous and should be avoided.
+        * Alernatives such as JSON should be used.
+        * If working with Serialization, try not to deserialize untrusted data.
+        * If you have no other choice, use object deserialization filtering.
+    - Implement Serializable with great caution
+        * Unless a class will only be used in a protected environment where versions will never have to interoperate and servers will never be exposed to untrusted data
+        * Implementing Serializable should be decided with great care.
+    - Custom Serialized Form 
+        * Use the default serialized form only if it's a reasonable description of the logical state of the object.
+        * Otherwise, write your own implementation in order to only have its logical state.
+    - Write readObject methods defensively
+        * When writing a readObject method, keep in mind that you are writing a public constructor and it must produce a valid instance regardless of the stream it is given.
+    - For instance control, prefer enum types to readResolve 
+        * When you need instance control (such a Singleton) use enum types whenever possible 
+    - Serialization proxies
+        * The serialization proxy pattern is probably the easiest way to robustly serialize objects if those objects can't be extendable or does not contain circlarities.
+

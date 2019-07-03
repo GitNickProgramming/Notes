@@ -1,0 +1,232 @@
+7.3.19
+
+Schedule:
+    -
+Homework:
+    - 
+
+Chapter 10: The Tower of Babel
+I. Learning Objectives
+    - Explain why so many programming languages exist
+    - List four key procedural languages and the main purpose for development of each.
+    - Describe the purpose of each special-purpose language:
+        * SQL, HTML, JavaScript, and R
+    - Describe the alternative paradigms for programming languages:
+        * Functional, Logic, and Parallel
+    - Name a functional programming language and a logic programming language 
+    - Describe how logic programming Languages work, and explain what facts, rules, and inference are 
+    - Explain how the MIMD model of parallel processing could be used to find the largest number in a list.
+II. Why Babel?
+    - Why isn't there just one high-level programming language?
+        * Why isn't there just one model of automobile?
+    - Each language has tasks it performs well
+        * Complex computations on real numbers
+        * Detailed page layout 
+        * Database interactions
+    - Choose a laguage based on the tasks to be done 
+    - Choose a language based on its approach to computation (its philosophy)
+III. Procedural Languages 
+    - Procedural Language philosophy 
+        * Tell the computer step by step how to manipulate variables (data in memory locations)
+    - Here we survey procedural languages by historical perspective and intended purpose 
+        * Plankalkul, Fortran, COBOL, C/C++, Ada, java, Python, C#, and .NET
+    - Plankalkul 
+        * Translation: "Formal Planning system."
+        * Designed in Germany in 1945 by Konrad Zuse 
+        * Never Implemented
+        * Had the sophisticated concepts presented in the manual been know prior to 1972, they may have
+        Changed the Development of programming languages.
+    - Fortran: Formula Translating System 
+        * Developed at IBM in the 1950s by John Backus
+        * First high-level language actually implemented focus on numerical computation 
+        * Control Structures similar to assembly language 
+        - GO TO 
+            * Like a Jump
+            * Can create spaghetti code 
+        - External Libraries:
+            * Tested special-purpose code
+            * So many libraries exist that coders sometimes don't need to write much actual code.
+        - COBOL: 
+            * COmmon Business-Oriented Language 
+            * Developed by the U.S. Navy in 1959 and 1960 by a group headed by admiral Grace Murray Hopper
+            * Focus on Business Applications:
+                ~ Inventory or payroll
+                ~ Master File updated by transaction files: file I/O key 
+            * Wide use in legacy code (Old code still in use)
+            * Year 2000 (Y2K) issues.
+                ~ required massive updating of old COBOL Programs 
+        - C/C++
+            * C developed in the early 1970s at AT&T Labs by Dennis Ritchie 
+            * Focuses on system programming 
+            * Close Connection UNIX 
+            * Highly Efficient
+                ~ High-level constructs as desired 
+                ~ Low-level constructs when efficiency is needed
+        - Access to variable's value and its location 
+            * Number refers to is value 
+            * &number refers to its memory location
+        - Pointer data type contains memory locations
+        - C specialty: System programming
+            * Example: Device drivers 
+            * Ability to interact with low-level hardware 
+        - C++ was developed in the early 1980s at AT&T labs by Barne Stroustrup 
+            * C++ is a superset of C
+            * Object-oriented Programming 
+            * Collections of code libraries
+        - Ada 
+            * Developed in the 1970s for the U.S. military 
+            * Specialties 
+                ~ Multiprocessing 
+                ~ Strong object-oriented 
+                ~ Safety and reliability
+            * Used Heavily by 
+                ~ Defense Department
+                ~ Transportation industry
+                ~ Financial Industry 
+                ~ Comunications Industry 
+        - Java
+            * Developed by Sun Microsystem Inc. in the early 1990s 
+            * Designed for 
+                ~ Platform independence
+                ~ Reliability 
+                ~ Security
+                ~ Graphical User Interfaces 
+            * Strong integration with web browsers 
+            * Object-oriented, Like C++ 
+        - Java Programs may be
+            * Applications: Stand-alone programs 
+            * Applets: Small programs that are accessed from the web and executed using Java Web Start
+        - Protability is a key Strength
+            * Applications and applets run on most platforms and through most browsers
+            * Source code compiles to platform-independent bytecode (generic low-level code)
+            * Java bytecode interpreter translates to hose machine (small program, integrated into browsers)
+        - Python
+            * Developed by Guido Van Rossum in the early 1990s
+            * Open Source:
+                ~ Source code for python is freely available and anyone may suggest changes
+                    + Language evolution is now guided by the python software Foundation
+            * Developed for sytem administrator tasks and web interfaces 
+            * Interpreted language:
+                ~ source code is translated to object code when executed
+            * Relaxed syntax, easy to use, extensive libraries 
+        - C# 
+            * Developed by Microsoft in 2000
+            * Successor to C++ but not a superset 
+            * Similar to Java in form and goals
+                ~ Security
+                ~ Reliability 
+            * Integrated into the .NET framework
+                ~ Microsoft support framework for many languages
+                ~ large collection of code libraries and tools
+            * Garbage collection:
+                ~ reclaiming memory for resure
+        - .NET 
+            * All .NET languages are compiled into Microsoft Intermediate Language (MSIL)
+            * MSIL code is compiled by a just-in-time(JIT) compiler, small program that produces platform-
+            specific object code.
+            * .NET languages include Ada, COBOL, C++, C#, and Visual Basic .NET 
+    III. Special-Purpose Languages 
+        - Languages designed for one specific purpose, not general-purpose programming languages 
+            * SQL, Structured Query Language 
+                ~ Ask questions about data in a database 
+            * HTML (HyperText Markup Language)
+                ~ Describes the formatting of webpages
+            * JavaScript 
+                ~ Lightweight scripting language for active webpages 
+                ~ Code is embedded in the HTML for the page
+            * R 
+                ~ Specialized language designed for statistics and graphics 
+        - SQL:
+            * Developed by IBM in 1986 
+            * Databases store data 
+            * A query describes what information the user wants, not how to find it.
+            * Example:
+                ~ Find all names of vendors with whom we do more than $40,000 worth of business 
+                ~ SELECT NAME 
+                ~ FROM VENDOR 
+                ~ WHERE PURCHASE > 40000
+        - HTML 
+            * Contains text to be displayed and tags 
+            * Tags describe 
+                ~ formatting of text 
+                ~ Special Effects 
+                ~ Links to other webpages 
+            * Tags come in pairs: Begin and End 
+            * Tags are written within angle brackets
+                ~ <title> and </title 
+                ~ <em> and </em>
+        - JavaScript 
+            * Code embeds in HTML 
+            * Enables webpages to react to users 
+            * Scripting Language 
+                ~ Interpreted 
+                ~ Lightweight (reduced features)
+        - JavaScript Example:
+            * Changed image when mouse moves over it 
+            * Event Handler:
+                ~ A function that responds to an event like mouse movement, button clicks, etc.
+        - The name "R" comes in part from the first names of the two authors of the language, Ross 
+        and Robert Gentleman 
+        - An open source language, first released in 2000
+        - Given a set of data,
+            * can compute maximum, minimum, standard deviation, other statstical functions 
+            * Can graphically visualize data sets 
+        - Important in Data Science 
+IV. Alternative Programming Paradigms 
+    - Paradigm:
+        * Model or mental framework for thinking about something.
+        * Procedural programming paradigm 
+            ~ A program is a sequence of detailed instructions, accessing and modifying memory locations 
+    - Functional Prgramming Paradigm 
+        * A program is a series of transformations on items 
+    - Logic Programming Paradigm 
+        * A Program is a series of logical deductions from know facts 
+    - Parallel Programming Paradigm 
+        * A Program is made up of
+            ~ Multiple copies of the same subtask OR 
+            ~ Multiple subtasks of the same problem 
+            ~ Performed simultaneously by different processors 
+    - Functional Programming 
+        * LISP was developed in 1958 at MIT by John McCarthy 
+        * Scheme is a varient of LISP developed in the 1970s 
+        * Functional Programming Language 
+            ~ Organized around functions 
+            ~ A Function takes input and produces a single value 
+            ~ Define Functions 
+            ~ Call, or apply, Functions 
+            ~ Combine function calls 
+        * Applicative languages 
+    - Logic Programming Languages 
+        * Programs describe rules and facts, not ow to do something.
+        * Queries use logical deduction to produce outputs that follow from the rules and facts given.
+        * Declarative Programming Languages 
+            ~ Programs declare what is true 
+        * Artificial intelligence applications 
+            ~ Expert systems solve problems with logical reasoning
+    - Prolog was developed in 1972 at the University of Marseilles by A. Colmerauer
+    - Facts describe relationships among specific objects 
+        * Presidents
+    - Rules describe general relations using variables 
+    - Programming in Prolog 
+        * Programmer builds a knowledge base of facts and rules 
+        * To "run" a program, pose queries to inference engine, deductive algorithm is provided in Prolog
+        * Results to the query come back from Prolog 
+        * Example of Deductive reasoning using fixed rules 
+            ~ Modus ponens: If we know the rule "If A then B" and we know A is true, then we deduce that B is true.
+    - MIMD: Multiple instruction, multiple data 
+        * Many CPUs, each operates on its own data 
+        * Multicore computing 
+            ~ Multiple processor on one chip 
+        * Cluster computing 
+            ~ Processors may be heterogeneous 
+            ~ Connected by a LAN or WAN
+V. Go was developed in 2009 at Google by Ken Thompson 
+    - Combines ease of programming with safety 
+    - Supports networked and multicore computing 
+    - Fast compilation, open source 
+    - Swift:
+        * New apple language for bulding apps in iOS and macOS
+    - Milk 
+        * was announced in September of 2016 by MIT's Computer Science and Artificial Intelligence Laboratory
+            ~ Geared toward "big data"
+            

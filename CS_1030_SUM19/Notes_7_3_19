@@ -220,7 +220,8 @@ IV. Alternative Programming Paradigms
         * Cluster computing 
             ~ Processors may be heterogeneous 
             ~ Connected by a LAN or WAN
-V. Go was developed in 2009 at Google by Ken Thompson 
+V. New Languages Keep coming 
+    - Go was developed in 2009 at Google by Ken Thompson 
     - Combines ease of programming with safety 
     - Supports networked and multicore computing 
     - Fast compilation, open source 
@@ -229,4 +230,42 @@ V. Go was developed in 2009 at Google by Ken Thompson
     - Milk 
         * was announced in September of 2016 by MIT's Computer Science and Artificial Intelligence Laboratory
             ~ Geared toward "big data"
+            ~ Focused on using cache memory on multcore processors to speed up the process of acessing data.
+            ~ Speeds up programs 3 to 4 times.
+VI. Conclusion
+    - Languages vary by:
+        * Philosophy 
+        * Intended Application areas
+        * Strengths and purposes 
+        * Syle, syntax, and semantics
+        * Approaches to types, variables, and memory 
+        * Tools provided or accessible 
+    - Languages cross paradigms 
+VII. Summary 
+    - Many programming languages exist because they reflect different intended uses or different philosophical
+    views.
+    - Procedural programming languages include:
+        * Plankalkul
+        * Fortran 
+        * COBOL 
+        * C/C++
+        * Ada
+        * Java 
+        * Python 
+        * C# 
+    - Special-purpose programming languages have limited range of use:
+        * SQL
+        * HTML
+        * JavaScript 
+        * R 
+    - Other paradigms include 
+        * Functional
+        * Logic 
+        * Parallel programming 
+    - Functional programming languages organize programs around functions, function calls, and combing of 
+    functions.
+    - Logic programming languages do not specify how to do something but give facts and rules and let the program
+    deduce the results 
+    - Parallel programming languages support MIMD parallel processing.
+    - New Programming languages evolve continuously for new or evolving purposes.
             

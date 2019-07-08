@@ -1,8 +1,11 @@
 Schedule:
     - Chapter 11: Compilers and Language Translation
+    - 
 
 Homework:
-    - 
+    - Chapter 11 Unit Test on Mindtap
+    - Start Group Powerpoint
+        * Presenting on July 31, 2019
 
 I. Learning Objectives
     - List the phases of a typical compiler and describe the purpose of each phase.
@@ -97,17 +100,17 @@ III. The Compilation Process
             ~ Visual development environments help programmers see what is happening
             ~ Online debuggers help find and correct errors
             ~ Reusable code libraries and toolkits 
-    - Local Optimization 
-        * Examines small chunks of assembly code (one to five instructions)
-        * Constant evaluation computes arithmetic expressions at compile time if possible
-        * Strength reduction uses faster arithmetic alternatives
-        * Eliminating unnecessary operations removes operations that are unnecessary, like 
+        * Local Optimization 
+            ~ Examines small chunks of assembly code (one to five instructions)
+            ~ Constant evaluation computes arithmetic expressions at compile time if possible
+            ~ Strength reduction uses faster arithmetic alternatives
+            ~ Eliminating unnecessary operations removes operations that are unnecessary, like 
         a LOAD of a value already in memory.
-    - Global optimization 
-        * Looks at large segments of the program 
-        * Examines blocks like while loops, if statements, and procedures
-        * Much more difficult, much bigger effect 
-        * Optiization cannot overcome an inefficient algorithm 
+        * Global optimization 
+            ~ Looks at large segments of the program 
+            ~ Examines blocks like while loops, if statements, and procedures
+            ~ Much more difficult, much bigger effect 
+            ~ Optiization cannot overcome an inefficient algorithm 
 IV. Summary 
     - High-level languages require compilers to translate programs into assembly language.
     - Compilation is much more difficult and complex than assemblers translating assembly to machine instructions.

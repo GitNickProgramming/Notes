@@ -27,14 +27,14 @@ III. Algorithm
     - Pseudocode:
         + distance to source vertex is zero
         + set all other distances to infinity
-        + S, the set of visted vertices is initially empty
+        + S, the set of visited vertices is initially empty
         + Q, the queue initially contains all vertices
         + while the queue is not empty
         + select the element of the Q with the min. distance
-        + add u to list of visted vertices
+        + add u to list of visited vertices
             * if new shortest path found
             * set new value of shortest path
-            * if disired, add traceback code
+            * if desired, add traceback code
     - Implementation:
         function Dijkstra(Graph, source):
                 dist[source]  := 0                     // Distance from source to source is set to 0

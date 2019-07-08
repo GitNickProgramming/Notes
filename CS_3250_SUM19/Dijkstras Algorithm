@@ -46,7 +46,6 @@ III. Algorithm
                 while Q is not empty:                  // The main loop
                     v := vertex in Q with min dist[v]  // In the first run-through, this vertex is the source node
                     remove v from Q 
-
                     for each neighbor u of v:           // where neighbor u has not yet been removed from Q.
                         alt := dist[v] + length(v, u)
                         if alt < dist[u]:               // A shorter path to u has been found

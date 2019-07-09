@@ -69,7 +69,7 @@ III. The Compilation Process
             the sequence of input tokens into the goal symbol, then that sequence of tokens is a 
             syntactically valid statement of the language. If it cannot convert the input tokens 
             into the goal of symbol, then this is not a syntactically valid statement of the language."
-        * Look-ahdead parsing algorithms
+        * Look-ahead parsing algorithms
             ~ Look at future tokens to choose the right rule to apply
         * Recursive Definition:
             ~ Definition includes left-hand term on the right-hand side

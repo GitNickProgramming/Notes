@@ -14,8 +14,37 @@ I. Creating and Destroying Objects
         + Disadvantages:
             1. If providing only static factory methods, classes without public or protect constructors cannot be subclassed
             (encourage to use composition instead inheritance)
-            2. They are not readily distinguishable from other static methods (Some common names (each with a different purpose)
-            are: valueOf, of, getInstance, newInstance, getType and newType)
+            2. They are not readily distinguishable from other static methods 
+            (Some common names (each with a different purpose) are: valueOf, of, getInstance, newInstance, getType and newType)
+        + Popular Java static factory names 
+            ~ valueOf, getInstance, newInstance, getType, ...
+        + Constructors do not and one has to differentiate via parameters
+        + This can be confusing and lead to errors
+        + A class can have only one constructor with a given name 
+            ~ Dont change order of constructor parameters to differentiate.
+        + Static Factory methods don't have to create a new Object.
+            ~ Constructors always do
+            ~ Maybe there's an object already created that works
+            ~ Helps with immutable classes and pre-constructed instances
+        + Singletons, flyweights, non-instantiable
+        + Can return a subtype
+            ~ Java.util.collections contains all static methds that work on many types 
+            ~ Polymorphic
+            ~ addAll, binarySearch, disjoint, frequency, min, max, sort, shuffle, reverse, ...
+            ~ Type return can be non-public
+            ~ Can very implementation.
+        + Returned class need not exist at the time the class is written.
+            ~ Allows run-time specification
+            ~ JDBC an example
+        + Service-Provider Framework 
+            ~ Service interface 
+            ~ Provider registration
+            ~ Service Access 
+            ~ Optional service provider interface 
+                * Factory to create service provider
+        + As of Java 6
+            ~ General-purpose java.util.ServiceLoader
+            ~ So you don't have to write your own.
 
                 public static Boolean valueOf(boolean b) {
                     return b ? Boolean.True : Boolean.False;
@@ -24,6 +53,15 @@ I. Creating and Destroying Objects
     - Use Builders when faced with many constructors
         + Is a good choice when designing classes whose constructors or static factories would have more than a handful of parameters.
         + Builders pattern simulates named optional parameters as in ADA and Python
+        + If a class has many fields that need initializing, constructors have long list of parameters.
+            ~ Constructors often chained/telescoping
+        + Create empty instance and have many set()s 
+            ~ Problem: Instance in inconsistent state 
+        + Builder pattern 
+            ~ build() is parameter-less static method 
+        + Required parameters passed in the constucotrs
+            ~ Optionals set()
+            ~ Other languages have optional parameters instead
 
                 public class Elvis{
 		            public static final Elvis INSTANCE = new Elvis();
@@ -67,7 +105,10 @@ I. Creating and Destroying Objects
         + Equivalent to the public field, more concise, provides serialization machinery for free, and guarantee against multiple
         instantiation, even for reflection attacks and sophisticated serialization. It is the best way to implement a singleton 
 
-    - Enforce Noninstantiability with a private constructor 
+    - Enforce Non-instantiability with a private constructor 
+        + Just have a private no-args constructor 
+            ~ If have any no-args constructor, the default isn't created.
+        + Class cannot be sub-classed
         + For Classes that group static methods and static fields 
         + Used for example to:
             * Group related methods on primitive values or arrays.

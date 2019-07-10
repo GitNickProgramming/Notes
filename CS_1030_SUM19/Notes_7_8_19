@@ -75,7 +75,7 @@ III. The Compilation Process
             ~ Definition includes left-hand term on the right-hand side
             ~ <expression> ::= <expression> + <expression>
         * Ambiguous:
-            ~ A gramar where the same string can be parsed multiple ways
+            ~ A grammar where the same string can be parsed multiple ways
     - Phase III: Semantics and Code Generation 
         * Semantic Analysis 
             ~ Checks all branches of the parse tree make sense

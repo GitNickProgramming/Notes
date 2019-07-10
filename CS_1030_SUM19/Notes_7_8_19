@@ -1,0 +1,124 @@
+Schedule:
+    - Chapter 11: Compilers and Language Translation
+    - 
+
+Homework:
+    - Chapter 11 Unit Test on Mindtap
+    - Start Group Powerpoint
+        * Presenting on July 31, 2019
+
+I. Learning Objectives
+    - List the phases of a typical compiler and describe the purpose of each phase.
+    - Deomonstrate how to break up a string of text into tokens.
+    - Understand grammar rules written in BNF and use them to parse statements.
+    - Explain how semantic analysis uses semantic records to determine meaning.
+    - Show what a code generator does.
+    - Explain the historical importance of code optimization, and why it is less central
+    today.
+    - Give an example of local code optimization and an example of global code optimization.
+II. Introduction
+    - High-level languages must be translated into machine instructions.
+    - Compilers do the translation 
+    - Compiler writing is difficult and complex
+    - Compilers must be:
+        * Correct
+            ~ Machine instructions must do exactly what the high-level instructions mean
+        * Efficient and concise
+            ~ Code produced should be optimized and run fast
+III. The Compilation Process 
+    - Four Phases of Compilation
+        1. Phase I. Lexical Analysis 
+            ~ Groups characters into tokens (equivalent to words)
+        2. Phase II. Parsing
+            ~ Checks grammatical structure and builds internal representation of program.
+        3. Phase III. Semantic Analysis and code generation
+            ~ Analyzes meaning
+            ~ Generates Machine Instructions 
+        4. Phase IV. Code Optimization 
+            ~ Improves efficiency of code in time or space required
+    - Phase I: Lexical Analysis 
+        * A lexical analyzer or scanner
+            ~ Groups input characters into tokens 
+            ~ Discards unnecessary characters 
+                + Examples: Blanks, Tabs, and commment text 
+            ~ Determines the type of each token 
+                + Examples: Symbol, number, and left parenthesis
+        * Tokens are words and punctuation
+            ~ Meaningful to the language
+    - Phase II: Parsing 
+        * A parser takes a list of tokens and:
+            ~ Determines grammatical structure 
+            ~ Builds a parse tree 
+        * Syntax 
+            ~ Grammatical structure 
+            ~ Defined by rules (productions)
+                + BNF (Backus-Naur Form) is the notation for describing rules.
+        * A grammer is the set of rules that define a language
+        * Patterns are made from terminals and nonterminals
+        * Terminals: 
+            ~ Tokens from lexical analyzer.
+            ~ Written within <angle brackets>
+        * Goal Symbol
+            ~ One Special nonterminal 
+            ~ Means complete grammatical program is found.
+        * Metasymbols:
+            ~ <, >, ::=, |, ^
+            ~ ^ (lambda) is a null string- emptiness
+        * The Fundamental rule of parsing
+            ~ " If, by repeating applications of the rules of the grammar, a parser can convert
+            the sequence of input tokens into the goal symbol, then that sequence of tokens is a 
+            syntactically valid statement of the language. If it cannot convert the input tokens 
+            into the goal of symbol, then this is not a syntactically valid statement of the language."
+        * Look-ahead parsing algorithms
+            ~ Look at future tokens to choose the right rule to apply
+        * Recursive Definition:
+            ~ Definition includes left-hand term on the right-hand side
+            ~ <expression> ::= <expression> + <expression>
+        * Ambiguous:
+            ~ A gramar where the same string can be parsed multiple ways
+    - Phase III: Semantics and Code Generation 
+        * Semantic Analysis 
+            ~ Checks all branches of the parse tree make sense
+            ~ Gramatical statements can be meaningless
+                + Example: Bees Bark 
+        * Semantic Records 
+            ~ Store information about actual values associated with nonterminals.
+            ~ <variable> came from a token "x" and its type was integer.
+        * Code Generation 
+            ~ Translates parse tree pieces to assembly code 
+            ~ Can build semantic records as it goes 
+            ~ Semantic analysis is simultaneous with generation 
+            ~ Not all parts of the parse tree produce code 
+    - Phase IV: Code optimization 
+        * Improving the time or space efficiency of code produced by a compiler 
+        * Early days:
+            ~ "Prgrammers are cheap, hardware is expensive"
+                + Humans could write more optimal code than compiler 
+        * These Days:
+            ~ "Hardware is cheap, people are expensive"
+        * Modern Compilers optimize but focus on other issues
+            ~ Visual development environments help programmers see what is happening
+            ~ Online debuggers help find and correct errors
+            ~ Reusable code libraries and toolkits 
+        * Local Optimization 
+            ~ Examines small chunks of assembly code (one to five instructions)
+            ~ Constant evaluation computes arithmetic expressions at compile time if possible
+            ~ Strength reduction uses faster arithmetic alternatives
+            ~ Eliminating unnecessary operations removes operations that are unnecessary, like 
+        a LOAD of a value already in memory.
+        * Global optimization 
+            ~ Looks at large segments of the program 
+            ~ Examines blocks like while loops, if statements, and procedures
+            ~ Much more difficult, much bigger effect 
+            ~ Optiization cannot overcome an inefficient algorithm 
+IV. Summary 
+    - High-level languages require compilers to translate programs into assembly language.
+    - Compilation is much more difficult and complex than assemblers translating assembly to machine instructions.
+    - Compiler phases include lexical analysis, parsing, semantic analysis, code generation, and code optimization.
+    - Lexical analysis converts a text of characters into a list of tokens. 
+    - Parsing is based on a formal grammar specifying the rules for a language.
+    - Parsers check grammaticality and build parse trees.
+    - Semantic analysis checks parse trees for meaning: determines whether code can meaningfully be generated.
+    - Code generation produces assembly instructions from the parse tree.
+    - Code optimization looks for opportunites to make generated code better.
+    

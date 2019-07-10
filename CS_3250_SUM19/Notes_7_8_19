@@ -1,0 +1,40 @@
+Sprint Four:
+    - As a user I would like rooms to be able to hold items as well as the player
+    - As a user I would like to be able to pick up or drop items in rooms 
+    - As a user I would like to be able to use items based on their function (use keys
+    only for unlocking doors etc.)
+    - As a user I would like to be able to specify target of an items use (Use key on which door)
+    - As a user I would like a points system for the game
+    - As a user I would like NPC's to interact with
+
+I. Computer Science (types of interview questions)
+    - Algorithms and data structures
+    - O of Algorithms and choosing
+    - Imperative vs Functional 
+    - http://www.nerdparadise.com/tech/interview
+        * When would you use an anonymous inner class in java?
+        * What's a lambda
+            ~ Know your versions 
+        * What's a closure?
+    - SOLID
+        * S = Single-responsibility principle
+            + Classes do one thing
+        * O = Open-closed principle 
+            + Open for extension, closed for modification 
+        * L = Liskov Substitution principle 
+        * I = Interface segregation principle 
+            + Many client-specific interfaces are better than one general-purpose interface 
+        * D = Dependency inversion principle
+    - Networks
+        * IP v4/6 addressing
+        * TCP vs. UDP
+    - Software Engineering 
+        * Git, github
+        * Agile Manifesto
+        * TDD
+        * DRY
+    - Web
+        * MVC
+        * ORM
+        * Ajax
+    

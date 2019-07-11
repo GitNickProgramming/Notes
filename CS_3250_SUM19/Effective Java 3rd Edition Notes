@@ -119,6 +119,11 @@ I. Creating and Destroying Objects
                 >>>
 
     - Dependency Injection
+        + Helps perserve Immutability
+        + Works for constructors, factories, and builders.
+        + Can pass factory into constructor 
+            ~ Mosaic create (Supplier < ? Extends Tile> tileFactory) {}
+        + Use DI frameworks.
         + A common mistake is the use of a singleton or a static utility class for a class that depends on underlying ressources.
         + The use of dependency injection gives us more flexibility, testability and reusability 
         + Example:
@@ -131,6 +136,10 @@ I. Creating and Destroying Objects
                 }
 
     - Avoid Creating unnecessary Objects
+        + Use literals and valueOf()
+        + Anything that is immutable 
+        + Anything that is stateless
+            ~ E.g.: Adapters
         + When possible se the static factory method instead of constructor (Example : Boolean) be vigilant on autoboxing.
         + The use of primitive and his boxed primitive type can be harmful.
         + Most of the time use primitives.
@@ -141,11 +150,48 @@ I. Creating and Destroying Objects
             * Caching objects 
             * The use of listeners and callback 
         + In those three cases the programmer needs to think about nulling object references that are known to be obsolete.
-    - Avoid Finalizers and cleaners
-    - Try with resources 
-    
+        + Avoid Finalizers and cleaners
+        + Try with resources
+        + Try very hard to not manae memory 
+        + Nulling object references should be very unusual.
+
+    - Avoid Finalizers 
+        + Unpredictable, often dangerous, generally unnecessary.
+        + Unlike C++ destructors 
+            ~ These are called immediately 
+            ~ Java uses try/finally for these types of uses.
+        + One never knows when a finalizer is called 
+            ~ Part of garbage collection 
+            ~ Might not be called at all 
+        + Don't e.g. close files as there is a limited number of open files.
+        + Finalizers are slow 
+        + Finalizers are not chained 
+        + If really need functionality, provide explicit termination method.
+        + There are finalizer attacks 
+            ~ Create final finalize method to protect 
+        + Implement AutoClosable
+            ~ Have to have close method 
+            ~ Used with try-with-resources statements
+            
 II. Methods of the Object class 
     - Equals
+        * Sometimes, you don't need to:
+            ~ When all object are unique, such as threads.
+            ~ When you don't need it, such as with random number generators.
+            ~ Superclass equals works well, such as sets, lists, and maps getting from AbstractList, etc.
+            ~ Class is private or package private and you know you don't need it.
+                + Consider implementing with an assertion.
+        * When to Implement 
+            ~ When logical equality (.equals) is different from simple object identity (==)
+            ~ This is the typical case as classes have state, kept by variables with values.
+            ~ Tests for equivalence, not the same object.
+            ~ When we need the class to be map keys or set elements.
+        * Must implement an Equivalence Relation.
+            ~ Must be Reflexive 
+            ~ Must be Symmetric 
+            ~ Must be transitive 
+            ~ Must be consistent 
+            ~ For any non-null reference
         * the equals method needs to be overriden when the class has a notion of logical equality.
         * This is generally the case for value classes.
         * The equals method must be:
@@ -154,6 +200,8 @@ II. Methods of the Object class
             ~ Transitive (X = y and y = z => x = z)
             ~ Consistent
             ~ For non-null x, x.equals(null) should return False
+        * There is no way to extend an instantiable class and add a value while preserving the equals contract.
+        * You can safely add values to a subclass of an abstract class.
         * Not respecting those rules will have impact on the use of List, Set, or Map.
     - hashCode
         * The hashCode method needs to be overriden if the equals method is overriden.
@@ -174,7 +222,7 @@ II. Methods of the Object class
         * Every informations contained in the toString representation should be accessible in some other way in order to avoid 
         programmers to parse the String representation.
         * Also, when you need to provide a way to copy classes, you can think first of copy constructor or copy factory except for arrays.
-    - Implementing cmparable
+    - Implementing comparable
         * if you have a value class with an obvious natural ordering, you should implement Comparable.
         * Here is the contract of the compareTo method:
             ~ signum(x.compareTo(y)) == -signum(y.compareTo(x))

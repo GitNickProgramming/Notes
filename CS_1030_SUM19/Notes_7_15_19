@@ -1,0 +1,162 @@
+
+
+
+Chapter 14: Simulation and Modeling
+I. Learning Objectives
+    - Describe the purpose of modeling in science
+    - List the benefits of a computational model over a physical model.
+    - Explain the trade-off between accuracy and complexity in models
+    - Define different types of simulation models, including discrete and continuous, deterministic and stochastic.
+    - Describe how a discrete event simulation works 
+    - Explain the purpose of scientific visualization
+    - List some common methods of scientific visualization 
+II. Introduction
+    - Remind students of the computational devices of the 20th and early 20th centuries.
+    - Briefly discuss Charles Babbage and ada Lovelace again.
+    - Go over the big accomplishments:
+        ~ The 1890 census with punch cards.
+        ~ ENIAC computing artillery ballistic tables
+        ~ Turing's Colossus breaking the Enigma Code
+    - Discuss all the non-scientific uses for computers in the modern day.
+III. Computational Modeling
+    - The scientific method entails observing the ehavior of a system, forming hypothesis, and performing experiements to test it.
+    - A Model:
+        ~ Is a representation of a real system that can be used to study it.
+    - Physical models are physical objects that are different in scale and function than the thing itself.
+    - Computational Models:
+        ~ Are simulations
+        ~ Equations and algorithms inside a computers
+        ~ Also called simulation models 
+    - Why experiment on a simulation model?
+        ~ Existence:
+            + Real system may not exist yet
+        ~ Phsical realization:
+            + System may not be made of physical things (e.g., social systems)
+        ~ Safety:
+            + System may be unsafe to experiment with (e.g., nuclear reactor design)
+        ~ Speed of construction:
+            + physical model may take too long to build.
+    - Why experiment on a simulation model?
+        ~ Time Scale:
+            + Physical system may happen too fast or too slow to experiment.
+        ~ Ethical Behavior:
+            + Experimenting on physical system may be ethically wrong.
+        ~ Ease of Modification:
+            + Can change the model quickly and easily.
+    - Computational Steering:
+        ~ Is the act of tweaking the design until a satisfactory simulation has been developed:
+            + Step 1: Build simulation model of design.
+            + Step 2: Test and experiment on model.
+            + Step 3: Refine design.
+    - Can be used for the design of brand-new systems and for improving on existing systems.
+    - Models balance between accuracy and complexity.
+    - Al models include some features and omit others
+        ~ Example:
+            + Model of falling mass.
+        ~ Omits effects of air resistance.
+        ~ Assumes costant gravity
+    - Continuous model:
+        ~ A formula based on continuous time.
+    - Stochastic components:
+        ~ Elements of randomness.
+    - Discrete event simulation:
+        ~ Models time as discrete steps:
+            + Events are activities that change the state of system.
+            + Examples: customer enters store, customer purchases items, customer leaves store.
+        ~ Simulate only times where events take place:
+            + Keep a list of events and their scheduled times.
+            + Repeat:
+                > Advance time to time of next event.
+                > Skip any intervening time steps.
+                > Perform next event's actions.
+    - Example Simulation: McBurger
+        ~ Determine how many checkout stations for a fast food restaurant.
+        ~ Single line of customers 
+        ~ N server stations.
+        ~ If server is free, next customer goes.
+        ~ Server is busy while customer orders, waits, and pays.
+    - Example Simulation: McBurger 
+        ~ Events in this model 
+            + Customer arrives
+                > Adds to line or makes idle server busy
+            + Customer departs 
+                > Removes customer from line or makes server idle 
+        ~ Construct algorithms for each event.
+            + Update state of simulation for event
+            + Record data to be collected
+    - Example Simulation: McBurger 
+        ~ For each customer, record:
+            + Time spent waiting (Tdepart - Tarrive - Tserve)
+            + Time being served (Tserve)
+        ~ For each server, record:
+            + Total time spent serving
+    - Example Simulation: McBurger 
+        ~ Time being served, Tserve, is stochastic 
+        ~ Generate based on statistical distribution 
+            + Equation that captures probabilities of different values occurring.
+        ~ Derive distribution from external sources
+            + Other restaurants 
+        ~ Garbage in, garbage out:
+            + Quality of the results depend on quality of data and assumptions.
+    - Example simulation: McBurger 
+        ~ To generate stochastic time:
+            + Generate a value of distribution 
+            + Use that to generate a time
+        ~ Uniform random number 
+            + Chosen randomly from a range of values
+            + All values equally likely to bbe chosen.
+    - Example Simulation: McBurger 
+        ~ Outcomes: What data should be reported?
+            + Average customer waiting time
+            + Server busy percentage.
+        ~ Try the model, examine the result.
+        ~ Retry with different parameters
+IV. Running the model and visualizing the results
+    - Real-worl models require many more computations 
+    - NERSC climate system model 
+        ~ 10^17 computations 
+            + Requires large parallel computer systems 
+        ~ Produces 500 million data values
+        ~ CERN example: 2 petabyes/second!
+    - Scientific visualization:
+        ~ Methods for visualizing data to highlight important characteristics 
+        ~ Not computer graphics 
+    - Example 1:
+        ~ Model of ocean tides 
+        ~ Produces predicted tide height for every 30 seconds of 24-hour day.
+        ~ Displays as a graph, easier to see features 
+    - Example 2: Model of tides and temperatures 
+        ~ Produces twice as much data 
+        ~ Displays both sets of data on one graph 
+        ~ Interactions become more evident 
+    - Example 3: model of forest fire intensity
+        ~ Three-dimensional data and visualization 
+        ~ Hottest: yellow and red 
+        ~ Coolest: blue and green 
+    - Example 4: Model of Chemical Compound:
+        ~ Give 3-d display of atoms and chemical bonds
+        ~ Can animate chemical reactions/changes 
+        ~ Use color and size to identify parts
+    - Example 5: Model of Tsunami Waves 
+        ~ Color indicates wave heights 
+            + Purple == Highest
+            + Yellow == Lowest 
+        ~ Integrated with map data 
+    - Example 6: Model of Atmospheric ozone over one year 
+        ~ Models where results appear over time 
+        ~ Image animation: A movie showing changes 
+        ~ One image perday 
+        ~ Colors indicate ozone amounts 
+V. Summary
+    - Models are used to experiment with systems that are difficult or imposible to work with for real.
+    - Compuational simlation models can be built and modified faster than physical models and can change the time or size 
+    scale to be more workable.
+    - Ethical dlemmas can be avoided using simulations 
+    - Choose important features for accuracy; keep complexity manageable.
+    - Models may be discrete or continuus, deterministic or stochastic.
+    - Discrete event simulations jump from one event of a system to the next, skipping intervening time steps.
+    - Simulations like the McBurger example can be used to test the outcomes of design decisions.
+    - Some real-worl simulations require massive computing resources.
+    - Data visualization makes model outcomes easier to understand. 
+
+    

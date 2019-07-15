@@ -1,7 +1,7 @@
 7.1.2019
 
 References:
-    - https://github.com/david-sauvage/effective-java-summary 
+    - https://github.com/david-sauvage/effective-java-summary
     
 Effective Java 3rd Edition
 
@@ -203,7 +203,26 @@ II. Methods of the Object class
         * There is no way to extend an instantiable class and add a value while preserving the equals contract.
         * You can safely add values to a subclass of an abstract class.
         * Not respecting those rules will have impact on the use of List, Set, or Map.
+        * Do not write an equals method that depends on unreliable resources
+        * Java's URL equals relies on IP address comparison
+            ~ What happens when not on a network?
+            ~ What happens when network addresses change?
+        * Recipe:
+            ~ Check for object == this 
+            ~ Use instanceof to check for correct type.
+            ~ Cast argument to correct type.
+            ~ Test == for all significant fields
+                + Except for Float.compare, Double.compare, and Arrays.equal
+            ~ Also override hashCode 
+            ~ Use @Override
     - hashCode
+        * Always override hashCode when you override equals 
+            ~ When invoked on the same object, and the object hasn't changed to affect equals, always return the same integer.
+                + Does not have to be the same integer from runtime to runtime.
+            ~ If two object are equals, both hashCodes must be the same 
+            ~ If they are not equal, it is not required to product distinct hashCodes 
+                + If not, hash table performance can be affected.
+                + "return 42" is legal, but horrible.
         * The hashCode method needs to be overriden if the equals method is overriden.
         * Here is the contract of the hashCode method:
             ~ hashCode needs to be consistent 
@@ -216,13 +235,37 @@ II. Methods of the Object class
         * It needs to be a full representation of the object
         * Every informations contained in the toString representation should be accessible in some other way in order to avoid
         programmers to parse the String representation.
+        * Always override toString 
+            ~ Makes class much more pleasant to use.
+            ~ When practical, toString should return all interesting information in object.
+            ~ One has to choose the format returned
+                + Good idea to create a constructor or static factory that takes string representation and creates object.
+            ~ Provide access to values in toString via getters
     - clone
+        * Override clone Judiciously 
+            ~ If you override the clone method in a non-final class, return an object obtained by invoking super.clone 
+        * More Clones:
+            ~ No need to provide clone for immutable objects 
+            ~ Instead, can provide copy constructor or a factory
+            ~ Public foo(Foo foo)
+            ~ public static Foo newInstance(Foo foo)
+        * Interfaces should not extend Cloneable 
+        * Classes designed for inheritance should not implement it
         * When you implement Cloneable, you should ask override clone with a public method whose return type is the class itself.
         * It needs to be a full representation of the object 
         * Every informations contained in the toString representation should be accessible in some other way in order to avoid 
         programmers to parse the String representation.
         * Also, when you need to provide a way to copy classes, you can think first of copy constructor or copy factory except for arrays.
     - Implementing comparable
+        * Consider implementing Comparable:
+            ~ Similar to equals:
+                + But provides ordering information.
+                + Is generic 
+                + Useful in e.g. Arrays.sort() 
+            ~ Returns comparison between two objects.
+                + -1 if first less than second
+                + 0 if equal to
+                + 1 if greater than
         * if you have a value class with an obvious natural ordering, you should implement Comparable.
         * Here is the contract of the compareTo method:
             ~ signum(x.compareTo(y)) == -signum(y.compareTo(x))
@@ -231,11 +274,38 @@ II. Methods of the Object class
         * It's also recommended that (x.compareTo(y) == 0) == x.equals(y) 
         * If it's not, it has to be documented that the natural ordering of this class is inconsistent with equals 
         * When confronted to different types of Object, compareTo can throw ClassCastExeception
-III. Classes and Interfaces 
+III. Classes and Interfaces
+    - Minimize the accessibility of Classes and Members:
+        * "The single most important factor that distinguishes a well-designed module from a poorly-designed one is the degree to which the module hides its 
+        internal data and other implementation details from other modules."
+        * Encapsulation 
+        * Decouples modules allowing them to be developed, tested, optimized, used and understood, and modifie in isolation.
+        * Try to avoid protected too:
+            ~ Must always support 
+            ~ Exposes implementation details to subclasses 
+            ~ Should be rare 
+        * If a mehtod overrides a superclass method, it must have the same access level:
+            ~ To not violate the Liskov inversion principle
+        * Instance field should never be public:
+            ~ Limits typing
+            ~ Limits invariants 
+            ~ Are not thread-safe 
+        * Arrays are always mutable:
+            ~ Never have a public static final array field 
+            ~ Or an accessor that returns such a beast
+            ~ Be careful of IDEs that create accessor automatically
     - Accessibility
+        * Make each class or member as inaccessible as possible.
+        * If used nowhere else, next a class within the class that uses it.
+        * Don't make any variable/field/attribute public 
+            ~ At worst, make it package-private 
         * Make accessibility as low as possible.
         * Work on a public API that you want to expose and try not to give access to implementation details
-    - Accessor Methods 
+    - Accessor Methods
+        * With the ostensible arugment that we can change internal representation:
+            ~ But we never do
+            ~ And if we do, we break the preexisting API Contract 
+        * Less harmful if immutable
         * Public classes should never expose its fields.
         * Doing this will prevent you to change its representation in the future.
         * Package private or private nested classes, can, on the contrary, expose their fields since it won't be part of the API 

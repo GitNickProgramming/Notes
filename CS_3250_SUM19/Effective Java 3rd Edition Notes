@@ -288,7 +288,7 @@ III. Classes and Interfaces
             ~ To not violate the Liskov inversion principle
         * Instance field should never be public:
             ~ Limits typing
-            ~ Limits invariants 
+            ~ Limits invariants
             ~ Are not thread-safe 
         * Arrays are always mutable:
             ~ Never have a public static final array field 
@@ -309,7 +309,34 @@ III. Classes and Interfaces
         * Public classes should never expose its fields.
         * Doing this will prevent you to change its representation in the future.
         * Package private or private nested classes, can, on the contrary, expose their fields since it won't be part of the API 
-    - Immutability 
+    - Immutability
+        * All information provided at construction.
+        * Any changes result in new objects 
+            ~ Which is in general true.
+        * Don't provide methods that modify an object's state
+            ~ Mutators 
+        * Ensure class cannot be extended 
+            ~ Subclasses can't change intent
+        * Make all fields final 
+        * Make all fields private
+        * Ensure client cannot obtain references to mutable data 
+            ~ Don't use client-provided references 
+            ~ Don't return direct object reference 
+            ~ Make a defensive copies 
+        * Immutable objects are simple 
+            ~ Always the same behavior 
+            ~ Never global data 
+        * Immutable objects are thred-safe 
+            ~ Implicitly paralleizable 
+            ~ No synchronization needed
+        * Minimize mutability:
+            ~ Only possible downside is the need for an object for each value.
+                + But: Objects are in general cheap 
+                + Are you sure it's inefficient?
+            ~ "Classes should be immutable unless there is a very good reason to make them mutable"
+                + At the very least, from an external point of view.
+            ~ If cannot be immutable, limit mutability as much as possible
+                + Make every field final unless there is a compelling reason not to.
         * To Create an mmutable class:
             ~ Don't provide methods that modify the visible object's state 
             ~ Ensure that the class can be extended 
@@ -318,6 +345,26 @@ III. Classes and Interfaces
             ~ Don't give access to a reference of a mutable object that is a field of your class 
         * As a rule of thumb, try to limit mutability 
     - Favor composition over inheritance 
+        * GO4
+        * Inheritance violates encapsulation 
+            ~ Subclass depends on superclass's implementation.
+        * Compose Instead:
+            ~ An InstrumentedHashSet has a HashSet instead of extending a HashSet.
+                + And Extends a ForwardingSet class.
+            ~ Have methods forward to the referenced type.
+            ~ These are wrapper classes 
+                + AKA Decorator classes
+        * Inheritance:
+            ~ Is-A relationship
+            ~ Is every instance of a subclass really an instance of the superclass?
+        * Design and Document for inheritance:
+            ~ The only way to test a class design for inheritance is to write subclasses.
+            ~ Constructors must not call over-rideable methods
+                + Directly or indirectly
+                + A Superclass constructor runs before a subclass constructor, so any subclass methods that are overridden will be called before constructor called.
+            ~ One has to be very careful when creating classes for sub-classing 
+                + One way is to make class final 
+                + Other is to provide no public or package-private constructors
         * With inheritance, you don't know how your class will react with a new version of its superclass.
         * For example:
             ~ You may have added a new method whose signature will happen to be the same as a method of its superclass in the next release.
@@ -333,7 +380,23 @@ III. Classes and Interfaces
         * Never call overridable methods in you constructor 
         * If a class is not designed and documented for inheritance it should be made forbidden to inherit.
             ~ either by making it final, or making its constructors private (or package private) and use static factories. 
-    - Interfaces are better than abstract classes 
+    - Interfaces are better than abstract classes
+        * Classes Force inheritance 
+            ~ Java is single inheritance 
+        * Existing classes can be easily changed to implement interface 
+        * Interface are ideal for defining mixins 
+            ~ Loosely, a mixin is an additional type for a class 
+            ~ Useful for polymorphism
+            ~ Know what methods are available to client, which in general define a type.
+        * Can create skeletal implementation for each interface 
+            ~ Generally call AbstractInterface (SkeletonInterface might be better)
+            ~ AbstractCollection, Map, List, Set
+        * Abstract Classes do permit multiple implementations:
+            ~ Easier to evolve 
+            ~ If you want to add a method, can add and implement 
+            ~ Everything else stil works 
+        * Once an interface is released, much more difficult to change.
+            ~ User interfaces only to define types
         * Since Java 8, it's possible to implement default mechanism in an interface.
         * Java only permits single inheritance so you probably won't be able to extends your new abstract class to existing classes
         * When you always will be permitted to implement a new interface.

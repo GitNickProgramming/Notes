@@ -1,7 +1,7 @@
 7.1.2019
 
 References:
-    - https://github.com/david-sauvage/effective-java-summary 
+    - https://github.com/david-sauvage/effective-java-summary
     
 Effective Java 3rd Edition
 
@@ -119,6 +119,11 @@ I. Creating and Destroying Objects
                 >>>
 
     - Dependency Injection
+        + Helps perserve Immutability
+        + Works for constructors, factories, and builders.
+        + Can pass factory into constructor 
+            ~ Mosaic create (Supplier < ? Extends Tile> tileFactory) {}
+        + Use DI frameworks.
         + A common mistake is the use of a singleton or a static utility class for a class that depends on underlying ressources.
         + The use of dependency injection gives us more flexibility, testability and reusability 
         + Example:
@@ -131,6 +136,10 @@ I. Creating and Destroying Objects
                 }
 
     - Avoid Creating unnecessary Objects
+        + Use literals and valueOf()
+        + Anything that is immutable 
+        + Anything that is stateless
+            ~ E.g.: Adapters
         + When possible se the static factory method instead of constructor (Example : Boolean) be vigilant on autoboxing.
         + The use of primitive and his boxed primitive type can be harmful.
         + Most of the time use primitives.
@@ -141,11 +150,48 @@ I. Creating and Destroying Objects
             * Caching objects 
             * The use of listeners and callback 
         + In those three cases the programmer needs to think about nulling object references that are known to be obsolete.
-    - Avoid Finalizers and cleaners
-    - Try with resources 
-    
+        + Avoid Finalizers and cleaners
+        + Try with resources
+        + Try very hard to not manae memory 
+        + Nulling object references should be very unusual.
+
+    - Avoid Finalizers 
+        + Unpredictable, often dangerous, generally unnecessary.
+        + Unlike C++ destructors 
+            ~ These are called immediately 
+            ~ Java uses try/finally for these types of uses.
+        + One never knows when a finalizer is called 
+            ~ Part of garbage collection 
+            ~ Might not be called at all 
+        + Don't e.g. close files as there is a limited number of open files.
+        + Finalizers are slow 
+        + Finalizers are not chained 
+        + If really need functionality, provide explicit termination method.
+        + There are finalizer attacks 
+            ~ Create final finalize method to protect 
+        + Implement AutoClosable
+            ~ Have to have close method 
+            ~ Used with try-with-resources statements
+            
 II. Methods of the Object class 
     - Equals
+        * Sometimes, you don't need to:
+            ~ When all object are unique, such as threads.
+            ~ When you don't need it, such as with random number generators.
+            ~ Superclass equals works well, such as sets, lists, and maps getting from AbstractList, etc.
+            ~ Class is private or package private and you know you don't need it.
+                + Consider implementing with an assertion.
+        * When to Implement 
+            ~ When logical equality (.equals) is different from simple object identity (==)
+            ~ This is the typical case as classes have state, kept by variables with values.
+            ~ Tests for equivalence, not the same object.
+            ~ When we need the class to be map keys or set elements.
+        * Must implement an Equivalence Relation.
+            ~ Must be Reflexive 
+            ~ Must be Symmetric 
+            ~ Must be transitive 
+            ~ Must be consistent 
+            ~ For any non-null reference
         * the equals method needs to be overriden when the class has a notion of logical equality.
         * This is generally the case for value classes.
         * The equals method must be:
@@ -154,8 +200,29 @@ II. Methods of the Object class
             ~ Transitive (X = y and y = z => x = z)
             ~ Consistent
             ~ For non-null x, x.equals(null) should return False
+        * There is no way to extend an instantiable class and add a value while preserving the equals contract.
+        * You can safely add values to a subclass of an abstract class.
         * Not respecting those rules will have impact on the use of List, Set, or Map.
+        * Do not write an equals method that depends on unreliable resources
+        * Java's URL equals relies on IP address comparison
+            ~ What happens when not on a network?
+            ~ What happens when network addresses change?
+        * Recipe:
+            ~ Check for object == this 
+            ~ Use instanceof to check for correct type.
+            ~ Cast argument to correct type.
+            ~ Test == for all significant fields
+                + Except for Float.compare, Double.compare, and Arrays.equal
+            ~ Also override hashCode 
+            ~ Use @Override
     - hashCode
+        * Always override hashCode when you override equals 
+            ~ When invoked on the same object, and the object hasn't changed to affect equals, always return the same integer.
+                + Does not have to be the same integer from runtime to runtime.
+            ~ If two object are equals, both hashCodes must be the same 
+            ~ If they are not equal, it is not required to product distinct hashCodes 
+                + If not, hash table performance can be affected.
+                + "return 42" is legal, but horrible.
         * The hashCode method needs to be overriden if the equals method is overriden.
         * Here is the contract of the hashCode method:
             ~ hashCode needs to be consistent 
@@ -168,13 +235,37 @@ II. Methods of the Object class
         * It needs to be a full representation of the object
         * Every informations contained in the toString representation should be accessible in some other way in order to avoid
         programmers to parse the String representation.
+        * Always override toString 
+            ~ Makes class much more pleasant to use.
+            ~ When practical, toString should return all interesting information in object.
+            ~ One has to choose the format returned
+                + Good idea to create a constructor or static factory that takes string representation and creates object.
+            ~ Provide access to values in toString via getters
     - clone
+        * Override clone Judiciously 
+            ~ If you override the clone method in a non-final class, return an object obtained by invoking super.clone 
+        * More Clones:
+            ~ No need to provide clone for immutable objects 
+            ~ Instead, can provide copy constructor or a factory
+            ~ Public foo(Foo foo)
+            ~ public static Foo newInstance(Foo foo)
+        * Interfaces should not extend Cloneable 
+        * Classes designed for inheritance should not implement it
         * When you implement Cloneable, you should ask override clone with a public method whose return type is the class itself.
         * It needs to be a full representation of the object 
         * Every informations contained in the toString representation should be accessible in some other way in order to avoid 
         programmers to parse the String representation.
         * Also, when you need to provide a way to copy classes, you can think first of copy constructor or copy factory except for arrays.
-    - Implementing cmparable
+    - Implementing comparable
+        * Consider implementing Comparable:
+            ~ Similar to equals:
+                + But provides ordering information.
+                + Is generic 
+                + Useful in e.g. Arrays.sort() 
+            ~ Returns comparison between two objects.
+                + -1 if first less than second
+                + 0 if equal to
+                + 1 if greater than
         * if you have a value class with an obvious natural ordering, you should implement Comparable.
         * Here is the contract of the compareTo method:
             ~ signum(x.compareTo(y)) == -signum(y.compareTo(x))
@@ -183,15 +274,69 @@ II. Methods of the Object class
         * It's also recommended that (x.compareTo(y) == 0) == x.equals(y) 
         * If it's not, it has to be documented that the natural ordering of this class is inconsistent with equals 
         * When confronted to different types of Object, compareTo can throw ClassCastExeception
-III. Classes and Interfaces 
+III. Classes and Interfaces
+    - Minimize the accessibility of Classes and Members:
+        * "The single most important factor that distinguishes a well-designed module from a poorly-designed one is the degree to which the module hides its 
+        internal data and other implementation details from other modules."
+        * Encapsulation 
+        * Decouples modules allowing them to be developed, tested, optimized, used and understood, and modifie in isolation.
+        * Try to avoid protected too:
+            ~ Must always support 
+            ~ Exposes implementation details to subclasses 
+            ~ Should be rare 
+        * If a mehtod overrides a superclass method, it must have the same access level:
+            ~ To not violate the Liskov inversion principle
+        * Instance field should never be public:
+            ~ Limits typing
+            ~ Limits invariants
+            ~ Are not thread-safe 
+        * Arrays are always mutable:
+            ~ Never have a public static final array field 
+            ~ Or an accessor that returns such a beast
+            ~ Be careful of IDEs that create accessor automatically
     - Accessibility
+        * Make each class or member as inaccessible as possible.
+        * If used nowhere else, next a class within the class that uses it.
+        * Don't make any variable/field/attribute public 
+            ~ At worst, make it package-private 
         * Make accessibility as low as possible.
         * Work on a public API that you want to expose and try not to give access to implementation details
-    - Accessor Methods 
+    - Accessor Methods
+        * With the ostensible arugment that we can change internal representation:
+            ~ But we never do
+            ~ And if we do, we break the preexisting API Contract 
+        * Less harmful if immutable
         * Public classes should never expose its fields.
         * Doing this will prevent you to change its representation in the future.
         * Package private or private nested classes, can, on the contrary, expose their fields since it won't be part of the API 
-    - Immutability 
+    - Immutability
+        * All information provided at construction.
+        * Any changes result in new objects 
+            ~ Which is in general true.
+        * Don't provide methods that modify an object's state
+            ~ Mutators 
+        * Ensure class cannot be extended 
+            ~ Subclasses can't change intent
+        * Make all fields final 
+        * Make all fields private
+        * Ensure client cannot obtain references to mutable data 
+            ~ Don't use client-provided references 
+            ~ Don't return direct object reference 
+            ~ Make a defensive copies 
+        * Immutable objects are simple 
+            ~ Always the same behavior 
+            ~ Never global data 
+        * Immutable objects are thred-safe 
+            ~ Implicitly paralleizable 
+            ~ No synchronization needed
+        * Minimize mutability:
+            ~ Only possible downside is the need for an object for each value.
+                + But: Objects are in general cheap 
+                + Are you sure it's inefficient?
+            ~ "Classes should be immutable unless there is a very good reason to make them mutable"
+                + At the very least, from an external point of view.
+            ~ If cannot be immutable, limit mutability as much as possible
+                + Make every field final unless there is a compelling reason not to.
         * To Create an mmutable class:
             ~ Don't provide methods that modify the visible object's state 
             ~ Ensure that the class can be extended 
@@ -200,6 +345,26 @@ III. Classes and Interfaces
             ~ Don't give access to a reference of a mutable object that is a field of your class 
         * As a rule of thumb, try to limit mutability 
     - Favor composition over inheritance 
+        * GO4
+        * Inheritance violates encapsulation 
+            ~ Subclass depends on superclass's implementation.
+        * Compose Instead:
+            ~ An InstrumentedHashSet has a HashSet instead of extending a HashSet.
+                + And Extends a ForwardingSet class.
+            ~ Have methods forward to the referenced type.
+            ~ These are wrapper classes 
+                + AKA Decorator classes
+        * Inheritance:
+            ~ Is-A relationship
+            ~ Is every instance of a subclass really an instance of the superclass?
+        * Design and Document for inheritance:
+            ~ The only way to test a class design for inheritance is to write subclasses.
+            ~ Constructors must not call over-rideable methods
+                + Directly or indirectly
+                + A Superclass constructor runs before a subclass constructor, so any subclass methods that are overridden will be called before constructor called.
+            ~ One has to be very careful when creating classes for sub-classing 
+                + One way is to make class final 
+                + Other is to provide no public or package-private constructors
         * With inheritance, you don't know how your class will react with a new version of its superclass.
         * For example:
             ~ You may have added a new method whose signature will happen to be the same as a method of its superclass in the next release.
@@ -215,7 +380,23 @@ III. Classes and Interfaces
         * Never call overridable methods in you constructor 
         * If a class is not designed and documented for inheritance it should be made forbidden to inherit.
             ~ either by making it final, or making its constructors private (or package private) and use static factories. 
-    - Interfaces are better than abstract classes 
+    - Interfaces are better than abstract classes
+        * Classes Force inheritance 
+            ~ Java is single inheritance 
+        * Existing classes can be easily changed to implement interface 
+        * Interface are ideal for defining mixins 
+            ~ Loosely, a mixin is an additional type for a class 
+            ~ Useful for polymorphism
+            ~ Know what methods are available to client, which in general define a type.
+        * Can create skeletal implementation for each interface 
+            ~ Generally call AbstractInterface (SkeletonInterface might be better)
+            ~ AbstractCollection, Map, List, Set
+        * Abstract Classes do permit multiple implementations:
+            ~ Easier to evolve 
+            ~ If you want to add a method, can add and implement 
+            ~ Everything else stil works 
+        * Once an interface is released, much more difficult to change.
+            ~ User interfaces only to define types
         * Since Java 8, it's possible to implement default mechanism in an interface.
         * Java only permits single inheritance so you probably won't be able to extends your new abstract class to existing classes
         * When you always will be permitted to implement a new interface.

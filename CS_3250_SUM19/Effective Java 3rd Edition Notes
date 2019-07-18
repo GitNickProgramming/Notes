@@ -410,10 +410,28 @@ III. Classes and Interfaces
         * Nonetheless, it needs to be done carefully since it can still break old implementations that will fail at runtime.
     - Interfaces are mean't to define types 
         * Interfaces must be used to define types, not to export constants. 
-    - Tagged Classes 
+    - Tagged Classes
+        * Verbose, error-prone, and ineffective.
         * those kinds of classes are clutted with boilerplate code (Enum, switch, useless field depending on the enum).
         * Don't use them. Create a class hierarchy that will fit your needs better.
-    - Nested classes 
+    - Nested classes
+         * Favor static Member Classes over non-static 
+            ~ A nested class id defined within another class 
+            ~ Only serves the enclosing class 
+            ~ Four Kinds:
+                + Static 
+                + Non-static 
+                + Anonymous 
+                + Local 
+            ~ Last three are called inner classes
+        * For example, in a linked list, nodes do not need to reger to head, tail, etc., from list class 
+        * No need for node to contain all the data in list, so it can be static member class 
+        * One way to think of this is that the static member class could be a separate class, but the code reads better with it inside.
+        * Anonymous Classes:
+            ~ Have no names 
+            ~ Not a member of enclosing class 
+            ~ Declared and instantiated at the same place 
+            ~ 
         * If a member class does not need access to its enclosing instance then declare it static.
         * If the classs is non-static, each instance will have a reference to its enclosing instance.
             ~ That can result in the enclosing instance not being garbage collected and memory leaks.
@@ -421,6 +439,10 @@ III. Classes and Interfaces
         * Even though it's possible to write multiple top level classes in a single file, don't!
         * Doing so can result in multiple definition for a single class at compile time.
 IV. Generics 
+    - Typing:
+        * Java's Type system in very complex
+        * It add various mechanisms to add "generics"
+        * Other Languages simply have references to objects and duck typing.
     - Raw Types
         * A raw type is a generic type without its type parameter.
         * Example:
@@ -441,6 +463,11 @@ IV. Generics
         as close as possible to the declaration.
         * Also, comment on why it is safe.
     - List and Arrays 
+        * Prefer Lists to Arrays
+            ~ Arrays are covariant:
+                + If sub is a subtype of super, sub[] is a subtype of super[]
+            ~ Generics are invariant 
+                + List<t1> is never a subtype of List<t2>
         * Arrays are covariant and generics are invariant meaning that object[] is a superclass of String[] when List<Object>
         is not for List<String>.
         * Arrays are reified when generics are erased.
@@ -448,7 +475,9 @@ IV. Generics
         * In order to assure retrocompatibility with previous version List<String> will be a List at runtime.
         * Typesafety is assured at compile time with generics.
         * Since it's always better to have our coding errors the sooner (meaning at compile time), prefer the usage of generics over arrays.
-    - Generic types 
+    - Generic types
+        * Generic Classes and interfaces are known as generic types
+        * Generic types define sets of parameterized types
         * Generic types are safer and easier to use because they won't require any cast from the user of this type.
         * When creating new types, always think about generics in order to limit casts. 
     - Generic Methods

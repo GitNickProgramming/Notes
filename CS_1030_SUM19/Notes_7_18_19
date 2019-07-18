@@ -1,11 +1,15 @@
+Schedule:
+    - Turn in Reflection <10 things>
+    - Chapter 14 Lecture 
 
+Homework: 
+    - 
 
 Chapter 14: Ecommerce, Databases, and Data Science
 I. Learning Objectives
     - Explain the issues, pros, and cons of whether to create an ecommerce website.
     - List the components of online transactions, and explain what is involved in each step.
-    - List one other ecommerce model besides the online retailer selling to the general public and exlain how it 
-    works.
+    - List one other ecommerce model besides the online retailer selling to the general public and exlain how it works.
     - Describe the relational database model.
     - Frame Simple Queries in SQL to retrieve information from one or more tables in a relational database.
     - Define data mining

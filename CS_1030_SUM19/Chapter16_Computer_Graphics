@@ -1,0 +1,164 @@
+
+
+Chapter 16: Computer Graphics and Entertainment:
+    Movies, Games, and Virutal Communities
+
+I. Learning Objectives
+    - Describe the Changes in movie animation techniques caused by computer generated imagery (CGI)
+    - List the steps in the graphic pipeline
+    - Explain how to create a computer model of a 3D object.
+    - Understand how a transformation matric can model the movement of an object.
+    - Name three challenges involved in rending a visual object.
+    - Explain the purpose and function of a graphics processing unit (GPU)
+    - List and explain two techniques for achieving the real-time graphics required for video-game animation as opposed to movie animation.
+    - Describe how large virtual communiteis work, and the particular challenges they face.
+II. Introduction
+    - Early computers were too expensive and rare for use as entertainment (1950s - 1960s)
+    - When minicomputers arrived, college student began writing games for them (1970s)
+    - Atari created Pong, first commercial game (1975)
+    - Use in movies grew in early 1990s (terminator 2, Jurassic Park)
+    - Now entertainment is a huge, multi-billion dollar segment of the industry.
+III. Computer-Generated Imagery (CGI)
+    - Movie Animation in the past
+        * Hand-drawn (e.g., Walt Disney)
+        * Stop-motion animation:
+            ~ Clay figures posed, photographed, then moved slightly repeatedly in a series of frames.
+    - Computer Animation:
+        * Developed in the 1980s and 1990s
+            ~ Terminator 2: Judgement day
+            ~ Jurassic Park
+        * Computer-generated imagery (CGI)
+            ~ Prodcues photrealistic animation 
+            ~ The Graphics pipeline
+                + Sequence of tasks to generate CGI images/movies.
+            ~ Object Modeling
+                + Create model of 3D object
+                + Wireframe Modeling
+                    >> Common approach to object modeling
+            ~ Object motion
+                + Apply transformations to move objects
+            ~ Rendering and Display
+                + Incorporate lighting
+                + Shaodws
+                + Textures
+            ~ Take an image and create a Tesselation
+                + Divide object surface into planar polygons
+                    >> Polygons share edges and vertices
+                    >> Polygons comletely cover object surface
+                    >> Polygon mesh result looks like a wire model
+                + Convert to three dimensions
+                + Generate a vertex list
+                    >> a table of all vertices and their 3D position.
+        * Object Motion:
+            ~ Ridgid Motion
+                + Movement that does not change object's shape
+                + Translation
+                    >> Lateral movement, every pont changes by the same amount in all three dimensions.
+                + Rotation
+                    >> Circular movement around a fixed point/axis.
+                + Reflection
+                    >> Mirror image of object
+            ~ Implement movements using Matric Multiplication
+            ~ Transformation matrix
+                + Defines a particular motion.
+                + Multiply vector for vertex position (x, y, z) by transformation matrix.
+                + Example:
+                    >> move point at (x,y,z) to (x+a, y+b, z+c)
+                + Create motion by repeating for small a, b, c 
+            ~ Keyframing:
+                + User gives start and end positions, computer generates the intermediate movements.
+            ~ Control point (Animation Variable)
+                + A point or axis used to cotrol motion
+                + Multiple control points allow movement of parts of an object.
+                + Example:
+                    >> Two rotation Axes
+                    >> One Rotates right circle around center point.
+                    >> One Rotates both circles around external point.
+        * Rendering Converts a model to a full 3D image
+            ~ Lighting:
+                + Fix the location and intensity of all light sources.
+                + Determine the effects on objects
+            ~ Color Shading
+                + Assign colors to vertices 
+                + Blend Across Polygons 
+            ~ Shadows 
+                + Account for shadows from other objects 
+            ~ Texture Mapping 
+                + Apply variable surfaces to polygons 
+            ~ Blur to show motion 
+            ~ Ray Racing is the most common redering algorithm 
+                + Repeats for each polygon in the object 
+                    >> For each Light Source 
+                    >> Determine the Amount and direction of light from that source 
+                    >> Combine light sources and determine intensity, color shading, brightness.
+        * Last Step:
+            ~ Convert 3D objects to a 2D Image 
+                + Locate Viewer 
+                + Use Geometry to determine the view.
+IV. Video Gaming 
+    - Video-game images are similar to CGI
+    - CGI Assumes a static environment 
+        * Unlimited time to produce the images 
+        * Created once and shown many times
+    - Video Games are dynamic environment 
+        * User Choices change what must be displayed 
+        * Must render images in real-time:
+            ~ Real-time graphics
+                + "If necessary, sacrifice image quality for speed of display"
+    - Frame Rate
+        * Speed of image generation
+        * Computers improve frame rate with a dedicated GPU 
+    - Graphics Processing Unit (GPU)
+        * A Separate processor optimized for CGI 
+        * Dedicated video memory on a video card (graphics card)
+        * Most contemporary computers have GPUs 
+            ~ Some have multiple GPUs
+    - Other methods for achieving real-time graphics 
+        * Avoid time-consuming algorithms (E.G., Ray Tracing)
+        * Use fixed Colors, with no shadows or shading 
+        * Culling:
+            ~ First determine what is visible, and only render visible elements 
+        * Cut-ins:
+            ~ Pre-computed fully rendered objects 
+            ~ Stored in video library 
+            ~ Dropped into the frame as needed.
+V. Multiplayer Games and Virtual Communities 
+    - Massively Multiplayer Online Games (MMOG)
+        * Thousands of Players
+        * Simulated virtual world
+        * Example:
+            ~ World of Warcraft 
+    - Game provided by online game servers 
+    - Game world is always available and running 
+    - Users log into the game with client software
+    - MMOG game designers must perform:
+        * Game Play management
+            ~ Control game actions and render game images 
+        * Registration Management 
+            ~ Control user accounts, new and returning users 
+        * Client/server protocols for multiple servers and thousands of clients 
+        * Security to ensure aithorized access only 
+        * Database storage and retrieval
+            ~ Store huge amounts of data, retrieve quickly 
+    - Virtual communitites:
+        * Noncompetitive MMOG, or metaverse
+        * Goal is not to score points or win, but to explore and interact, create, and engage in virtual commerce.
+        * Example:
+            ~ Second Life
+                + By Linden Labs 
+                + Several Thousand Servers 
+                + 100 Trillion bytes of data 
+                + 1 million active "residents"
+                + ~50,000 Online at any one time 
+VI. Summary
+    - Use of computers and computer animation in the entertainment industry has grown as the power of computers has grown.
+    - CGI Allows for photorealistic Animation.
+    - The Graphics pipeline includes object modeling, object motion, and rendering and display.
+    - Motion is created through matrix multiplication of transformation matrices with vertices of an object.
+    - Rendering must apply color, shading, and texture to images.
+    - Ray Tracing is a common technique for rendering 
+    - Video Games must render images in real time.
+    - GPUs perform video operations to speed up render time.
+    - MMOGs are online games, large-scale computing.
+    - Virtual Communites like Second Life are noncompetitive MMOGs 
+    

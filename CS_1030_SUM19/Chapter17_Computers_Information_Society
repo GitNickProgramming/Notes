@@ -1,0 +1,349 @@
+
+
+Chapter 17: Making Decisions about Computers, Information, and Society
+
+I. Learning Objectives
+    - Use Thical Reasoning to evaluate social issues related to computing.
+    - Understand the issues involved in digitally sharing copywritten intellectual property
+        * Such as Music
+        * Videos
+        * Photographs 
+        * Books
+        * Video Game Software 
+    - Discuss trade-offs between the rights of personal privacy and governments' concerns with safety and security
+    - Provide arguments that support and oppose hackers who claim to be performing a social good.
+    - Describe cyberbullying and why legal remedies are so difficult to apply.
+    - Explain the potential dangers that have arisen from the enormous growth of social media.
+    - Discuss how social media makes it easier to globally disseminate rumors and false information that can have a profound effect on governments worldwide.
+II. Introduction
+    - Social and Ethical Issues related to information technology are unavoidable.
+        * Just because we can, doesn't mean we should.
+    - Develop skills to reason about such issues.
+        * Learn about morality and ethics in the digital space.
+    - Case studies introduce important ethical issues.
+        * Describe arguments for and against certain positions.
+        * Evaluate arguments in terms of ethics.
+III. Case studies #1
+    - Case 1: Is sharing Good?
+        * Napster file-sharing system was developed (1999)
+        * Peer-to-peer file sharing.
+            ~ Software introduces users to each other.
+            ~ Sharing happens directly between users.
+        * Recording companies filed suit against Napster, 1999
+        * Lawsuit claimed Napster was a conspiracy to encourage mass infringement of copyright.
+        * Facts:
+            ~ Most shared music was copyrighted 
+            ~ Many artists opposed sharing (No revenue for them)
+            ~ Some artists supported sharing.
+        * Napster Claims:
+            ~ Napster reported song ocations, not involved in actual sharing.
+            ~ They were not responsible for users' behaviors.
+            ~ Swapping files this way should be "fair use" under copyright law.
+        * Napster lost the case and appeals, and closed in 2001
+            ~ Sharing movies, legally or not, is a growing issue.
+        * Sharing movies, legally or not, is a growing issue.
+        * Downloading Images from the web for personal use
+        * Ethical (not legal) questions
+            ~ Is it right to swap copyrighted music files?
+            ~ Is it right to provide a search engine to enable users to search each other's databases for copyrighted materials?
+            ~ Ethics:
+                + The study of how to decide if something is morally right or wrong.
+                + How do we judge right or wrong?
+            ~ Consequentialism
+                + Focuses on the consequences of an act - on the whole good or bad outcomes.
+            ~ Utilitarianism:
+                + look at overall good for everyone.
+    - Utilitarian Argument #1
+        * Copying is Ok:
+            ~ There are many more music users than publishers.
+            ~ Music users are happy to get free access.
+            ~ Publishers get publicity for their products.
+            ~ File Sharing is akin to hearing a song on the radio.
+            ~ Drop in sales may relate more to purchasing song-by-song rather than by album.
+    - Utilitarian Argument #2
+        * Copying is not OK:
+            ~ Early on MP3 sharing encouraged CS Sales, but long-term trend is reduction in sales.
+            ~ iTunes and Amazon sell one song at a time to compete with illegal file sharing.
+            ~ If publishers cannot profit, then less music will be made.
+            ~ Copy right protection is the law, and music file sharing is clearly illegal.
+            ~ Encouraging Illegal behavior is wrong.
+    - Dialectic:
+        * A dialouge that explores an issue from both sides to lead to greater understanding.
+        * Example:
+            ~ Facts are that music sales have dropped continuously.
+            ~ Long-term, argument that less music would be published is a strong one.
+            ~ Lesser-Knwon artits may use file sharing to become better known, depend on income from performances.
+            ~ Rethink the music industry from a new viewpoint.
+IV. Case Studies #2
+    - The Athens Affair: Privacy vs. Security 
+        * Law enforcement needs to wiretap phones belonging to suspects.
+            ~ Prior to cellular technology, a wiretap was a literal split off the main phone wire into the building.
+        * Modern use of cell phones and VoIP complicates phone taps.
+        * However, most/all phone calls go through computer systems.
+        * Laws require all telecommuications to support "lawful intercept"
+            ~ LI systems for wiretaps.
+        * Built-in LI systems are a target for hackers.
+        * In Greece
+            ~ Hackers wiretapped 100 major business and political leaders.
+            ~ No Trace of who did it or why 
+            ~ Ethical question 
+                + How does the decision to require LI software impact privacy and security?
+    - Ethical Reasoning By Analogy 
+        * Analogy-making is familiar to everyone.
+        * Analogies are never perfect:
+            ~ What aspects are important?
+        * Apply decisions from one problem to another.
+            ~ Identify what doesn't fit
+            ~ Often important aspect of the problem.
+        * Analogy #1:
+            ~ LI is like requiring everyone to record their face-to-face conversations.
+                + Focused on VoIP (e.g. Skype)
+                + Similarities between VoIP and face-to-face:
+                    >> Forms of communication
+                    >> Meant to include a limited number.
+                    >> Possible for others to listen in.
+                    >> Easy access for others: required recordings allow abouses by government or hackers.
+                + Decisions about face-to-face conversations
+                    >> Private conversations are not monitored routinely.
+                    >> Monitoring only with court order and probable cause.
+                    >> We do NOT record all conversations all the time.
+                + Implications by analogy for VoIP:
+                    >> LI systems go beyond rules for private conversations.
+                    >> Without LI, Law enforcement can still monitor as with face-to-face conversations.
+        * Problem With Analogy 
+            ~ This arugment would apply to normal phone tapping.
+            ~ Society accepts the need for some phone taps.
+            ~ What features of the analogy don't work?
+            ~ Fourth pary involvement:
+                + Telecommunications provider.
+        * An analogy that includes a middleman is needed.
+        * Analogy #2:
+            ~ LI is like suspicious activity reporting (SAR) in banking.
+                + U.S. Banks must notify government when they see suspicious transactions.
+                + Similarities between LI and SAR 
+                    >> Both are critical resources for criminals and require the help of external (law-abiding) entity.
+                    >> Information helps to connect Suspects with each other and discover networks of suspects.
+            ~ Problems with the Analogy:
+                + Who initiates the sending of information differs (banks initiate, not governemnt)
+                + The Information provided is very different.
+                    >> Banks provide times, dates, and participants.
+                    >> Full conversations recording supplies much more detail.
+            ~ Decision about suspicious activity reporting.
+                + Banks should be required to report suspicious activity.
+            ~ Implications by analogy:
+                + Telecom Companies should be required to report suspicious activity.
+            ~ Supports storage of detailed call records.
+            ~ Does not support storage of whole converstations.
+        * After Analyzing the Analogies, consider three possible options/solutions:
+            ~ Require all VoIP systems to implement LI.
+            ~ Do not require LI: Use Physical eavesdropping.
+            ~ Require VoIP providers to report suspicious activities, but do not record conversations.
+        * Interested parties:
+            ~ Law enforcement:
+                + Monitoring saves time and money; can do job better.
+            ~ Hackers and non-hacker criminals 
+            ~ The public:
+                + Monitoring helps law enforcement, but decreases privacy and perhaps safety.
+        * Utilitarian Analysis
+            ~ Law Enforcement:
+                + Option 1 is best.
+            ~ The Public:
+                + Option 2 reduces police effectiveness.
+                + Option 1 allows for abuses.
+                + Option 3 may also reduce police effectiveness.
+V. Case Studies #3
+    - Hackers: Public Enemies or Gadflies?
+        * People who break int computer systems, launch internet worms and viruses, vandalize websites, etc.
+        * Some hackers are clearly criminals:
+            ~ Purposeless vandalism
+            ~ Identity theft
+            ~ Outright theft
+        * Some hackers engage in "hacktivism"
+            ~ Can hacking a computer be a social good?
+    - WikiLeaks:
+        * Protects government and corporate whistle-blowers.
+        * Provides a secure way to share sensitive documents anonymously.
+        * U.S diplomatic cables.
+        * One million confidential/secret U.S. government documents
+        * WikiLeaks is a public corporation with known leadership.
+    - Anonymous:
+        * Primarily interested in freedom of speech.
+        * No official leader or organizing body.
+        * Amorphous, secret membership.
+        * DOS attack in retribution for sanctions against WikiLeaks.
+        * Attacks on government sites Tunisia, Egypt, Libya.
+        * Publication of emails from corporations.
+    - Analogy:
+        * Breaking into a computer is like breaking int someone's house.
+            ~ Similarities:
+                + Intruders are there without permission
+                + Owners take precautions to discourage intrusion.
+                + Both are against the law.
+            ~ Differences:
+                + Burglars take physical objects, depriving owner.
+                + Hackers, in this case, copy intellectual property.
+                + No threat of violence with hacking.
+    - Utilitarian arguments:
+        * Owner of information loses control over it.
+        * Hackers gain access to information.
+        * Owner must increase security.
+            ~ Increased awareness of vulnerability may be good.
+            ~ Increased security only required because of hackers.
+        * Hard to see consequiences.
+        * Must we distinguish between "good hackers" and "bad hackers"?
+    - Deontological Arguments:
+        * Deontology:
+            ~ The study of duty and obligation.
+        * Focuses on Duties of actor and effect on other's rights. 
+        * Categorical Imperative (Kant):
+            ~ Never treat a fellow human merely as a means to an end.
+        * Focus on intent of an action, not consequences.
+        * Hackers for personal gain are unethical; ignore them.
+        * Focus on hackers who claim benign intent.
+    - Parts of the Hacker ethic (Steven Levy)
+        * "All Information should be free"
+            ~ To make decisions, people need good information.
+            ~ Hackers should walways spread information.
+        * "Mistrust authority-promote decentralization"
+            ~ Bureaucracies and rules prevent things from getting done.
+            ~ Each hacker should individually as he or she sees best.
+    - Ethical Critique of Hacker Ethic:
+        * The information being shared does not belong to the hackers.
+        * Does not respect other people's wishes or safety.
+        * Rules exist because we, as a society, expect electronic privacy.
+        * Why should their ethic override other's wishes?
+        * Does hacking treat other people as a means to an end?
+VI. Case Studies: Thinking Straight about Technology and Ethics
+    - "Paramedic ethics:" 
+        * Know a little and know when to ask.
+        * Ask these questions when facing an ethical problem:
+            ~ Who are the stakeholders in this situation?
+            ~ What does each stakeholder have to gain or lose?
+            ~ What duties and responsibilities are important?
+            ~ Can you think of an analogous situation?
+            ~ Does it clarify the situation?
+                + Make a decision or repoeat in dialectic form
+VII. Case Studies #4
+    - Genetic Information and Medical Research
+        * Fictional ethical situation:
+            ~ Faimily doctor asks you to participate in a sutdy of genetic diversity and disease by donating some skin cells.
+            ~ Cells are identified by a randomly assigned number and your zip code. Should you donate?
+        * What are the stakeholders?
+            ~ You 
+            ~ Family doctor
+            ~ Pharmaceutical company, "Pharm CO"
+            ~ Skin cell donors to study, in general 
+            ~ People with genetic disease
+        * What is at Stake?
+            ~ You lose a few skin cells 
+            ~ Your Privacy:
+                + Pharm CO may seek to learn your identity
+                + Transmission of genetic data could be intercepted.
+            ~ Your doctor might be paid for finding participants
+            ~ Pharm Co may develop new drugs
+            ~ Drugs could help people with genetic diseases
+        * Identify duties and Responsibilities 
+            ~ Doctor has a duty to treat you and protect your privacy.
+            ~ You have a duty to pay the doctor and follow instructions.
+            ~ Pharm CO has a duty to develop safe drugs.
+            ~ Pharm CO has promised to pay doctors for finding participants.
+            ~ Pharm CO has promized to respec you privacy.
+        * More Complex duties and Responsibilities 
+            ~ Should you get royalties if your information leads to a profitable drug?
+            ~ Does Pharm CO own genetic information, or should it be shared freely?
+            ~ Why is zip code part of encoding?
+            ~ Do you have a duty to help cure disease?
+    - Thank of Analogies:
+        * Compare to Red Cross blood donations:
+            ~ Both involve confidential health information.
+            ~ Both ask for volunteer donors.
+            ~ Both have collectors and users who are paid.
+            ~ Both involve altruistic reasons for donation.
+            ~ Blood is the valuable item; genetic information in cells is the value.
+            ~ Company is driven by profit and loss
+        - Compare to for-profit companies that solicit money for charity
+            ~ Confidentiality is an issue for both
+            ~ In both, volunteers are asked to donate by someone with financial interest in the donation.
+            ~ Both involve altruistic motivations.
+            ~ One involves donated money; the other does not.
+            ~ Doctor and pharmaceutical roles don't quite match for-profit company.
+    - Make a decision or loop again 
+        * Must decide right now (while at the doctor)?
+        * Should you do more research?
+        * Should you ask others?
+        * Might choose to decline unless you know more about Pharm CO's use of your information, especially given the financial interests of other stakeholders.
+VIII. Personal Privacy and Social Networks
+    - Apply the reasoning from case studies to more personal ethical issues.
+    - Cyberbullying
+        * Humilating, taunting, threatening, invading someone's privacy online.
+    - Sextexting:
+        * Sending sexually explicit messages or images using cell phones or tablet computers.
+        * Privacy expectations for public postings to social networks.
+    - Cyberbullying Examples:
+        * Megan Meier commited suicide after being harassed on MySpace
+            ~ Harasser was the mother of a former friend.
+            ~ Information posted to Craigslist led to young girl receiving sexual phone calls and emails.
+            ~ Tyler Clementi commited suicide after his roomate posted a recording of a sexual encounter with another man.
+        * Laws lag behind the problem
+        * First amendment protections complicate the issue
+    - Sexting Between consenting adults is legal
+        * Images intended to be private between two individuals may not stay that way.
+        * Once something is posted on the internet, it is there forever.
+    - Sexting involving minors may be considered child pornography, even if the perptrator is the "child"
+        * Laws around minors sending other minors images have been relaxed in some states.
+    - Privacy expectations with public postings online 
+        * Student posted nasty story on MySpace about her hometown; she deleted it six days later.
+        * Hometown high school principal saw the story, gave it to the local newspaper.
+        * Newpaper printed it as a letter to the editor.
+        * Faimly was threatened, lost business, had to move away.
+    - Courts found that she should have no expectations of privacy when making a public posting on MySpace
+    - Assume that anything sent or posted online:
+        * May become widely distributed and public 
+        * Will last forever
+    - Don't Post something if:
+        * You don't want a large number of people to see it.
+        * You would be embarrassed to have it widely circulated (to parents, employers, etc.)
+        * The material could be considered libelous or defamatory.
+        * The information is private and a sexual nature.
+IX. Fake News, Politics, and Social Media 
+    - Fake news
+        * Is news deliberately altered or fabricated with the intent of passing it off as valid.
+    - Beware of various types of fake news outlets.
+        * Imposter sites
+            ~ Mimic valid sties to spread fake news 
+        * Manipulated content
+            ~ Original content has been manipulated to fit the dialog of the postig site.
+        * Fabricated Content 
+            ~ All of it is untrue
+    - "Pizzagate"
+        * Fake news during the 2016 Election:
+            ~ Comet Ping Pong Pizza was said to be involved in a child pornography ring with presidential candidate Hillary Clinton and Multiple members of congress.
+            ~ An Individual with an AK-47 showed up threating to shoot anybody involved in child pornography in 2016.
+            ~ Determined to be fabricated in order to hurt the clinton campaign.
+    _ Verify sources when reading a story of interest online:
+        * Check the author 
+        * Check The supporting links
+        * WHo else is reporting it 
+        * Consider the intent of the story.
+X. Summary
+    - Computer Technology instrinsically involves new social and ethical issues.
+    - Ethical Reasoning provides a framework for analyzing ethical issues.
+    - Utilitarianism evalutes an act based on its consequences.
+    - A dialect is a comparative discussion of opposing sies intended to clarify and improve understanding.
+    - Reasoning by analogy can clarify issues of an ethical problem.
+    - Deontological Reasoning focuses on intent rather than outcomes.
+    - Ethical Issues with information technology include:
+        * Copyright protections in an era of file sharing.
+        * Personal Privacy and lawful intercept laws.
+        * Hackers who claim to be social good.
+        * Privacy and the protection of personal information.
+        * Cyberbullying, Sexting and distribution of online postings.
+    - Be aware of propagation of fake news 
+        * Pay close attention to it in politics.
+    - Find ways to limit your exposure to it.
+        * Stick to sources that you have verified and that are trustworthy.
+    - Always check sources and supporting links 
+        * Don't believe everything you read without hcekcing its validity first.
+        
+
+                

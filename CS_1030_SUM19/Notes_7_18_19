@@ -1,0 +1,248 @@
+Schedule:
+    - Turn in Reflection <10 things>
+    - Chapter 14 Lecture 
+
+Homework: 
+    - 
+
+Chapter 14: Ecommerce, Databases, and Data Science
+I. Learning Objectives
+    - Explain the issues, pros, and cons of whether to create an ecommerce website.
+    - List the components of online transactions, and explain what is involved in each step.
+    - List one other ecommerce model besides the online retailer selling to the general public and exlain how it works.
+    - Describe the relational database model.
+    - Frame Simple Queries in SQL to retrieve information from one or more tables in a relational database.
+    - Define data mining
+    - List threee sources data brokers to use to collect data on individuals 
+    - Give an example of data science used "for the greater good"
+II. Introduction
+    - The World Wide Web and Internet enables businesses to communicate with customers through:
+        * Advertising
+        * Follow-up support
+        * Sales to consumers
+        * Sales to other businesses
+        * Non-sales transactions (Statements and bill pay)
+III. Ecommerce
+    - Ecommerce:
+        * Business conducted with the internet and via the web including sales, advertising, and bill pay options.
+    - Setting up an organization for ecommerce can be as intensive as setting up a physical store front.
+    - What business problem are you solving?
+        * Broadening the customer base
+        * Recapturing customers lost to online competitors
+        * Serving existing customers better
+        * Integrating departments of existing business
+    - Risks of moving online
+        * Same customers moving from in-store to online.
+        * Facing new competition online.
+        * Existing customers don't need/want online store.
+        * Employee concerns
+    - Costs of moving online 
+        * Computer equipment and infrastructure 
+        * Hiring personnel to manage the website.
+        * Legal expertise required to protect your intellectual property, regulations online, and customer privacy.
+    - Ecommerce Decisions:
+        * Design website in-house or hire an ASP (Application Service Provider)
+        * Buy or lease equipment 
+        * Use existing software or have custom software written.
+    - Customer Transaction overview
+        * Customer learns of your site and goes there.
+        * Identify return customers and personalize the site.
+        * Provide a secure environment for making purchase.
+        * Process the payment
+        * Communicate with accounting and credit company.
+    - Order Fulfillment:
+        * Update inventory
+        * Contact shipping system and shipping company
+        * Arrange pick up and delvery to customer.
+    - How do customers learn about your site?
+        * Conventional print advertising with URL 
+        * An Obvious domain name (home page URL)
+            + ICANN (Internet corporation for Assigned Names and Numbers) registers domain names.
+        * Search engine results (sponsored link)
+        * Presence on a portal (website about a topic) with links to retail, wholesale, and informational websites
+    - Identify return customers and personalize the site 
+        * Required the user to register and log in 
+            + Connects to the database with the user's past history on the site.
+        * Leave a cookie on the user's computer 
+            + Small text file containing information about the user 
+            + Allows continuity between one page of a site and another
+            + (Relatively) Harmless.
+    - Provide a secure environment or making a purchase
+        * Encryption: ensure sensitive information is encrypted for transmission
+        * Authentication:
+            + Verify that your website is legitimate 
+    - Process Payment:
+        * Option 1: while the customer waits 
+            + Online form communicates with accouting software.
+            + Accounting system verifies customer credit 
+            + Customer can correct bad information 
+            + No need to keep credit card numbers 
+        * Option 2:
+            + Record the order and payment information
+            + Verify and complete the transaction offline 
+            + Send email confirmation to the customer 
+    - Pros and cons of each?
+    - Fulfill the order:
+        * Communicate with online inventory 
+            + Reduce item counts for purchased items 
+        * Arrange for shipping 
+            + Online shipping system 
+            + External shipping company 
+        * Arrange shipper pick-up at the warehouse and delivery to the customer 
+    - Website design: Overall
+        * Attractive with new products displayed 
+        * Good design principles 
+        * Organize for natural shopping habits 
+        * Make it easy to navigate 
+            + Provide site map or navigation bar.
+            + No more than four clicks from one page to another 
+        * Encourage browsing and targeted searching
+        * Ensure the site works on different platforms and browsers
+    - Website Design: Purchase 
+        * Provide electronic "shopping carts"
+        * Checkout steps that:
+            + Always show details of order 
+            + Clearly indicate what the next button click does 
+            + Allow the customer to go back and change things 
+            + Provide email with order information and shipping confirmation 
+    - Website Design: Other Information 
+        * FAQ Page and link to customer service 
+        * Entries allowed for customer reviews or forums 
+        * News and pres Releases 
+        * Links to your social media sites
+    - Multiple software systems must communicate:
+        * Website, accounting, inventory, and shipping 
+        * Suppliers, orders, and billing
+        * Personnel 
+    - Legacy Code:
+        * Existing old software still in use 
+    - Middleware:
+        * Software to enable separate systems to communicate (like desktop computers with the l'net)
+    - Disaster recovery strategy:
+        * Response to natural disasters, equipment failures, or being hacked.
+    - Other Ecommerce models 
+        * eBay:
+            + peer-to-peer auction-style sales 
+        * Craigslist:
+            + Peer-to-peer classified ads 
+        * Groupon:
+            + Group coupons
+                ~ Businesses post coupons for one day only 
+                ~ Minimum number required 
+        * PayPal:
+            + Online payment service 
+        * Apple Pay and similar system:
+            + Mobile payment systems 
+        * Bitcoin:
+            + Virtual currency
+VII. Databases 
+    - Databases store large amounts of data 
+    - Businesses require databases for:
+        * Inventory
+        * Personnel
+        * Customers
+        * Suppliers 
+        * Financials 
+    - Data Organization:
+        * Bits and Bytes:
+            + Basic pieces of computer data 
+        * Field:
+            + One meaningful piece of information 
+        * Record: 
+            + A Set of related fields 
+        * Data file:
+            + A set of related records 
+        * Database:
+            + a set of related data files 
+    - Database Management system (DBMS)
+        * Manages files in a database 
+    - Relational database model:
+        * Files are 2-d tables 
+            + Entity: a distinguishable component of system
+                ~ An employee, a customer, or a rug for sale 
+            + Tuple: a row of a relational table 
+            + Attribute: a category of a field 
+            + Primary key: attribute(s) that uniquely identify a tuple 
+    - SQL (Structure Query language)
+        * Standard query language for DBMS 
+        * Use SQL queries to retrieve data according to some criteria
+        * Example 1:
+            + Retrieve employee name, pay rate, and hours worked for employees named Perreira 
+    - Multiple tables may contain related data:
+        * Example:
+            + Insurance policies for Rugs-for-You 
+        * Foreign key:
+            + An attribute in one table that is the key in another 
+                ~ Connects data in one table with another 
+                ~ Example: EmployeeID
+    - Database Integrity:
+        * Verification as data is added/Removed 
+            + Entity integrity:
+                ~ No Primary key can be missing 
+            + Data Integrity:
+                ~ Values must match category constraints (e.g., be a valid pay rate)
+            + Regerential Integrity:
+                ~ Foreign keys must match a primary key value in the related table 
+    - Efficiency:
+        + Disk access is slow
+        + File management system can organize disk files for faster access 
+    - Distributed database:
+        + data stored across a computer network 
+VIII. Data Science 
+    - Big data:
+        * Huge amounts of available data 
+    - Data Analysis:
+        * Process of finding the right data sets
+        * Putting data in the right format
+        * Writing queries to extract information 
+    - Data Science:
+        * Incorporates data analysis task, but requires knowledge of the enterprise for useful queries and the use
+        of statistics and visualization techniques to interpret the results.
+        * Predict future strategies to achieve a predetermined goal 
+    - Data warehouse:
+        * A collection of databases that contain current and archived data for research and analysis 
+    - Data Mining:
+        * Process of analyzing data to extract and interpret previously hidden patterns through several steps
+            + Determine the problem to be solved 
+            + Review the condition of the data:
+                ~ Does all the data have the same structure?
+                ~ Are any tuples missing information?
+            + Determine a model that will help bring out the patterns:
+                ~ Patterns classify the data to determine the strongest predictors of a given outcome
+                ~ This is the data mining part: creation of a model 
+            + Evaluate your model:
+                ~ Are the results predicted borne out by further data? 
+                ~ Would a different model give better results?
+    - Privacy issues associated with data mining 
+        * Automatically analyzing large amounts of data to uncover hidden patterns (famous target case) 
+    - Data Brokers:
+        * Companies that collect and sell data such as:
+            + Birth Certificats
+            + Marriage certificates
+            + Publicly available information
+            + Nonpublic data purchases or acquired from other companies or data brokers 
+    - Nonetheless, data science makes contributions to
+        * Medicine 
+        * Science 
+        * Ecology 
+        * And many more fields 
+IX: Summary
+    - Ecommerce is a central part of our economy
+    - Businesses deciding to enter the online world must plan carefully
+    - Ecommerce web design is complicated
+    - Ecommerce requires integrating multiple computer system:
+        * Inventory 
+        * Accounting
+        * Suppliers 
+        * Etc. 
+    - Databases are systems to store large amounts of data 
+    - Data is organized into fields, records, data files, and databases 
+    - DBMS Manages files of databases 
+    - The relational database model is the most common:
+        * Records Represent entities
+        * All data is viewed as set of 2-d tables 
+    - SQL is the most common query language for retrieving data from a DBMS 
+    - Databases must ensure integrity, efficiency, and (sometimes) distributed access to data
+    - Data mining discovers midden patterns in a big data set 
+    - Privacy issues arise due to data mining techniques 
+    

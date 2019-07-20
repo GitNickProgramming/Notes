@@ -1,0 +1,269 @@
+
+
+Chapter 15: Artificial Intelligence
+
+I. Learning Objectives:
+    - Describe the two types of Artificial Intelligence.
+    - Explain the pros and cons of various knowledge representation methods.
+    - Explain the parts of a simple neural network, how it works, and how it can incorporate machine learning.
+    - Describe how intelligent state-space search algorithms work.
+    - Give examples of possible usage for each of the following:
+        * Swarm intelligence
+        * Intelligent agents
+        * Expert systems
+    - Explain what a robot is, and list some task for which robots are currently suited.
+    - Explain what a drone is, and list some tasks drones can perform.
+II. Introductions
+    - Artificial Intelligence (AI):
+        * Creating computer systems that exhibit aspects of intelligence
+        * What is intelligence? 
+    - The Turing test:
+        * Human Judge questions two hidden entities
+        * One entity is a computer
+        * If judge cannot distinguish computer from person, then computer is intelligent!
+III. A Division of Labor
+    - Computational tasks:
+        * Example:
+            ~ Recognizing an individual's face
+        * Typically have algorithmic solutions.
+        * Computers perform faster than humans.
+        * Computers Perform more accurately than humans.
+    - Recognition Tasks:
+        * Example:
+            ~ Recognizing an individual's face
+        * Process massive amounts of sensory information
+        * Access massive amounts of past experience
+        * Require approximation
+        * Huamns perform much better than computers
+    - Reasoning task:
+        * Example:
+            ~ Planning you major in college
+        * Formal reasoning can be autmated to some extent.
+            ~ Problems become intractable quickly.
+        * Common-sense reasoing:
+            ~ Requires great experience and knowledge.
+IV. Knowledge Representation
+    - How can we represent knowledge for the computer?
+        * Natural Language:
+            ~ Use requires understanding of meanings of words and combinations of words.
+            ~ "Spot is a brown dog"
+            ~ "Every dog has four legs"
+        * Formal language:
+            ~ Language is a formal logic.
+            ~ "Sport is a bown dog" becomes, dog(Spot) and Brown(Spot)
+        * Pictorial Representation:
+            ~ Knowledge as a digital picture
+            ~ Cannot represent categorical information 
+            ~ Example:
+                + every dog has four legs
+        * Graphical Representation:
+            ~ Knowledge as nodes connected by edges.
+        * Semantic net:
+            ~ Nodes for objects or categories of objects.
+            ~ Edges for relationships
+            ~ Nodes inherit features through "isa" relationships
+    - Reqirments of a representation:
+        * Adequacy:
+            ~ Must capture all relevant information.
+        * Efficiency:
+            ~ Avoid redundant information 
+        * Extendibility:
+            ~ Easy to add new knowledge
+        * Appropriate:
+            ~ Easy to use for particular purpose.
+V. Recoginition tasks:
+    - Some AI work attempts to mimic the brain.
+    - Humans have 86 billion (10^12) neurons.
+    - A neuron receives electrical stimuli from other neurons through dendrites.
+    - A neuron sends electrical stimuli through its axon.
+    - Signals pass through gaps, synapses.
+    - Some synapses cause increased activations; others inhibit activation.
+    - Neurons are like very simple computational devices.
+    - The nervous system is like a connectionist architecture:
+        * Processing aries from many simple processors with rich and complex conections.
+    - Procesing in the brain occurs in a masively parallel way.
+        * Individual neurons are slow compared to computer computational speeds.
+        * Allows for redundancy and neuron failure (fault tolerant)
+    - Artificial neural networks mimic the connectionist approach.
+    - Individual artificial "neurons" have:
+        * A Threshold for generatings output.
+        * An activation level.
+        * Incoming weighted edges.
+        * Outgoing weighted edges.
+    - Neural networks are often organized into input and output layers.
+    - To provide an input to the network, fix the values of the input layer to 0 to 1.
+    - Output nodes compute weighted sum of all inputs.
+        * Activation from node I to node j is Wij * xi
+    - Networks with only input and output layers:
+        * Can solve many problems, but
+        * Cannot solve XOR (or many others)
+    - Add an intermediate layer between input and output
+        * Hidden layer
+    - Can solve most problems given the right weights
+    - How can we determine the correct weights?
+        * Neural Networks are "trained" on sample data.
+        * Machine Learning:
+            ~ The network "learns" correct responses to inputs.
+    - Training neural networks:
+        * Training data:
+            ~ Input/output pairs where output is known to be correct for input.
+            ~ Output nodes that are incorrect have quantifiable error.
+            ~ Use error to update weights to generate less error.
+            ~ Backpropagation:
+                > algorithm that propagates errors back through hidden layer(s) to input.
+VI. Reasoning Tasks Intelligent Searching:
+    - Decision tree represents possible next items for which to search.
+    - Linear search and binary search assume:
+        * Data is organized linearly
+        * Exact match is required 
+    - What if we relax the requirements?
+        * What if data is not linear?
+        * What if an approximate match is okay?
+    - State-space graph:
+        * Each node is a state of aour problem.
+        * A node connects to another if that state can be directly generated by the node.
+        * Examples:
+            ~ Tic-tac-toe
+            ~ eight-puzzle
+            ~ maze-solving
+        * State-space search:
+            ~ Seeks a path from start state to goal state.
+    - Searching for a path to a goal:
+        * Brute Force:
+            ~ Trace all branches of decision tree.
+                + Too slow
+        * Heuristics:
+            ~ Use educated guess to guide which branches to search.
+        * Examples:
+            ~ Chess:
+                + Brute force is impossible.
+                + Good heuristics enable computers to play at grand master level.
+                + Chess is the last "easy" hard problem.
+VII. Reasoning Tasks Swarm Intelligence
+    - Swarm Intelligence Model:
+        * Model communities of simple agents
+            ~ Ants 
+            ~ Termites
+        * Ant Colonies:
+            ~ Individuals exhibit simple behaviors 
+            ~ Colonies accomplish great things
+                + Finding the shortest path to food
+                + Constructing nests
+        * Ant colony optimization:
+            ~ Route-finding using simulated ants
+VIII. Reasoning Tasks Intelligent Agents 
+    - Intelligent Agent:
+        * Works with human user
+            ~ Learns user's preferences and takes actions on user's behalf.
+        * Current Examples:
+            ~ Personalized web search (push technology)
+            ~ E-commerce site that tailors suggestions to your interests (recommendation software)
+        * Future Applications:
+            ~ Personal travel planner:
+                + Buys tickets for user.
+            ~ Office Manager:
+                + Screens calls
+                + Arranges Meetings
+IX. Reasoning Tasks Expert Systems
+    - Expert System:
+        * Mimics reasoning in some specific domain.
+        * Forward Chaining:
+            ~ Start with assertions >> look for rules to ducuce new assertions.
+            ~ Given assertion A and rule "if A then B" >> deduce B.
+        * Backward chaining:
+            ~ Start with a Query >> look for rules that could deduce query.
+            ~ Given questions "Is B true?" and rule "if A then B" >> Try to determine "is A true?"
+    - Knwoeldge base:
+        * Knowlege about a domain.
+    - Inference EngineL
+        * Rules for reasoning with knowledge.
+    - Often use formal language to represent knowledge and rules for inference.
+    - Employ deductive reasoning
+        * Modus Ponens
+    - Explanation Facility:
+        * Users can see explanation based on the reasoning chain.
+    - Knowledge Engineering:
+        * Humans System builders must spend time with experts.
+        * Listing and Codifying the expert knowledge.
+X. Reasoning Tasks the Games we Play
+    - Board games:
+        * Many programs use forms of state-space search:
+        * Tic-tac-toe:
+            ~ Small state space
+            ~ Brute force works to play perfectly
+        * Checkers
+            ~ Chainook project built and searched the complete state space.
+            ~ results can be embedded in a computer player.
+            ~ Chinook can never be beaten
+        * Chess:
+            ~ State space is too large to solve.
+            ~ Computer Players depend on heuristics 
+            ~ Deep Blue defeated world champion Gary Kasparov (1997)
+        * Go:
+            ~ Huge search space.
+            ~ Difficult for a computer to play well
+            ~ Current research is underway to reach top levels:
+                + Update: Deep Mind defeated the Go world champion 4-1 (2018)
+    - Quiz Games:
+        * Jeopardy!
+            ~ Watson defeated Jeopardy! Champions (2011)
+            ~ Given a quiz "answer" and category:
+                + Applies multiple kinds of AI agents to search database (of information from the web)
+                    >>> Produces 300-500 candidate answers.
+                + Narrows to one anser and evalutes its certainty in real time.
+                    >>> Scoring and evaluation are done in parallel
+XI. Robots and Drones
+    - A robot is a physical device that takes in sensory data and makes autonomous responses.
+    - Current Robot tasks:
+        * Repetivtive or dangerous for humans.
+            ~ Manufacturing
+            ~ Bomb Disposal
+            ~ Search-and-rescure
+    - New Research on multiple cooperating robots
+        * Schools of robot fish for studying sea life.
+        * Swarms of robot flies for reconnaissance
+        * Groups of robot snowmobiles to study climate change.
+    - Humanoid robots are designed for interacting with people:
+        * Help elderly or hospital patients
+        * Monitor small children
+        * Japan is a leader in humanoid robots:
+            ~ Aging population needs support
+            ~ Asimo, by Honda:
+                + Designed to walk and move fluidly and robustly.
+                + Can open/cose a door to go through, serve refreshments, etc.
+    - Deliberative strategy:
+        * For Robot control programs:
+            ~ Maintain detailed internal model of the world.
+            ~ Reason about sensory inputs and choose best response.
+        * Reactive strategy
+            ~ Limit/eliminate internal model.
+            ~ React immediately to sensory inputs.
+            ~ Rapid cycle from inputs to responses to more inputs.
+    - Drone:
+        * Unmanned Aerial Vehicle (UAV)
+        * Controlled by a human at a remote site
+        * Primarily used by military and law enforcement
+        * Potential Uses:
+            ~ Deliver medical supplies  
+            ~ Monitor dangerous situations:
+                + Fires
+                + Floods
+            ~ Document wildlife
+            ~ Document urban traffic
+XII. Summary
+    - Artificial Intelligence programs solve problems in "intelligent" ways.
+    - Knowledge may be represented in many different ways.
+        * Choice of representation depends on the task.
+    - Neural networks simulate the connectionist structure of the nervous system.
+        * Neural networks are trained to produce the correct responses to inputs.
+    - Reasoning may often be state-space search.
+    - Swarm intelligence:
+        * Uses colonies of simple agents to solve problems.
+    - Intelligent agents would be artificial personal assistants.
+    - Expert systems reason with expert domain knowledge.
+    - Game-playing is a common application for AI.
+    - Robots perform tedious and dangerous tasks.
+    - Drones are unmanned aerial vehicles.
+        
+    
+        

@@ -462,7 +462,7 @@ IV. Generics
         * When you prove your code is safe but you can't remove this warning use the annotation @SuppresWarnings("unchecked")
         as close as possible to the declaration.
         * Also, comment on why it is safe.
-    - List and Arrays 
+    - List and Arrays
         * Prefer Lists to Arrays
             ~ Arrays are covariant:
                 + If sub is a subtype of super, sub[] is a subtype of super[]
@@ -470,6 +470,11 @@ IV. Generics
                 + List<t1> is never a subtype of List<t2>
         * Arrays are covariant and generics are invariant meaning that object[] is a superclass of String[] when List<Object>
         is not for List<String>.
+        * Arrays are Reified 
+            ~ Their element types are enforced at runtime.
+        * Generics are implemented by type erasure.
+            ~ Types enforced at compile time and erase type at run time.
+        * Cannot create arrays of generic types, parameterized types, or type parameters.
         * Arrays are reified when generics are erased.
             ~ Meaning that array still have their typing right at runtime when generics don't.
         * In order to assure retrocompatibility with previous version List<String> will be a List at runtime.
@@ -485,8 +490,15 @@ IV. Generics
         * If you don't use generics, your code will require users of your method to cast parameters
             ~ return values which will result in non-typesafe code.
     - Bounded Wildcards 
+        * List<string> is not a subtype of List<Object>
+        * However, every object is a subtype of itself.
+        * So, can have a parameter that extends a generic.
         * Bounded wildcards are important in order to make our code as generic as possible.
         * They allow more than a simple type but also all their sons (? extends E) or parents (? super E)
+        * When to use:
+            ~ Use bounded wildcards in methods that have producer or consumer parameters.
+            ~ Don't...
+            ~ Streams could be better
     - Generics and varargs 
         * Even though it's not legal to declar generic arrays explicitly, it's still possible to use varargs with generics.
         * This inconsistency has been a choice because of its usefulness (Example: Arrays.asList(T...a))
@@ -495,8 +507,18 @@ IV. Generics
             ~ It doesn't store anything in the varargs array
             ~ it doesn't make the aray visible to untrusted code when those two coniditions are met.
             ~ Use the annotation @SafeVarargs to remove warnings that you took care of and show users of your methods that it is typesafe.
-V. Enums and Annotations 
+V. Enums and Annotations
     - Enums instead of int constants 
+        * Java's enumerations are more powerful than other languages'
+        * Almost classes:
+            ~ Can't extend, but can implement an interface.
+            ~ Export one instance of each enumeration via a public static final field.
+            ~ Enums are final.
+            ~ Provide compile-time type safety.
+            ~ Can't pass or assign incorrectly
+        * Don't count on ordinal values.
+        * Use Constructor instead.
+        * Use EnumSets instead of bit fields
         * Prior to enums it was common to use int to represent enum tpes.
         * Doing so is now obsolete and enum tpyes must be used.
         * The usage of int made them difficult to debug (all you saw was int values).
@@ -523,6 +545,12 @@ V. Enums and Annotations
             ~ We can emulate it with an interface written for the basic enum.
         * Users of the api will be able to implement this interface in order to "extend" your enum.
     - Annotations instead of Naming Patterns 
+        * JUnit a major example
+        * Make sure you are actually overriding.
+        * Especially for equals, toString, hashCode.
+        * A Maker interface is one with no methods.
+        * Serializable is an example.
+            ~ Indicates object can be written via ObjectOutputStream
         * Prior to JUnit 4, you needed to name your tests by starting with the word "test". 
         * This is bad practice since the compiler will never complain if:
             ~ by mistake, you've named a few of them "tset". 
@@ -534,6 +562,22 @@ V. Enums and Annotations
         * It only "marks" a class that implements this interface.
         * One common example is the JDK is Serializable.
         * Using marker interface results in compile type checking.
+    - Reflection:
+        * In computer science, reflection is the ability of a computer program to examine, introspect, and modify its own structure and behavior at runtime.
+            ~ Early programs were self-modifying in order to loop.
+        * Reflection allows inspection of classes, interfaces, fields, and methods at runtime.
+        * It also allows instantiation of new objects and invocation of methods.
+        * Reflection is often used as part of software testing, such as for runtime creation/instantiation of mock objects.
+        * Junit, Spring, Struts, and Hibernate.
+        * Information on:
+            ~ Classes and inheritance 
+            ~ Methods (and constructors)
+            ~ Fields 
+            ~ Modifiers 
+        * Can Call:
+            ~ Methods (and constructors)
+        * Can change fields and modifiers 
+        * Cant add/delete classes, fields, or methods
 VI. Lambdas and Streams
     - Lambdas are clearer than anonymous classes
         * Lambdas are the best wat to represent function objects.

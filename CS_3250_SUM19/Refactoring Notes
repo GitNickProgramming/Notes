@@ -1,0 +1,115 @@
+
+
+I. Clean Code
+    - The main purpose of refactoring is to fight technical debt.
+    - It transforms a mess into clean code and simple design.
+    
+    A. Clean Code is obvious for other programmers
+        ~ Poor variable naming, bloated classes and methods makes code sloppy and difficult to grasp
+    B. Clean code doesn't contain duplication
+        ~ Each time you have to make a change in duplicated code, you have to remember to make the same 
+        change to every instance.
+        ~ This increases the cognitive load and slows down the progress.
+    C. Clean code contains a minimal number of classes and other moving parts.
+        ~ Less code is less stuff to keep in your head.
+        ~ Less code is less maintence.
+        ~ Less code is fewer bugs.
+        ~ Code is liability, keep it short and simple.
+    D. Clean code passes all tests
+        ~ You know you code is dirty when only 95% of your tests passed.
+        ~ You know you're screwed when your test coverage is 0%
+    E. Clean code is easier and cheaper to maintain!
+II. Technical Debt 
+    - Everyone does their best to write execellent code from scatch.
+    - There probably isn't a programmer out there who intentionally writes unclean code to the detriment
+    of the project.
+    - The metaphor of "technical debt" in regards to unclean code was originally suggest by Ward Cunningham.
+        ~ If you get a loan from a bank, this allows you to make purchases faster.
+        ~ You pay extra for expediting the process, you don't just pay off the principal, but also the additional
+        interest on the loan.
+        ~ You can even rack up so much interest that the amount of interest exceeds your total income, making full
+        repayment impossible.
+    A. Causes of Technical Debt 
+        ~ Business Pressure:
+            + Sometimes business circumstances might force you to roll out features before they're completely
+            finished.
+            + In this case, patches and kludges will appear in the code to ide the unfinished parts of the project.
+        ~ Lack of Understand of the Consequences of Technical Debt:
+            + Sometimes your employer might not understand that technical debt as "interest" insofar as it slows
+            down the pace of development as debt accumulates.
+            + This can make it too difficult to dedicate the team's time to refactoring because management doesn't 
+            see the value of it.
+        ~ Failing to combat the strict coherence of components:
+            + This is when the project resembles a monolith rather than the product of individual modules.
+            + In this case, any changes to one part of the project will affect others.
+            + Team development is made more difficult because it's difficult to isolate the work of individual members.
+        ~ Lack of Tests 
+            + The lack of immediate feedback encourages quick, but risky workarounds or kludges.
+            + In Worst cases, these changes are implemented and deployed right into the production without any prior testing.
+            + The consequences can be catastrophic.
+            + For Example:
+                * An innocent-looking hotfix might send a wird test email to thousands of customers or even worse, flush or corrupt an entire database.
+        ~ Lack of Documentation:
+            + This slows down the introduction of new people to the project and can grind development to a halt
+            if key people leave the project.
+        ~ Lakc of interaction between team members
+            + If the knowledge base isn't distributed throughout the company, people will end up working with an outdated
+            understand of processes and information about the project.
+            + This situation can be exacerbated when junior developers are incorrectly trained by their mentors.
+        ~ Long-term simultaneous development in several branches 
+            + This can lead to the accumulation of technical debt, which is then increased when changes are merged.
+            + The more changes made in isolation, the greater the toal technical debt.
+        ~ Delayed refactoring 
+            + The project's requirements are contantly changing and at some point it may become obvious that parts 
+            of the code are obsolete, have become cumbersome, and must redsigned to meet new requirements. 
+            + On the other hand, the project's programers are writing new code every day that works with the obsolete parts.
+            + Therefore, the longer refactorig is delayed, the more dependent code will have to be reworked in the future.
+        ~ Incompetence:
+            + This when the developer just doesn't know how to write decent code.
+III. When to Refactor 
+    - Rule of Three:
+        ~ When you're doing something for the first time, just get it done.
+        ~ When you're doing something similar for the second time, cringe at having to repeat but do the same thing anyways.
+        ~ When you're doing something for the third time, start refactoring.
+    - When adding a feature:
+        ~ Refactoring helps you understand other people's code.
+        ~ If you have to deal with someone else's dirty code, try to refactor it first.
+        ~ Clean code is much easier to grasp.
+        ~ You will improve it not only for yourself but also for those who use it after you.
+        ~ Refactoring makes it easier to add new features.
+        ~ It's much easier to make changes in clean code.
+    - When fixing a Bug:
+        ~ Bugs in code behave just like those in real like:
+            + They live in the darkest, dirtiest places in the code!
+        ~ Clean your code and the errors will practically discover themselves.
+        ~ Managers appreciate proactive refactoring as it eliminates the need for special refactoring tasks later.
+        ~ Happy Bosses make happy programmers!
+    - During a code review:
+        ~ The code review may be the last chance to tidy up the code before it becomes available to the public.
+        ~ It's best to perform such reviews in a pair with an author.
+        ~ This way you could fix simple problems quickly and gauge the time for fixing the more difficult ones.
+IV. How to Refactor 
+    - Refactoring should be done as a series of small changes, each of which makes the existing code slightly better
+    while still leaving the program in working order.
+    - Checklist of Refacoring done the Right Way:
+        ~ The Code should become cleaner:
+            + If the code remains just as unclean after refactoring... Try to figure out what happened.
+            + If frequently happens when working away from refactoring with small changes and mix a whole bunch of
+            refactorings into one big change.
+            + So it's very easy to lose your mind, especially if you have a time limit.
+            + In this case, it's worthwhile to think about completely rewriting parts of the code.
+            + But before that, you should have written tests and set aside a good chuck of time.
+            + Otherwise, you'll end up with the kinds of results we talked about in the first paragraph
+        ~ New functionality shouldn't be created during refactoring
+            + Don't Mix refactoring and direct development of new features.
+            + Try to separate these processes at least within the cnfines of individual commits.
+        ~ All existing tests must pass after refactoring
+            + There are two cases when texts can break down after refactoring:
+                * You made an error during refactoring:
+                    >> This one is a no-brainer: go ahead and fix the error
+                * Your tests were too low-level:
+                    >> For example, you were testing private methods classes.
+                * In this case, the tests are to blame.
+                * You can either refactor the tests themselves or write an entirely new set of higher-level test.
+                * A great way to avoid this kind of a situation is to write BDD-style tests.
+                    >> Behavior-Driven Development (BDD)

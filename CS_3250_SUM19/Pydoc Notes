@@ -1,0 +1,47 @@
+
+
+Pydoc Documentation
+    - Reference:
+        ~ https://docs.python.org/2/library/pydoc.html
+
+I. Pydoc
+    - Generates documentation form Python modules.
+    - The Doucmenation can be presened as pages of text on the console
+        * This can then be served to a Web Browser, or Saved to HTML Files
+    - For modules, classes, functions and methods
+        * The displayed documentation is derived from the docstring 
+            ~ Example:
+                + the __doc__ attribute of the object
+                + Recursively of its documentable members. 
+                + If there is no docstring
+                    >> pydoc tries to obtain a description from the block of comment lines just above the definition of the
+                    >> Class function
+                    >> Method in the source file
+                    >> At the top of the module (see inspect.getcomments()).
+II. Help()
+    - The built-in function help() invokes the online help system in the interactive interpreter
+    - Which uses pydoc to generate its documentation as text on the console.
+    - The same text documentation can also be viewed from outside the Python interpreter
+        * by running pydoc as a script at the operating system’s command prompt
+            ~ pydoc sys 
+        * At a shell prompt will display documentation on the sys module
+            ~ In a style similar to the manual pages shown by the Unix man command. 
+    -  The argument to pydoc can be the name of a:
+        * Function
+        * Module
+        * Package
+        * Dotted reference to a class, method, or function within a module or module in a package.
+    - If the argument to pydoc looks like a path to an existing Python source file
+        * (that is, it contains the path separator for your operating system, such as a slash in Unix)
+        * Then documentation is produced for that file.
+III. When Printing output to the console 
+    - Pydoc attempts to paginate the output for easier reading.
+    - If the PAGER environment variable is set:
+        * Pydoc will use its value as a paginator program.
+    - Specifiying a -w flag before the argument will cause HTML documenation to be written out to a file in the current directory
+        * Instead of displaying text on the console.
+    - Specifiying a -k flag before the argument will search the synopsis lines of all available modules for the keyword given as the argument.
+        * Again in a manner similar to the Unix man command.
+    - The synopsis line of a module is the first line of its documenation string.
+        * You can use pydoc to start an HTTP server on the local machine that will serve documentation to visiting Web Browsners.
+    

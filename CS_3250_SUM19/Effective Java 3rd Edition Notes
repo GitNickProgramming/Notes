@@ -662,14 +662,44 @@ VI. Lambdas and Streams
             ~ Parallelization should be used on ArrayList, HashMap, HashSet, ConcurrentHashMap, arrays, int ranges and double ranges.
             ~ Those structures can be divided in any desired subranged and so on, easy to work among parrallel threads.
 VII. Methods
+    - Most parameters have restrictions on their validity.
+        * Positive, non-nul, not zero-length, etc.
+        * AKA preconditions 
+        * Program defensively
+        * Catch problems as soon as possible.
+        * Fail fast 
+    - Method may die 
+        * or Worse, work but in an unexpected way.
+        * Throw an exception:
+            ~ An IllegalArgumentException a good choice.
+    - Assertions:
+        * Optional In Java 
+            ~ Must enable with -ea 
+            ~ Or in first class (and doesn't enable them there)
+            static {
+                ClassLoader.getSystemClassLoader().
+                    setDefaultAssertionStatus(true);
+            }
     - Check parameters for validity
+        * Important for maintaining object consistency.
+            ~ Values stored for later use must be good.
+            ~ Checks in constructors important.
+        * Check before doing any calculation.
+            ~ Unless calculation does the checks for you.
         * When writing a public or protected method, you should begin by checking that the parameters are not enforcing the 
             restrictions that you set.
         * You should also document what kind of exception you will throw if a parameter enforcing those restrictions.
         * The Objects.requireNonNull method should be used for nullability checks 
     - Defensive copies 
+        * Assume the worst of your class's clients 
+            ~ They will modify your invarients.
         * If a class has mutable components that comes from or goes to the client, the class needs to make defensive copies of those
         components.
+    - Short Parameter Lists:
+        * Maybe pass a class that encapsulates multiple parameters.
+        * Maybe use the builder pattern.
+        * Prefer interfaces for parameters 
+        * Avoid Booleans, favor encumerations.
     - Method Signature
         * Few Rules to follow when designing your API:
             ~ Choose your method name carefully. Be explicit and consistent.
@@ -679,6 +709,8 @@ VII. Methods
             ~ Favor interfaces over classes for parameter types.
             ~ Prefer enum types to boolean parameters when it makes the parameter more explicit.
     - Overloading
+        * Overloading happensat compile time.
+        * Overloading is static, overriding is dynamics
         * It is recommanded to never export two overloadings with the same number of parameters.
         * If you have to, consider giving different names to your methods. (writeInt, writeLong)
     - Varargs 

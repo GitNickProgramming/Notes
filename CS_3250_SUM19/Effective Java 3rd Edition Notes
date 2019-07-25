@@ -579,13 +579,24 @@ V. Enums and Annotations
         * Can change fields and modifiers 
         * Cant add/delete classes, fields, or methods
 VI. Lambdas and Streams
+    - Perfer Lambdas to Anonymous Classes:
+        * For example strategy Patterns
+        * Used to use anonymous classes 
+        * Java 8 Introduced functional interfaces :
     - Lambdas are clearer than anonymous classes
         * Lambdas are the best wat to represent function objects.
         * As a rule of thumb,
             ~ lambdas needs to be short to be readable.
             ~ Three Lines seems to be a reasonable limit.
-        * Also, the Almbdas needs to be self-explanatory since it lacks name or documentation.
+        * Also, the lambdas needs to be self-explanatory since it lacks name or documentation.
         * Always think in terms of readability.
+        * Types:
+            ~ Static 
+            ~ Bound
+                + Receiving boject specified in method reference
+            ~ Unbound 
+                + Receiving object specified in lambda parameter
+            ~ Constructors for classes and arrays
     - Method references 
         * Most of the time, method references are shorter and then clearer.
         * The more arguments the lambdas has, the more the method reference will be clearer.
@@ -593,6 +604,7 @@ VI. Lambdas and Streams
             ~ Which will give a name and documentation)
         * Use it as a method reference.
         * There are five kinds of method references:
+        * Prefer Method References to lambdas
             ~ Method Ref Type 
                 1. Static
                     Example: Integer::parseInt
@@ -610,6 +622,19 @@ VI. Lambdas and Streams
                     Example: int[]::new 
                     Lambda Equivalent -->  len -> new int[len] 
     - Standard Functional interfaces 
+        * 43 total
+        * 5 basic types 
+        * operator
+            ~ Results and arguments the same type.
+        * Predicate 
+            ~ Returns a boolean
+        * Function:
+            ~ Arguments and return types differ
+        * Supplier:
+            ~ Takes no arguments but returns a value.
+        * Consumer:
+            ~ Takes arguments but returns nothing.
+        
         * java.util.Function provides a lot of functional interfaces.
         * If one of those does the job, you should use it.
         * Here are more common interfaces:
@@ -635,6 +660,15 @@ VI. Lambdas and Streams
         * When creating your functional interfaces, always annotate with @FunctionalInterfaces so that it won't compile unless it 
         has exactly one abstract method.
     - Streams
+        * Stream - sequence of data elements 
+        * Pipeline - multistage computation on elements
+        * Source, intermediate operations, terminal operation.
+        * Executed lazily
+        * Use Streams Judiciously:
+            ~ Fluent - chained into single statement.
+            ~ Sequential by default 
+                + Can add .parallel.
+            ~ Best for transforming, filtering, combing, accumulating, searching a series of data.
         * Carefully name parameters of lambda in order to make your stream pipelines readable.
         * Also, use helper methods for the same purpose.
         * Streams should mostly be used for tasks like:
@@ -656,7 +690,10 @@ VI. Lambdas and Streams
         * The collection interface is a subtype of Iterable and has a stream method.
         * It provides bother iteration and stream access.
         * If the collection in too big memory wise, return what seems more natural (stream or iterable)
-    - Parallelization 
+    - Parallelization
+        * Doesn't Work well with stream.iterate or .limit 
+        * Does work well with ArrayList, HashMap, HashSet, Arrays, int, and long ranges.
+        * Best if Terminal operation is a reduction
         * Parallelizing a pipeline is unliekly to increase its performance if it comes from a Stream.iterate or limit method is used.
         * As a rule of thumb,
             ~ Parallelization should be used on ArrayList, HashMap, HashSet, ConcurrentHashMap, arrays, int ranges and double ranges.

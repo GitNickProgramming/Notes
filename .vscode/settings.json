@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\ngagl\\Dev\\cfehome\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\ngagl\\Dev\\cfehome\\Scripts\\python.exe",
+    "python.venvPath": "C:\\Users\\ngagl\\Dev"
 }
